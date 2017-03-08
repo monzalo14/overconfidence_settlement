@@ -1,0 +1,149 @@
+%\bibliographystyle{AEA/aer}
+%\bibliographystyle{aer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{pdfpages}
+\usepackage{color,soul}
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAPHY
+\usepackage[threshold=0]{csquotes}
+\usepackage[style= authoryear-icomp, 
+            backref=true, 
+            natbib=true, 
+            backend = bibtex, 
+            bibencoding=ascii,
+            doi=false,
+            isbn=false,
+            url=false, 
+            eprint = false]{biblatex}
+\addbibresource{References.bib}
+
+% AER-like bibliography
+%(1) Authors in bold: tex.stackexchange.com/questions/178862/make-author-names-bold-in-bibliography-only
+\DeclareNameFormat{last-first/first-last-bold}{\mkbibbold{%
+  \ifnumequal{\value{listcount}}{1}
+    {\iffirstinits
+       {\usebibmacro{name:last-first}{#1}{#4}{#5}{#7}}
+       {\usebibmacro{name:last-first}{#1}{#3}{#5}{#7}}%
+     \ifblank{#3#5}
+       {}
+       {\usebibmacro{name:revsdelim}}}
+    {\iffirstinits
+       {\usebibmacro{name:first-last}{#1}{#4}{#5}{#7}}
+       {\usebibmacro{name:first-last}{#1}{#3}{#5}{#7}}}%
+  \usebibmacro{name:andothers}}}
+\DeclareNameAlias{sortname}{last-first/first-last-bold}
+
+% (2) Remove parenthesis in year: tex.stackexchange.com/questions/12254/biblatex-how-to-remove-the-parentheses-around-the-year-in-authoryear-style
+\usepackage{xpatch}
+\xpatchbibmacro{date+extrayear}{%
+  \printtext[parens]%
+}{%
+  \setunit{\addperiod\space}%
+  \printtext%
+}{}{}
+
+% (3) Remove "In:" from journal articles: tex.stackexchange.com/questions/10682/suppress-in-biblatex
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+% (4) Parenthesis around volume number: tex.stackexchange.com/questions/81569/biblatex-parentheses-around-the-volume-number-of-an-article
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+%  \setunit*{\adddot}% DELETED
+  \setunit*{\addnbthinspace}% NEW (optional); there's also \addnbthinspace
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\renewcommand*{\bibpagespunct}{\addcolon\space}
+
+% (5) Removing the pp. or p. tex.stackexchange.com/questions/12806/guidelines-for-customizing-biblatex-styles
+\DeclareFieldFormat{pages}{#1}
+
+% (6) Same author makes Author year1, year2
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PACKAGES USED
+\usepackage{graphicx}                       % loads images
+\usepackage{color}                          % for color in text
+\usepackage{float}                          % to place [H]
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{bigstrut}
+\usepackage{array}
+
+\usepackage{multirow}
+\usepackage{xr}
+\externaldocument{OA}
+
+
+
+
+\graphicspath{{./Figuras/}}
+\usepackage{color}
+%\usepackage{morefloats}
+%\usepackage{showkeys}
+\usepackage[textwidth=1.55in]{todonotes}
+\usepackage{rotating}
+\usepackage{threeparttable}
+\usepackage{lscape}
+\usepackage{enumerate}
+
+
+
+\usepackage{geometry} % Required to change the page size to A4
+\geometry{letterpaper} % Set the page size to be A4 as opposed to the default US Letter
+\geometry{margin=2.5cm}
+\usepackage[labelfont=bf]{caption}
+\usepackage[labelfont=bf, justification=justified]{subcaption}
+\captionsetup{position=top}
+\captionsetup[subfigure]{justification=centering}
+
+
+\usepackage{setspace}
+\onehalfspacing
+
+\renewcommand{\rmdefault}{ppl}
+\definecolor{darkred}{rgb}{0.8, 0.0, 0.0}
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.8}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.6, 0.24}
+
+\usepackage{hyperref}
+\hypersetup{
+    pdfstartview={FitH},    		% fits the width of the page to the window
+    pdftitle={Mitigating the risks of financial inclusion with loan contract terms},    % title
+    pdfauthor={CJMS},     % author
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=navyblue,          % color of internal links (change box color with linkbordercolor)
+    citecolor=darkred,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=darkred           % color of external links
+}
+
+\newcommand{\green}[1]{\textcolor{cadmiumgreen}{#1}}
+
+\newcommand{\comment}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+%\usepackage{showkeys}
+
+
+\usepackage{tikz}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{xcolor}
+\usepackage{fullpage}
+\usetikzlibrary{calc}
+\usepackage{multirow,array}
+\usepackage{longtable}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{dfn}{Definition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{obs}{Obs}
+\newtheorem{rem}{Remark}
+\newtheorem{prob}{Problem}

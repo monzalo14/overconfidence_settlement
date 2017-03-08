@@ -1,0 +1,161 @@
+ \documentclass[11pt]{article}
+\input{preamble.tex}
+
+%\usepackage{refcheck}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT
+\begin{document}
+
+
+\title{Preliminary results for: Overconfidence and settlement: evidence from Mexican labor courts\thanks{We would like to thank Sebastian Garcia, Isaac Meza, Diana Roman, and Monica Zamudio (``la banda pesada'' and ``los mas aca'') for superhuman research assistance.  All errors are ours.}}
+\author{Joyce Sadka \and Enrique Seira  \and Christopher Woodruff }
+\date{This draft: \today \\[2 cm]}
+
+%\vspace{.5in}
+
+
+\maketitle
+
+
+\section{Preliminary results}
+
+
+
+\begin{landscape}
+
+\subsection{Raw Expectations}
+
+ \begin{table}[H]
+ \caption{Belief updating winsorizing at 95 percentile}
+ \label{Belief_updating}
+ \begin{center}
+ \scriptsize{\input{./Tables/exit_vs_initial_exp_95.tex}}
+ \end{center}
+  \footnotesize
+ \textit{Notes:} 
+ Dependent variable are expectations measured in the exit survey (for amount and delay respectively). Specification (2) includes basic controls.
+ \textit{Do file: } \texttt{exit\_vs\_initial\_exp.do}
+ \end{table}
+
+ \begin{table}[H]
+ \caption{Belief updating winsorizing at 90 percentile}
+ \label{Belief_updating}
+ \begin{center}
+ \scriptsize{\input{./Tables/exit_vs_initial_exp_90.tex}}
+ \end{center}
+  \footnotesize
+ \textit{Notes:} 
+ Dependent variable are expectations measured in the exit survey (for amount and delay respectively). Specification (2) includes basic controls.
+ \textit{Do file: } \texttt{exit\_vs\_initial\_exp.do}
+ \end{table}
+
+
+ \begin{table}[H]
+ \caption{Belief updating (amounts in log)}
+ \label{Belief_updating_log}
+ \begin{center}
+ \scriptsize{\input{./Tables/exit_vs_initial_exp_log.tex}}
+ \end{center}
+  \footnotesize
+ \textit{Notes:} 
+ Dependent variable are expectations measured in the exit survey (for amount (in log pesos) and delay respectively). Specification (2) includes basic controls.
+ \textit{Do file: } \texttt{exit\_vs\_initial\_exp\_log.do}
+ \end{table}
+
+
+
+
+
+\subsection{Relative OC Expectations}
+
+ \begin{table}[H]
+ \caption{Belief updating (relative) winsorizing at 95 percentile}
+ \label{Belief_updating}
+ \begin{center}
+ \scriptsize{\input{./Tables/exit_vs_initial_exp_95_rel.tex}}
+ \end{center}
+  \footnotesize
+ \textit{Notes:} 
+ Dependent variable are expectations measured in the exit survey (for amount and delay respectively). Specification (2) includes basic controls.
+ \textit{Do file: } \texttt{exit\_vs\_initial\_exp\_rel.do}
+ \end{table}
+
+ \begin{table}[H]
+ \caption{Belief updating (relative) winsorizing at 90 percentile}
+ \label{Belief_updating}
+ \begin{center}
+ \scriptsize{\input{./Tables/exit_vs_initial_exp_90_rel.tex}}
+ \end{center}
+  \footnotesize
+ \textit{Notes:} 
+ Dependent variable are expectations measured in the exit survey (for amount and delay respectively). Specification (2) includes basic controls.
+ \textit{Do file: } \texttt{exit\_vs\_initial\_exp\_rel.do}
+ \end{table}
+
+
+ \begin{table}[H]
+ \caption{Belief updating (relative) (amounts in log)}
+ \label{Belief_updating_log}
+ \begin{center}
+ \scriptsize{\input{./Tables/exit_vs_initial_exp_log_rel.tex}}
+ \end{center}
+  \footnotesize
+ \textit{Notes:} 
+ Dependent variable are expectations measured in the exit survey (for amount (in log pesos) and delay respectively). Specification (2) includes basic controls.
+ \textit{Do file: } \texttt{exit\_vs\_initial\_exp\_log\_rel.do}
+ \end{table}
+
+
+\end{landscape}
+
+
+\subsection{Private Lawyer interaction}
+% INTERACTION WITH PRIVATE LAWYER
+\begin{table}[H]
+    \caption{Treatment Efects by Month}
+    \label{Table_effects}
+    \begin{center}
+    \scriptsize{\input{./Tables/Minicortes_2_int.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+    Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
+    \textit{Do file: } \texttt{mini\_cortes\_2\_int.do}
+\end{table}
+
+
+\begin{table}[H]
+    \caption{Triple interaction}
+    \label{Table_effects}
+    \begin{center}
+    \scriptsize{\input{./Tables/Minicortes_3int.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+    Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
+    \textit{Do file: } \texttt{mini\_cortes\_3int.do}
+\end{table}
+
+
+
+
+\begin{table}[H]
+  \centering
+  \caption{Tab presence of employee and public lawyer}
+\begin{tabular}{rccr}
+\toprule
+      & \multicolumn{2}{c}{Employee presence} &  \\
+\midrule
+\multicolumn{1}{c}{Public Lawyer} & 0     & 1     & \multicolumn{1}{c}{Total} \\
+\multicolumn{1}{c}{0} & 666   & 137   & \multicolumn{1}{c}{803} \\
+\multicolumn{1}{c}{1} & 51    & 38    & \multicolumn{1}{c}{89} \\
+\multicolumn{1}{c}{Total} & 717   & 175   & \multicolumn{1}{c}{892} \\
+\bottomrule
+\end{tabular}%
+
+\end{table}%
+
+
+
+
+
+\end{document}

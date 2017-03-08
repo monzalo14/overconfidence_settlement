@@ -1,0 +1,1102 @@
+ \documentclass[11pt]{article}
+\input{preamble.tex}
+
+%\usepackage{refcheck}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT
+\begin{document}
+
+
+\title{Overconfidence and settlement: evidence from Mexican labor courts\thanks{We would like to thank Sebastian Garcia, Isaac Meza, Diana Roman, and Monica Zamudio (``la banda pesada'' and ``los mas aca'') for superhuman research assistance.  All errors are ours.}}
+\author{Joyce Sadka \and Enrique Seira  \and Christopher Woodruff }
+\date{This draft:  20 January, 2017 \\[2 cm]}
+
+%\vspace{.5in}
+
+
+\maketitle
+\begin{abstract}
+ Courts in low- and middle-income countries function very poorly. There are large backlogs and outcomes are unpredictable. A large body of theoretical work and lab experiments suggests that settlements in lawsuits are inefficiently low. We use data from administrative records and surveys of parties to lawsuits in the Mexico City Labor Court to document that parties are overconfident and that overconfidence is associated with lower settlement rates. We then conduct an experiment in which we provide parties in randomly selected suits with predicted outcomes for their case or access to a conciliator. The predicted outcomes are based on a model developed from administrative data from all cases in the court filed in 2011. We find that providing the information reduces the level of overconfidence, and nearly doubles the overall settlement rate. However, settlement rates increase only for the subset of cases for which the plaintiff is present to receive the information. Providing information only to lawyers representing the plaintiff and defendant has no effect on settlement rates either on the day the information is provided or over the following eight month period. 
+\end{abstract}
+
+\textbf{Keywords: } firing disputes, labor courts, settlement, overconfidence, statistical information.
+
+\textbf{JEL codes: } K31, K41, K42, J52, J83.
+
+\newpage
+
+
+
+\section{Introduction}
+
+
+Courts  function poorly in most countries. There are large case backlogs, plaintiffs face lengthy delays, and case outcomes are highly unpredictable. In addition to raising concerns for justice and security, poorly functioning courts also hamper the smooth functioning of markets. Although this is widely understood and there is anecdotal evidence of corruption and inefficiency in the legal systems of developing countries, there is surprisingly little rigorous evidence on the ineffectiveness of their courts.
+    
+   Labor courts in Mexico conform to the general pattern. Though the law provides that suits should be adjudicated within 3 months, courts face backlogs of several years. Settlement rates are low by international standards and outcomes are highly uncertain, especially in cases which continue to a final decision by the judge. 
+
+We examine the causes of delays in the Mexico City Labor Court, the largest labor court in Latin America. We use administrative data and surveys of plaintiffs, defendants, and their lawyers to document several stylized facts. Cases proceed very slowly. Among all cases filed in the court between 2009 and 2012, 30\% were still ongoing in 2016.  
+
+There is a large literature examining factors that increase the difficulty of resolving disputes. Asymmetric information between parties is one such mechanism. The role of overconfidence, “self-serving bias,” and relative cognitive factors have been supported by a large number of laboratory experiments. \cite{BabcockLoewensein_BargainingImpasse}  provide an early review of some of this work. In spite of the attention these cognitive factors have received in lab experiments, we are not aware of experiments which verify their role in the field.  We work with the Mexico City Labor Court to do just that.
+
+We begin by documenting that the parties involved in suits at the court are overconfident in their chances of winning the case and the amount of the award.\footnote{We use the term “overconfident” throughout, following one strand of the bargaining literature. Our measure might also be seen to encompass “self-serving bias” \cite{BabcockLoewensein_BargainingImpasse} or other mechanisms through which one’s own expectation of outcomes differs from an advisory’s expectation of outcome.}  We measure overconfidence of parties in cases which were filed in 2015, and had hearings between March and May of 2016. Our measure is the difference between the expected and predicted outcomes of the particular case. To do this, we first use data from 2300 cases filed between 2009 and 2012 to predict the outcome of each current case. We compare this predicted outcome – the probability of winning and the amount awarded conditional on winning – with the stated beliefs of parties elicited through a survey. Using this measure, we should that overconfidence is associated with lower settlement rates.
+
+We then conduct an experiment in which we provide the parties to randomly selected cases with the predicted outcome of their case. We show that this leads to a reduction in the level of overconfidence. More importantly, we show that the information leads to a near doubling of the rate of settlement on the day the information is provided. However, settlement rates increase only in cases where the plaintiff is present when the information is presented. Where the plaintiff is present, settlement rates increase from around 3 percent to around 20 percent. The effect of the information from the calculator increases only slightly over time. The importance of the plaintiff’s presence on the day is never diminished, suggesting perhaps that lawyers whose clients were not present do not convey the information to their clients. 
+
+These results suggest that overconfidence is an important reason for the lack of settlement. Moreover, the fundamental importance of the presence of the client suggests that attorney-client agency is important as well. 
+
+There is a substantial literature examining the effect of labor protection on the efficiency of labor markets. \cite{BesleyBurgess_EconomicPerformance}. As \cite{AlmeidaCarnero_EnforcementLaborRegulation}, among others, have pointed out, at least some part of labor protection benefits should be borne by workers in the form of lower wages. In this regard, the uncertainty created by inefficient courts may be particularly costly in adding risk to both employer and employee, as well as increasing administrative costs.
+
+While the effect of labor laws has been well studied, the effect of implementation of laws has been much less examined. One exception is \cite{PonticelliAlencar_Bankrupcy}, who use variation in court enforcement across states in Brazil to study the effect of bankruptcy reform on access to credit. 
+
+The results have implications for the current discussion of labor law reforms in Mexico. In general, reforming labor laws is challenging, because while the evidence suggests that reforms are a positive sum game, there are also (at least perceived) large distributional effects of the reforms. We believe that our experiment shows that reforming the adjudication process should be less contentious, since both the workers and employers benefit from the increased certainty and faster resolution of disputes.
+
+We begin by describing the relevant part of the Mexican labor law, and the labor courts charged with enforcing that law. We then detail the data from both administrative records and surveys of litigants and lawyers, and use those data to describe a set of stylized facts. Next, we describe the experimental design and results and, finally, we discuss the implications of the results and conclude. 
+ 
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Labor Courts in Mexico}\label{ContextSection}
+
+
+\subsection{The main story}
+
+Labor courts in Mexico adjudicate disputes involving claims of unfair dismissal from employment. Mexico's labor courts are  similar to many developing countries' courts. Anecdotally, they are plagued by huge backlogs and long delays to adjudicate disputes, corruption in many stages of the process, low levels of information --mostly on the plaintiff's side (the worker suing), and very uncertain outcomes. To our knowledge, although prevalent, these anecdotal opinions have not been substantiated with hard data. We provide a comprehensive analysis of some of these issues by using data from Mexico City’s labor court, the largest labor court in Latin America. We focus particularly on the high levels of misinformation that are prevalent among suing workers. We believe misinformation partly causes the observed low levels of out-of-court settlements and delays. This misinformation facilitates a moral hazard problem between private lawyers and the employees they seek to represent. 
+
+In a context of poor knowledge of labor law and of firing lawsuits' procedure, private lawyers have strong informational advantages with respect to employees. Due to high costs and delays in litigation, many fired workers who have low-value suits (because of low levels of wage and tenure and/or poor evidence), would be better off not suing and seeking a possible informal agreement with their employer. However, most lawyers, when consulted by such a worker, tend to use their informational advantage to inflate the worker's expectations about expected winnings in the case, in order to convince her to sue and to choose that lawyer as a legal representative for the lawsuit. Note that any informal agreement between the worker and her employer without any lawsuit filed will never generate income for plaintiffs' lawyers. If a lawsuit is filed, however, the plaintiff's lawyer will often charge an up front fee for filing (which more than covers the cost of filing) as well as a contingency fee of 30-40\%. 
+
+At the same time, since lawyers interact during only one lawsuit with the typical client, and employees rarely know other clients of the same lawyer, it is hard for reputations to form. Court officials and frequent defendant firms know which plaintiff's lawyers are honest, but this information is very difficult to find out for an employee that was just fired for the first time in her life. In any case, it is easy for a lawyer to justify ex-post why realized winning are much lower by appealing to technical legal details. Once a suit is in place and the client starts with overly optimistic expectations of winnings, these same expectations are an important obstacle to making a settlement. Even if the worker's lawyer becomes convinced that the case should be settled, it may now be somewhat difficult to decrease the worker's expectations as quickly as needed for the settlement to occur. 
+
+
+\subsection{Mexican labor law and courts}
+
+\textbf{The labor Law:} Mexican labor law is very protective of workers. In the area of firing, the law provides few legal bases for "justified firing", so that firing a worker due to low productivity, poor market conditions or redundancy are all considered unfair dismissal and require severance pay. Severance by law is a minimum of three months' wage with benefits. At-will workers are also entitled to 20 days per year of tenure. Not-at-will workers can access this entitlement if they ask for reinstatement, win the lawsuit and the firm refuses to reinstate.
+
+%However, most workers fit into the "not at-will" category and can ask to be reinstated. If a worker wins reinstatement but the firm refuses to carry it out, then in addition to the severance pay, the firm must pay the worker 20 days wage per year worked. For the small number of "at-will" employees (these are supervisory workers as well as those in direct contact with the employer), the worker cannot ask to be reinstated but the firm must pay severance plus the 20 days per year of tenure. Partially because of the hope of gaining additional compensation if the firm refuses to reinstate, an important proportion of workers demand reinstatement, even though they very rarely want to go back to work for the firm.
+
+\textbf{Practice:} In the face of a law that supports high firing costs, firms engage in a number of strategies to reduce their firing liabilities, and poor quality of labor courts allows these strategies to thrive even when they are dishonest. The firing lawsuit's principal demand will either be the base severance pay of 90 days, or reinstatement. Firms use 3 main answers to the suit: denying the existence of a labor relationship (this can be a successful strategy due to high levels of informality as well as a thriving industry of out-sourcing), offering reinstatement (calling the employee's bluff so to speak, and if the worker goes through with the reinstatement firing her a short while later, which forces the worker to initiate a new suit), or claiming the worker resigned voluntarily, and producing a letter of resignation signed by the employee. In a large range of low to middle income jobs, entering employees are obliged to sign a letter of resignation (or a "blank letter") in advance, and firms later add a date to the letter whenever they want to fire the worker. Establishing that the date was added well after the letter's signature, or that duress was used to obtain the worker's signature, are both complicated procedures under the law, as well as costly, because most "expert witnesses" are corrupt and more easily corrupted by firms. 
+
+In this context, firing lawsuits will prosper only when the worker and her lawyer have access to solid evidence, and even when they do, suits are likely to be long, costly and uncertain, as documented below. This means that only relatively high value lawsuits with some evidence, or lawsuits with very good evidence, are worth filing for the worker. The lawyer, though, has different incentives, as we explain in the following subsection.  
+
+\textbf{Courts:} In Mexico labor courts are tripartite panels, in which there is one judge per "special labor court" (we call these subcourts), who sits with two "representatives" of labor and industry.\footnote{Though intended to create balance in labor-industry relations, in practice representatives are important beneficiaries of the poor institutional framework and the pervasive corruption} Although the same federal labor law governs all labor relationships in the private sector, a federal-level labor court deals with disputes from a list of ``strategic'' industries named in the Mexican constitution, including oil and gas, social security, pharmaceuticals, auto manufacture, and others. Residual jurisdiction belongs to local labor courts such as the Mexico City Labor Court (MCLC) where we conduct the experiment of this paper. In terms of volume, labor courts are large relative to other courts. For example, at the federal level there are now about 225,000 open labor lawsuits, which is a larger number than all open federal lawsuits in areas of civil, commercial, family, and penal law, put together. 
+
+We use data on the MCLC, which is the largest local labor court not only in Mexico but in all Latin America, with over 100,000 open cases at the moment. The court receives about 30,000 new cases in a given year, and in the last 3 years on average has concluded less than 25,000 cases per year. So the backlog of cases is large and growing; it would take more than 4 years for the court to conclude all its current cases even if it stopped receiving any new cases.  The MCLC has 20 "special labor courts" with jurisdiction based on industry.\footnote{The classification system is quite different from the NAICS system we use for coding data and there is a significant overlap of industry codes across individual courts.}
+
+\textbf{The Process:} Firing lawsuits make up over 95\% of all lawsuits in the labor courts. In a firing lawsuit the procedure is as follows. An initial claim is filed by the worker or her lawyer, and an initial hearing date is set, generally 2-3 months after the date of filing. Next, the defendant(s) must be notified, and this process usually implies at least 6 months' delay in the lawsuit. A large proportion of delays are due to lack of notification. The initial notification is a formal court summons that must be carried out in person, and in practice involves substantial corruption, as the lawsuit cannot proceed without notification. \footnote{In ongoing work \cite{KaplanSadka_notif} shows that when notifiers' work load is assigned randomly and control of case files is taken away from notifiers, success in notification can be more than doubled. } Once notification of all defendants has taken place, a "conciliation, demands, and answers" hearing takes place. Supposedly, court officials including conciliators should intervene at this hearing and induce parties to engage in settlement negotiations\footnote{In practice, there are not enough conciliators to intervene in all hearings, and other court officials would prefer to finish their hearings rather than delay them while the parties attempt a settlement negotiation.} If a settlement cannot be reached then the defendant(s) must answer the lawsuit. Several more hearings are scheduled for presentation and viewing of evidence, and then the written record is closed (all proceedings are oral but are transcribed into the case file), and the file is passed on the judge, who writes the final decision. Enforcing the judgment, if it requires the payment of any sum to the worker, is another complicated procedure, since a large proportion of firms do not pay the judgment voluntarily, and a seizure of assets (that must officially be performed by the same corrupt set of notifiers) proceeds, followed by adjudication of liquid assets or sale of non-liquid assets to pay the worker the awarded amount. 
+
+Given the 6 month usual interval between hearings, the number of hearings, and the frequent postponement of scheduled hearings due to lack of notification, it is no wonder that the average lawsuit that continues to a judge's decision takes over 3 years, although the law stipulates 100 days as the maximum length of a lawsuit. Courts are swamped with cases, understaffed, with a large proportion of unmotivated and dishonest bureaucrats, and the very few high quality staff frustrated and exhausted by the combination of insurmountable backlogs and poor work environment. It is easy to see how corruption becomes widespread and how these courts are captured by repeat players and low quality law firms.
+
+\subsection{Types of lawyers and their incentives}
+
+By law, workers who are not able to hire a private lawyer must be provided with public legal assistance, in the form of a public labor prosecutor's office in each state and at the federal level. Public lawyers are paid a flat wage by the court and may not charge their clients anything.\footnote{This was corroborated by survey evidence.} They are experienced and generally well qualified, but tend to exert low effort as their incentive is to finish cases quickly in order to reduce their overwhelming workload: one public lawyer currently handles 400 cases on average, while both our calculator data and informal interviews of private lawyers show that a normal load for a private lawyer is no more than 50 cases. Public lawyers do not explain much to their clients or use creative or aggressive litigation strategies that may have a positive payoff but imply more work. Because their assistance is free, public lawyers serve a poorer and lower-tenure population of workers, and do not have access to funds for paying bribes. 
+
+Private lawyers are largely unregulated; they must be licensed lawyers, but do not have to pass a bar exam or maintain a professional license to practice labor law. Most plaintiff's lawyers work based on an initial fee to file the lawsuit and a contingency fee of 30-40 percent. Higher quality labor lawyers tend not to specialize in only representing plaintiffs, and do not work on contingency fees. They charge employees a considerable upfront retainer, and only charge additional fees for invoiced expenses. When they represent firms, these higher quality lawyers also charge retainers on a monthly or yearly basis for handling all of the firm's employment litigation, rarely for individual lawsuits. \footnote{In the survey carried out as part of the experiment, a majority of workers indicate paying a percentage of 30\% or more. Informal interviews with lawyers and on line information on law firms of widely varying levels of reputation is consistent with this description of the payment structure across the lawyer quality spectrum.}  
+
+There are two reasons why private lawyers' incentives are not aligned to those of the workers they represent. First they maintain a portfolio of many firing lawsuits with widely differing characteristics, against many different firms. This tends to make him less risk adverse than the worker. Second, given that filing a low quality suit is cheap and easy, charging a fixed fee to file a law suit (the standard is 3000 pesos, about 150 USD) implies the lawyer has already made a profit even if the lawsuit has zero probability of producing any compensation to the worker.\footnote{However, even poor quality lawsuits filed by bad lawyers have some low probability of winning, due to excessive formalism and complexity of the substantive and procedural law, the low quality of the labor courts, corruption, and the informality with which many employers operate the employment relationship.} In this scenario that lawyers may have incentives to convince a worker to sue even when it is not in her interest to do so. The most common way of doing this is to inflate the claim by adding elements to it, even if in the end they won't stand up in court (e.g. lost wages, vacation pay, end of year bonus, and overtime\footnote{A full list of claim variables with definitions is provided in the appendix.}), and by exaggerating the worker's salary, which is often paid in a totally or partially informal way by the firm.
+
+One important detail about the role of lawyers in these lawsuits is how completely they dominate the process of the lawsuit. The presence of the parties themselves at the hearings is not compulsory, unless they are to be deposed as part of the evidentiary hearings. They must ratify settlements or drops of the lawsuit in person, as well as acceptance or rejection of an offer of reinstatement, should the plaintiff's side receive one. But by and large lawyers do not bring their clients to hearings nor do they inform them in much detail, especially on the plaintiff's side, of developments in the lawsuit. As will be shown below, the physical presence of the worker at the hearing in which we intervene in the field experiment is a crucial ingredient in our intervention effecting a settlement. This is consistent with our claim that our treatments' most important consequence is debiasing the worker's, not the lawyer's, expectations.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data} \label{DataSection}
+
+As described above we work with one particular subcourt of the Mexico City Labor Court subcourt 7. \footnote{Cases are assigned to subcourt primarily according to the sector in which the firm operates. Subcourt 7 handles mainly the services side of automotive, transport and gasoline industries.} Through an agreement with the court, we collected all of the case files for suits assigned to the court in 2011. We also conducted surveys of any parties to cases holding their first hearing during the months of March and May 2016. We use a combination of historic data coded from concluded case files, data from the new case files, and surveys of the parties to the new cases. The case file registers all the legally relevant information in the lawsuit. We describe here in more detail each of the data sources and the variables used. Given the scarcity of evidence on the functioning of courts, we view these data themselves  as an important contribution of this paper.
+
+\subsection{Concluded lawsuits and Calculator}
+
+\textbf{Variables:} The case files contain all the information starting with the initial case filing and ending with the lawsuit’s conclusion. The largest files will contain the entire procedure.  For lengthy lawsuits, the case files can cover several volumes. Given the cost of capturing the data and our intention to intervene in lawsuits at all stages, including those arriving for their first hearing, we limit our data capture to information included in the initial case filing. From this initial filing we capture three sets of variables. The first is the amount claimed by the plaintiff, the date of the lawsuit, whether the lawyer is public or private. The second is what we refer to as “basic” variables. These include the plaintiff’s gender, tenure at the firm, age, daily wage and weekly hours worked. Finally, we code a set of variables we will refer to as “strategic” variables. These include: whether the worker asks for reinstatement, whether overtime is claimed, violations of laws covering compulsory rest, profit sharing, etc. (See the appendix for a full list and definitions.) We also record when the suit ended and how: by settlement (arbitration), final judgment, being dropped, or by expiry of the right to continue the suit. In case the worker recovers any amount of money at the end of the proceedings, we record the amount recovered. For cases ending in a judgment, note that the amount awarded by the judge may be different from the amount recovered.\footnote{The amount may be different for two main reasons: first, by law if the judgment is not enforced immediately, the amount may be adjusted upwards through additional lost wages. Second, due to very high enforcement costs, often the worker will accept a significantly lower payment than the judgment amount, which is equivalent to a post-judgment settlement. The judge’s decision itself is costly to code, since she will generally judge on the validity of a long series of demands, but will not provide the total amount of the judgment. As a result, coding the judge’s final decision would require coding several other steps in the enforcement process. For these reasons, we chose not to code the judge’s decision. Rather, we coded only whether the case ended in a judge’s decision, and the total amount finally received by the worker.} 
+
+\textbf{Sampling:} To calculate the probability of winning, the amount won by the worker, and the
+duration of the trial (by type of ending of the suit) we decided to use concluded cases from subcourt 7, where the experiment was to be run. Given the amount of time it takes for trial to end, we had to sample from the years 2011 and 2012. For these years we initially manually coded all the 2158 lawsuits  that were concluded by 2016. We then faced an issue that the overwhelming majority of cases concluded before 2016 were concluded by a settlement. Only 55 of the cases concluded by a judge’s decision . Because our intention was to use the data from concluded cases to predict outcomes for new cases, we needed a larger number of cases concluded by the judge’s decision. So we reached back to lawsuits filed in 2009 and 2010 in the same sub-court. The additional two years gave us a total of 241 concluded case files that contained a judge’s decision. We used this data to calibrate the "calculator".\footnote{We are currently expanding the calculator to cover additional subcourts. As a part of that process, we have now coded slightly more than 5000 case files, including all concluded cases filed in 2011, from sub-court 7 and 4 other sub-courts. In summary statistics of concluded case files in the rest of the paper, we report statistics from this larger sample, which includes all concluded cases from 2011 for sub-court 7.} 
+
+Figure 3 shows the amounts claimed and paid for the 4 main outcomes of lawsuits: settlement, drop, judgment, and expiry. First, note that 63 percent of cases end by settlement, 20 percent are dropped, 8 percent end because the time limit for the case runs out, and 9 percent end with a judge’s decision. By outcome, the first bar shows the average amount of money claimed by the plaintiff. The second bar shows the amount of money received on average. This is zero in the cases where the lawsuit is dropped or the time expires. The average amount received in judgments is slightly higher than the average received in settlements, but note that in either case, the amount received is a small percentage of the amount claimed. Figure 3 also shows the minimum compensation by law, which is calculated by formula according to the details of the case, and the minimum compensation including lost wages between the date of dismissal and the date of the close of the case. \footnote{Severance pay of 90 days at the stated wage, plus one year of end-of-year bonus and vacation pay, and a tenure bonus mandated for unfair dismissal, of up to twice the minimum wage and 12 days per year worked.}  The fourth and final bar is the minimum compensation plus lost wages, which by law should be paid in full from the date of firing to the date the lawsuit ends, but which clearly in practice are not paid. Note that while every single settlement results in a positive compensation to the worker, in cases ending with a judgment the worker recovers a positive amount only 24 percent of the time. 
+
+
+
+\subsection{Survey Pilot Data}
+
+The focus of the project is to understand the root causes of delay and low settlement rates. To this end, we select a set of hearings conducted between March and May 2016.  Through an agreement with the court, we conduct a short survey with all parties to the case who attend the hearing. As we will see, this is almost always the lawyers for the plaintiff and defendant, and almost never the defendant himself. The plaintiff attends around one-third of the time. After the initial survey, the cases are randomized into one of three groups: a control group where the hearing proceeds as normal and one of two interventions which provide information, and which we describe in more detail in Section 6 below. At the end of the hearing, we conduct a second survey with the parties. 
+
+The surveys collect some additional information about the workers: education, how they found their lawyer and how they pay the lawyer. We then ask all of the parties present about their expectations for the case; the probability they will win the case, the amount awarded conditional on winning (plaintiff side) or losing (defendant side), and the number of months they expect the trial to last. For each of the expectations, we elicited the minimum, maximum and most likely outcomes.  We also included questions intended to test the plaintiff’s knowledge of the law and her own case. These included the legal amount of severance pay and facts about which of six claims the plaintiff was making in her suit. Finally we asked worker’s a question about anger towards the firm because arbitrators told us that often emotions run high at the hearings and this hinders reaching a settlement. Similar to the worker’s survey, we had a defendant’s survey and a survey for each party’s lawyer. The baseline survey took 10-15 minutes to respond, while the exit survey took 2 minutes and only included questions about whether the lawsuit had ended, and if it had not ended, about expectations of average duration and amount to be paid.
+
+Since we could only survey people who showed up to the hearings, we have many more
+surveys of lawyers than of plaintiffs and defendants. Among lawyers, 399 representing defendants and 376 representing plaintiffs filled out the main survey. We surveyed only 162 plaintiffs and 13 defendants filled out the survey. The exit survey was intended to measure changes in expectations after the treatments, and though we made it very short to avoid attrition, we did lose a significant proportion of respondents. \footnote{276 defendants’ lawyers 296 plaintiffs’ lawyers, and 111 workers filled out both surveys. We do not report data from the surveys filled out by defendants since there were too few of them.} Table 12 in the Appendix shows the frequency of the different plaintiff-defendant combinations. 
+
+
+The Appendix summarizes the data from these surveys. We find that 19.9 percent of employees did not complete middle school. A large proportion (29 percent) of workers who showed up had public lawyers (whereas only 10 percent of the case files in the experiment had a public lawyer). Of those workers who showed and had a private lawyer, most (nearly 82 percent) pay a fraction of the award (30 percent, on average) to their lawyer. Almost three-quarters (73.3 percent) say they are mad or very mad with their employer. Only 7.6 percent of plaintiffs showing up were currently employed, and for those not currently working who were searching for a job, the average reported likelihood of finding a job in the next three months is 58.1 percent.
+
+\subsection{Administrative and case file data from current cases in pilot experiment}
+
+
+The final data we use is extracted from case files in our experiment or collected directly from
+parties and lawyers who participate in the calculator treatment. We code all the initial case file data from all of the lawsuits involved in the experiment. We use these data both for the analysis here and also to predict the outcome of the lawsuit, using the calculator. We use the estimated outcomes to calculate measures of overconfidence for all participants, regardless of whether they were assigned to treatment or control. Second, in order to run the calculator for those assigned that treatment, we need to ask participants for the list of variables  used in the prediction models. We save these variables for comparison with the same variables from the case file (the true values).\footnote{As explained below, we used a list of variables to produce the personalized calculator prediction for subjects assigned to that treatment, including wage, job type, tenure, gender, and others.}  Third, we collect data from the case file to determine who attended the hearing on the day the case file participated in the experiment, and whether the lawsuit ended on that day by being dropped or through a settlement, including any amount of money recorded for the settlement. We then repeated this data coding in November, 8 months after the start of the field experiment, to determine which cases had ended by being dropped or settled, and to record final payments to the worker.
+
+
+
+\section{Stylized Facts}\label{FactsSection}
+
+We begin by using the administrative and survey data to generate a few “stylized facts” about the resolution of cases in the labor court. The data support the story that the parties to the case are overoptimistic about their expected outcome, and that this over optimism is associated with low settlement rates. When denote those stylized fact generated by the administrative data with an ``HD'' next to the stylized Fact, and when using survey data we write ``SD''.
+
+\vspace{.3in}
+\begin{singlespace}
+\textbf{Fact 1 (Low settlement rates in spite of long trials, HD):} \emph{Settlement rates are low by international standards.}
+\end{singlespace}
+\vspace{.1in}
+
+%TTexto del Articulo 876: La Junta, por conducto del funcionario conciliador o de su personal jurídico, procurará, sin entorpecer el procedimiento y estando en contacto personal con las partes y hasta antes de que se declare cerrada la instrucción, que lleguen a un acuerdo conciliatorio, insistiendo siempre en opciones de solución justas y equitativas para ambas; si las partes no llegan a un acuerdo se les tendrá por inconformes, pasando a la etapa de demanda y excepciones;
+
+In sub-court 7 of the MCLC, only 63 percent of cases are settled over the lifetime of a lawsuit. By way of comparison firing disputes are settled out of court in 79 percent of the cases in Australia, in 80 percent of the cases in the United States, and in 90 percent of the cases in Sweden.\footnote{See \cite{ILO_ComparativeOverview}} The low settlement rate in Mexico persists in spite of a labor law that mandates an arbitration hearing at the beginning of each lawsuit.\footnote{Article 876 of the Federal Labor Law mandates that each labor court promote settlement between the parties during the entire process, through court officials, including the court's conciliators.} Even those who settle take a long time to do so, with an average time between filing and settlement of 9.71 months. Figure 4 shows the distribution of case length by type of trial ending. We see that trials ending in a court judgment take much longer to conclude, 2.41 years on average. Moreover, this average is surely understated because around 30 percent of cases filed  in 2011 were still open in 2016, and the overwhelming majority of those are likely to end in a judgment.\footnote{Recall that by design we sampled from closed cases in order to code how the lawsuit ended. Since a much larger proportion of cases that will end as a judgment have not yet concluded, as compared with those that will end as a settlement, the average length of trials is likely to be much greater in comparison with settlements, if we sample more than five years after filing. The ILO report cited also documents much shorter durations for some countries like Australia, with 90 percent or more of labor disputes that do not settle lasting no more than 106 days.}  
+
+These long delays party explain the huge backlog of cases in the court. We calculate that even if there were no further incoming cases, the Mexico City Labor Court would take about four years to conclude the current stock of cases.
+
+\vspace{.3in}
+\begin{singlespace}
+\textbf{Fact 2 (Trials are very uncertain, HD):} \emph{Case outcomes are more predictable when cases end in settlement than when they end with a court ruling.}
+\end{singlespace}
+\vspace{.1in}
+
+Solving the dispute through a court ruling is a highly risky bet: court judgments in low-quality institutions depend on a set of unobservables much more related to judges' incentives and subjective interpretation of the labor law, than on case file characteristics. Moreover, plaintiffs whose cases continue through to judgment face additional uncertainty in collecting the award from the defendant \cite{KaplanSadkaSilvaMendez_LitigationSettlement}, as firms employ various legal and extralegal strategies to avoid payment. Of the 8.75 percent of cases that went to trial, the plaintiff lost (or won and got awarded nothing) 75 percent of the time (see notes in Figure \ref{claimsvsoutcomes}).
+
+
+We use the data from case files to predict outcomes based on the characteristics of the cases. Table \ref{Table_Reg_winnings_log} shows our results. We find that amounts obtained through settlement are much more predictable than the amounts obtained in judgment. This likely reflects both differences in the types of cases that are settled and adjudicated, and the uncertainty of outcomes that go to judgment.   
+\\
+We ran regressions of basic case variables on amount variables (both asked and won), to look at their explanatory power over outcomes. In both cases, our estimate of the explained variance is much higher in total asked amount than total won amount (in both samples, our $R^2$ for the asked amount model is fairly similar). However, the actual outcome is harder to predict for court rulings than it is for settlements: while our $R^2$ for the settlement sample is $.264$, the same estimator is $0.121$ for the court ruling regression. This illustrates the differences in compensation distributions between the two samples: while settlement amounts are by definition positive (and mainly reached through conciliator mediation\footnote{Conciliators usually anchor their settlement proposals around 30, 60 and 90 days of severance pay plus benefits. This turns the settlement amount into some combined proportion of the daily wage and tenure.}), the court rulings sample has a much more skewed distribution. For court rulings, the majority of plaintiffs got paid nothing, while a very small percentage of cases got a huge compensation.
+
+
+\vspace{.3in}
+\begin{singlespace}
+\textbf{Fact 3 (Awards are low, HD):} \emph{The amount awarded is a small percentage of the amount asked for, and is even less than what the law mandates.}
+\end{singlespace}
+\vspace{.1in}
+
+Plaintiffs win on average 36\% of what they ask for in a judgment, however as already mentioned, the 75th percentile of the amount paid to workers is zero for judgments. Moreover, Figure \ref{claimsvsoutcomes} shows that the amount plaintiffs receive in judgments is less than the minimum compensation according to the law. On average plaintiffs whose cases continue to a court judgement recover 49,772 pesos, about 10 percent less than the 55,493 pesos of minimum legal compensation for their case. 
+
+\vspace{.3in}
+\begin{singlespace}
+\textbf{Fact 4 (Misinformation, SD):} \emph{Only one-third of plaintiffs (employees) understand what their main legal entitlement is. Only half know what they are asking for in their own suit.}
+\end{singlespace}
+\vspace{.1in}
+
+The main legal entitlement for unfair dismissal is 90 days severance pay, a right so fundamental that it is enshrined in the Mexican Constitution and taught in elementary schools. However, survey responses indicate that only 27\% of survey respondents know the number of days covered by this entitlement. \footnote{This is from an answer to our following survey question: "In case of unfair dismissal the law entitles you to a constitutional severance pay, this represents days of salary”. They have to fill in the blank.}  Figure \ref{Knowindemfig}  shows that knowledge of the severance pay entitlement is increasing in the education level of the plaintiff. 
+
+Even more strikingly, the plaintiffs often do not know what they are asking for in their own suit. In the survey, we asked plaintiffs to: “…mark the items you are asking for in your suit...”.\footnote{Constitutional payment, reinstatement, overtime, holiday bonus, Sunday bonus, and insurance.}  We compare the responses to the respondent’s case file. Figure \ref{Knowtheirclaimsfig} shows the proportion of time the plaintiffs responding correctly for each of six possible claims: Constitutional payment, reinstatement, overtime, holiday bonus, Sunday bonus, and insurance. We see that between 20 percent and 40 percent of respondents answered incorrectly for most of the six claims. Knowledge of the case increases somewhat in the level of education.  
+
+\vspace{.3in}
+\begin{singlespace}
+\textbf{Fact 5 (Inflated expectations, SD):} \emph{Plaintiffs and their lawyers are overconfident about winning. This is particularly true for the plaintiffs. The mean subjective probability of winning for employees is 78\%. isaac Using data from the case files and outcomes, we find that the objective probability the plaintiff wins is 41\% isaac for these same cases, conditional on the case being concluded.}
+\end{singlespace}
+\vspace{.1in}
+
+Table \ref{Table_expectations} shows that the average expected probability of winning for employees is 0.79, while the average number for firm lawyers is 0.68.  The sum of 1.47 indicates there is substantial overconfidence \cite{Yildiz_CommonPrior}. There are also large differences in the expected amount of the award in case of the worker wins. Note that in this case, optimism means plaintiffs believe that awards will be larger and defendants believe they will be smaller. Both the worker and her lawyer estimate average amounts twice (worker) to 4 times higher (lawyer) than those of defendants. Further, the plaintiff and her lawyer estimate trial durations of 1.5 years (worker) to 0.3 years (lawyer) shorter than the firm’s lawyer.  Table \ref{Table_exp_plaintiff_def} in the appendix shows that these patterns hold even after controlling for characteristics of the case. 
+
+We can use data from actual case outcomes to estimate how much plaintiffs and defendants overestimate. The left-hand column of Figure \ref{Figure_overconfidence_exp} shows the distribution of the gap between the expected award and the award estimated by our calculator for the plaintiff, the plaintiff’s lawyer, and the defendant’s lawyer. The vertical line shows the average gap across the sample. The right-hand column shows the same overconfidence gap with regard to the probability of winning. On average, all the agents surveyed are overconfident vis-a-vis the outcomes predicted by our model.
+
+Table \ref{Table_determinantsOC} explores heterogeneity in overconfidence. When we regress the gap between expected and actual outcomes on case characteristics, we find that worker with a public lawyer is less overconfident by a margin of almost 1/2 of mean overconfidence, and that repeated players are also less overconfident by 1/2, but the estimates are imprecise (presumably because we have a sample of 151 observations). We find stronger effects for plaintiff's lawyers: public lawyers have 90\% less overconfidence than private ones and this is significant at the 1\% level. We also find that defendant lawyers are more overconfident when facing a public plaintiff's lawyer, and the effect is large but imprecise.
+
+We also find the following significant determinants of overconfidence. For the worker: being an at-will worker (which includes being in management) , having a higher salary, and having less education are associated with less overconfidence. We find a positive, large, and precise correlation between feeling mistreated and overconfidence. For lawyers: overconfidence is higher when the plaintiff is female and lower for plaintiffs with higher salaries.
+
+
+
+\vspace{.3in}
+\begin{singlespace}
+\textbf{Fact 6 (Inflated claim and not more money awarded, HD):} \emph{Controlling for observables, private lawyers ask for 137,592 pesos more than public lawyers, and only get 10,531 pesos more in settlements. The respective numbers for judgments are 149,281 and 16,508.}
+\end{singlespace}
+\vspace{.1in}
+
+Our interviews with court personnel and lawyers suggest that one way plaintiffs' expectations can be inflated is by private lawyers not only promising workers that they will win large amounts, but also backing this up with a larger claim than they know the case really merits. Inflating the claim involves, as we have mentioned, inflating basic facts like salary or tenure, as well as adding additional claims beyond the basic elements of firing compensation by law. These claims may later be unsubstantiated in the lawsuit, so one might think it is not in plaintiffs' lawyers' interest to inflate the claim to begin with. However, note that in this poor quality institutional framework, there are no real sanctions for inflating the claim; if the salary found by the judgment is much lower than the one claimed in the initial filing, the lawyer who ostensibly made a false claim loses nothing except part of the judgment amount. Additionally, given the informality with which many firms operate, there may be no clear-cut evidence of the true salary, so an inflated salary may eventually be recognized in the judgment, at least to a certain extent. 
+
+If this description is accurate we should observe, as we do, that private lawyers file claims that are larger than those of public ones even controlling for the basic case characteristics, and that the win/asked ratio is smaller for private lawyers. We verify that this is the case in Table \ref{Table_Reg_winnings_log}. Public lawyers initially demand 140,000 pesos less (regardless of whether the case ends up being settled or decided by a judge), this is about 37\% lower than the average amount demanded by private lawyers. But private lawyers are far from getting what they ask for: won/asked is 19\% for private lawyers and 27\% for public ones. This difference is 11pp less --significant at the 1\% level-- for private lawyers in settlements in a regression with basic controls, and for 5pp less for cases decided by a judge. The probability of recovering a positive amount in a judgment is smaller for public lawyers but not statistically different. This can also be explained because asset seizure procedures often necessary to execute a judgment will require actions by usually corrupt court notifiers, and public lawyers very rarely have access to funds for bribes. 
+
+
+\vspace{.3in}
+\begin{singlespace}
+\textbf{Fact 7 (Overconfident parties are less likely to settle, SD):} \emph{Controlling for observables, overconfidence in the expected amount is strongly negatively correlated with settlement through conciliations, for all parties.}
+\end{singlespace}
+\vspace{.1in}
+
+Should we care about overconfidence and inflated expectations? Do they affect outcomes?
+In the observational data, we find that case files where plaintiffs are overconfident in the amount they expect to obtain, they are less likely to settle. This effect holds whether the overconfidence comes from workers, worker’s lawyers, or firm’s lawyers, although the correlation is not statistically significant for all agents and types of expectations. Table \ref{Table_concvsoc} in the appendix shows that the elasticity of settlement with respect to overconfidence on amount is -0.0002927 for the worker, -0.5532840 for the worker’s lawyer, and -0.6699210 for the firm’s lawyer.
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%\section{A Little Lawyer Moral hazard Model} \label{ModelSection}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental Intervention}  \label{ExperimentSection}
+
+The stylized facts presented in Section 4 suggest that parties to cases are overconfident, and that this overconfidence is a barrier to settlement. The court we work with is very interested in barriers to settlement because it faces a large and growing backlog of cases.\footnote{Interestingly, concurrent with our work, the President of Mexico brought up similar concerns publicly and later proposed a constitutional reform to labor law, moving the first instance to the judicial branch, and creating separate conciliation bodies that are to oversee a compulsory previous conciliation process that will be compulsory for parties themselves to attend. The reform is now in the process of ratification in the Mexican states.}  While the stylized facts are suggestive, they are based on observational data and hence subject to many concerns about endogeneity. Working with the court, we designed an intervention allowing us to test the veracity of the stylized facts in a more rigorous manner. 
+
+Our basic treatment is to provide the parties in selected cases with predicted outcomes for their case. These predicted outcomes are based on the actual outcomes from historical cases. We have two treatment arms. One provides the information from the calculator to all parties and then allows them to speak to a conciliator if they want. The other arm does not provide the statistical information, but obliges parties to speak to a conciliator before their hearing. We are interested in understanding whether the objective data based on past cases reduces the overconfidence gap and increases the likelihood of settlement. Note that we randomize the assignment to treatment at the case level, and then provide the same information to all parties in the case who are present at the court on the day of treatment. This almost always includes the lawyers for the plaintiff and defendant, almost never includes the defendant himself, and includes the plaintiff in about 10\% percent of the cases.  
+
+\subsection{The treatments}
+    
+    \textbf{The Calculator:} Predicted case outcomes come from an analysis of historical case files, which we refer to (both here and in the intervention) as the “calculator.” The objective of the calculator was to give personalized information to a subset of plaintiffs and defendants on important outcome variables based on the most predictive characteristics of their lawsuit. We wanted to develop simple, parsimonious, predictive models based on the basics of the case. The main explanatory variables we used were: gender, hours worked per week while employed at the firm, tenure at the firm, salary, type of lawyer, whether or not the worker was registered at IMSS (the equivalent of Social Security), if he/she is an at-will worker, what is he/she asking for (reinstatement, extra hours, fallen salaries, statutory profit sharing, severance pay, 20 days per year, mandatory rest) and the industry of the firm. We selected variables for the final model based on their predictive power. The main continuous outcome variables were duration of the case and amount won in pesos conditional on receiving a positive amount of compensation. The main discrete variables were case outcome, which included settling the case, dropping it, expiry of the right to continue the lawsuit due to inactivity in the proceedings, judgment with zero recovery, and judgment with positive recovery.
+    
+   We considered several specifications, including boosting, random forest, OLS, regularization methods (lasso and ridge), and logit. We divided the historical case files into two random groups. We used 70 percent of the files to estimate the model, and then verified the model on the remaining 30 percent of the data.  This is generally considered a good practice for prediction/classification problems, and limits over-fitting. For each outcome, we chose the model that had the best fit on the verification sample measured by the mean-squared error. This procedure was used to decide which model to use as well as which variables to include.  We provided the parties with predictions of outcomes conditional on settlement or trial. However, the models all showed very low predictive accuracy for the duration of the trial – by construction, our data are censored in the duration of the case. We therefore decided to present the parties the mean un-personalized duration of lawsuits.
+    
+   We then inputted the data from the case files that were part of the experiment to produce predicted outcomes for the case. These were printed on to a 1-page sheet of paper. Figure 9 shows a sample sheet. Note that in addition to the predictions, the page also states what the law entitles the worker to given her case characteristics if she were to win at trial.  A highly trained enumerator that was part of the research team explained to them what the numbers meant, but otherwise gave no advice. 
+
+    
+     \textbf{Conciliators:} We worked with 2 conciliators provided by the court. Each had at least 5 years of experience as a conciliator, and according to top court officials, they were both of above average quality among the 28 conciliators employed by the MCLC. The conciliators had a desk were parties would sit to negotiate. From observing their work, we know the conciliators used mostly soft-skills to aid settlement. These included mentioning key aspects of the conciliation process, the rights of each party and regular benchmark settlement quantities (90 / 60 / 30 days of severance pay + benefits, typically). Before the experiment began we asked the conciliators for their main "speech", and we observed them basically sticking to this in their initial approach to parties. After about a 5 minute explanation, conciliators would continue talking to parties if a real negotiation between them started to take place. The conciliators did not have access to the calculator. This treatment is important not only because it allows us to run a horse race between statistical vs expert advice, but because a recent constitutional reform mandates the conciliation process to migrate from labor courts to special Conciliation Centers, where bureaucrats similar to these conciliators will preside over a compulsory conciliation process before a lawsuit can proceed. 
+     
+     
+     
+\subsection{Implementation}
+     
+     The experiment started on March 2, 2016 and went on for 12 weeks. Our implementation team was in sub-court 7 from Monday to Friday, 8 am to 3 pm after all hearings were over. This sub-court manages about 55 hearings per day, but not all suits are eligible for our treatment. About 20 hearings per day were duly notified to both parties and therefore eligible to be part of the experiment. Among the 20 eligible case files, we could include in the experiment about 18.5 per day, since the court needed to start their 9 am hearings with all counters full (otherwise, we would have induced more delay in their daily hearings). Hence, whenever 9 AM counters weren't full, we would randomly select the needed cases to fill the counters and erase them from our list of treatments for that day. In what follows we focus on this sample only. We need to clarify that different suits are in different stages of the process (i.e. not all are new suits). This may reduce the impact of the treatment as opposed to concentrating on new lawsuits, if longer exposure to lawyers makes beliefs harder to change. Figure \ref{treatmentunits} shows the daily sample sizes.
+     
+     The randomization was done as follows. Each night the court gave us a list of which hearings would take place the following day in the morning, along with their notification status. We kept the eligible ones and randomized them in equal proportions to the two treatment groups described above as well as a pure control group which was not given calculator or conciliator treatment, but was kept in the business as usual mode, except for the surveys they had to complete. The next morning we would set up a survey table and conciliator desk right outside the hearings counters. The hearings are displayed on a screen and called up by the sub-court auxiliaries - judge's assistants (see photographs in the Appendix). Except for the 9 am hearing slot, most hearings were somewhat delayed, and during parties' waiting time we implemented this protocol. 
+     
+     Figure \ref{treatment_flowchart} and table \ref{treatment_description} show details on the treatments. First,   we identified all of them and invited them to take the baseline survey which lasted about 10 minutes. This was done blind to the experimental conditions for both, the parties and our enumerators. They were told that they needed to complete a followup survey after their hearing\footnote{Note that we did not implement the exit survey if they conciliated because the elicitation of beliefs about the outcomes of continuing the suit would involve an irrelevant counter-factual from their perspective.} and would get a prize when they did. 
+     
+     Then after the survey they were channeled to their appropriate experimental condition. Those in the calculator group were given their personalized calculator results using a one-page sheet (see Figure \ref{calc_template}). A highly trained enumerator that was part of the research team explained to them what the numbers meant, but otherwise gave no advice. This took about 3 minutes on average. After explaining the sheet of paper the enumerator asked if they wanted to conciliate. If the answer was in the negative the person (plaintiff or defendant) went to her hearing. If the answer was positive for both plaintiff and defendant, they were sent to the conciliation table to agree on the terms and sign a settlement document. If they were assigned to the conciliator group they were obliged to talk to the conciliator before their hearing.
+     
+   
+\subsection{Integrity of the experiment}
+
+Overall we ended up with an assignment of 351 case files in the calculator, 360 in the conciliator, and 365 in the control. Table \ref{Table_compliance} shows compliance rates with treatment assignment and with survey completion. Compliance with the calculator and conciliator are 72\%  and 69.7\% respectively. Compliance with the baseline survey is between 68\% and 75\%. Unfortunately we had a lower response rate for the exit survey because people were in a hurry to leave and because those that conciliated did not answer the survey. Table \ref{Table_compliance} shows that even conditional on compliance the variables are balanced across the experimental groups: only 4 out of 48 tests are significant at the 10 percent level. 
+     
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Results} \label{ResultsSection}
+
+Given the degree of misinformation and overconfidence, we hypothesized that both the calculator and the conciliator had the potential to de-bias expectations, and that this in turn would increase settlement. We explore both of these outcome measures in turn.
+
+\subsection{Effects on overconfidence}
+
+Let us start with some graphical evidence. Figure \ref{Figure_updating} plots the difference between expectations in the baseline survey and the exit survey for the same person, as a function of the type of agent and the experimental group. Updating downwards would show up as mass to the left of zero. We do not find updating for the control --as it should be\footnote{However there noise. No noise would show up as a bar at zero with height 100 percent.}. But we \textit{do} see more mass to the left in the \textit{employee} distribution for the calculator treatment, while this is less so for the conciliator treatment. In contrast, we don't see much updating on average for either plaintiff or defendant lawyers.
+
+%Table \ref{Belief_updating_perc} studies expectation updating by comparing what the agent (employee, employee's lawyer, firm's lawyer) expected to get (in amount or time) as reported in the baseline vs the exit survey, and relating this to our treatment arms. For ease of interpretation we defined the dependent variable as a ratio: in the numerator we have the bias in the exit survey and in the numerator we have the bias in the baseline survey, where bias is measured as distance to the calculator prediction, that is: $y_i=\frac{|exit_i-prediction_i|}{|baseline_i-prediction_i|}$. This variable measures the percentage deviation from the prediction between the two surveys of the same respondent. An outcome of 0 represents no bias, i.e. \emph{perfect updating}, while an outcome of 1 means no updating. This measure is monotone, with higher numbers representing greater distance to prediction and \textit{less} effectiveness of the treatments. 
+
+% ESTA ERA DE LA TABLA VIEJA QUE NO ERA PORCENTIAL
+%by regressing expectations of amount and duration from the exit survey vs treatment dummies and the same expectation variable but from the baseline survey and basic controls. One problem with these regressions is that sample size is small. But even so, we get some interesting results. The initial survey measure has a strong positive correlation with the exit survey measure, as we would expect if our measures are not pure noise. \textbf{Amount:} We find strong negative update for employees in their amount expectation when receiving the calculator: 22,820 pesos, which is equivalent to \hl{21\%} of their average initial expectation. This is significant at the 1\% level. The effect is also negative but smaller an imprecise as a result of the conciliator treatment. We don't find effect for the control group. providing a placebo test. We don't find updating for lawyers in the amount expected. \textbf{Time:} we do not find effect for time, except for an increase of 1/2 for firm lawyers, significant only at the 10\% level \comment{por alguna razon tenemos cambios en el control para time para lawyers, joyce que opinas?}
+
+
+\subsection{Effects on settlement}
+
+Now we look at settlement. Table \ref{Table_effects_F} looks at different time cuts of the data. Recall that the experiment ended in May, so by studying  not only same-day conciliation but also conciliation in June, July, August, Sept and Oct we can afford to study dynamics. This allows us to show that the effects we find are persistent and not just bring forward conciliation that would eventually happen without the treatment. Each column in the table is a separate regression for each time period where we look at conciliation that has happened up to the last day of the respective month $t$ for all our treatment/control casefiles. We use the following specification where $\alpha_t$ represents the mean of the control group, $T_{ij}$ represents the treatment allocated to casefile $i$, with $j \in \{calculator, conciliator\}$. Given that lawyer's incentives may not be aligned with those of the worker, we conjectured that the treatment would have a different effect when we would give the treatment to the employee (i.e. employee present $EP$) we include an interaction between the treatments and $EP$. 
+
+\begin{equation} \label{reg_spec}
+y_{it} = \alpha_t + \sum_{j = 1,2}\beta_{tj} T_{ij} + \gamma_t EP_i + \sum_{j = 1,2}\delta_tj EP_i \times T_{ij} +\epsilon_{it}
+\end{equation}
+
+
+The first column shows that while 5 percent of cases conciliated in the treatment day (what we call ``same-day'' conciliation'') for the control group, an \textit{extra} 4.7 percent conciliated in the calculator group and 4.1 percent in the conciliator group. This is about a 90 percent increase over mean conciliation. The no-interaction columns show that although the passage of time makes more people in all groups conciliate more, the effect sizes remain similar throughout the 5 months for which we have data, although estimates become less precise. Perhaps more important, we find that the effect is totally concentrated in cases in which the employee was present. For this cases the calculator has a huge effect of 15 percentage points in same-day conciliation, and grows to 21 percentage points 5-7 months after treatment, and this is statistically significant at the 1\% level. 
+
+Figure \ref{Figure_dynamicsConciliation} shows conciliation dynamics. The left panel uses the historical data set  and plots the share of casefile that conciliated from the start date of the respective suit, while the panel on the right focuses on our experimental sample and plots conciliation as a function of ``time since treatment'' for our three different experimental arms. The figure clearly shows that treatment effects exist, and that the conciliator and calculator treatments have similar causal effects.
+
+
+\section{Conclusion}
+
+This paper documents exactly how courts in a developing country are bad quality, including huge delays, high risks, and low rates of settlement. Our main hypothesis is that lower than optimal settlement for the worker results from workers' poor initial information and overconfidence, which may be induced by private plaintiffs' lawyers seeking to engage more clients. 
+
+We design and implement a field experiment to attempt to test our hypothesis. We find strong effects on settlement rates, which are exclusively related to the worker's presence on the treatment day, and persistent over time. We also find effects on worker overconfidence which we would like to identify as the main mechanism behind the effects, however, we need more data on this mechanism, since low rates of exit surveys prevent us from having statistically significant results on the effect of the calculator on worker overconfidence.
+
+We have much left to do. In a current scale up for first hearings, we elicit expectations before and after receiving the calculator, before parties sit down to conciliate, in order to gather more evidence on the mechanism behind our treatment effects. We also need to develop a theoretical framework, which so far is a simple model included in the appendix, showing that if a proportion of lawyers are dishonest, a proportion of lawsuits which would not be brought with perfectly honest lawyers, will be filed. Finally, we plan a further scale-up RCT in which we offer calculator advice to fired workers who have not yet sued, in order to further identify what we believe to be significant moral hazard problem between private lawyers and potential clients, that causes overconfidence and low settlement rates.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%BIBLIOGRAPHY
+\nocite{*}
+\printbibliography
+
+
+
+
+\section{Tables}
+
+
+%#include
+\begin{table}[H]
+    \caption{Summary statistics table}
+    \label{Sum_Stats}
+    \begin{center}
+       \scriptsize{\input{./Tables/SS_bylawyer.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+    Summary stats of outcomes, basic and strategic variables by type of (employee's) lawyer.
+    \textit{Do file: } \texttt{Table\_SS\_bylawyer.do}
+\end{table}
+
+
+%#include
+\begin{table}[H]
+    \caption{Baseline Expectations}
+    \label{Table_expectations}
+    \begin{center}
+       \scriptsize{\input{./Tables/SS_A.tex}}
+    \end{center}
+    \footnotesize    
+    \textit{Notes:} 
+    Summary stats of beliefs, total \& by type of (employee's) lawyer. First column displays beliefs without any conditioning, second columns conditions on knowing type of lawyer. Third and fourth columns of Panel B and C are condition on employee answering the survey so that comparison across is allowed.
+    \textit{Do file: } \texttt{Table\_SS.do  Table\_SS\_bylawyer.do}
+\end{table}
+
+
+\pagebreak
+
+
+% \begin{table}[H]
+%     \caption{Amount asked, amount won, and probability of winning }
+%     \label{Table_Reg_winnings}
+%     \begin{center}
+%         \scriptsize{\input{./Tables/TableReg1.tex}}
+%     \end{center}
+%     \footnotesize
+%     \textit{Notes: Regression of amounts asked/won asked/won ratio and prob. of winning, by outcome (only basic variables included).} 
+%     \textit{Do file: } \texttt{peiperreg1.do}
+% \end{table}
+
+
+%#include
+\begin{table}[H]
+    \caption{Amount asked (log), amount won (log), and probability of winning }
+    \label{Table_Reg_winnings_log}
+    \begin{center}
+        \scriptsize{\input{./Tables/TableReg1_log.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes: Regression of amounts (in log pesos) asked (in log pesos) asked/won ratio and prob. of winning, by outcome (only basic variables included).} 
+    \textit{Do file: } \texttt{peiperreg1\_log.do}
+\end{table}
+
+
+
+
+%\pagebreak
+
+
+
+\begin{landscape}
+%#include
+\begin{table}[H]
+\caption{Determinants of overconfidence}
+\label{Table_determinantsOC}
+\begin{center}
+\scriptsize{\input{./Tables/OC_reg.tex}}
+\end{center}
+ \footnotesize
+\textit{Notes:} 
+Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very angry, and the scale is increasing. We use a measure of relative overconvidence which is the \textit{percentage} quantity expected over the calculators prediction.
+\textit{Do file: } \texttt{oc\_reg.do oc\_reg\_B.do}
+\end{table}
+
+\end{landscape}
+
+
+%#include
+\begin{table}[H]
+\caption{Compliance rate}
+\label{Table_compliance}
+\begin{center}
+\scriptsize{\input{./Tables/Compliance.tex}}
+\end{center}
+ \footnotesize
+\textit{Notes:} 
+The number of cases assigned to the 3 different groups is very similar, and is close to 7 per day on average. The compliance with treatment rate is similar for both treatments and in the range of 75\%.
+\textit{Do file: } \texttt{table\_compliance.do}
+\end{table}
+
+
+%#include
+\begin{table}[H]
+\caption{Balance table conditional on compliance}
+\label{Table_compliance}
+\begin{center}
+\scriptsize{\input{./Tables/Balance.tex}}
+\end{center}
+ \footnotesize
+\textit{Notes: Balance table on some basic and strategic variables, conditional on compliance to treatment. Practically none of them significantly differ in mean across treatment groups, at the 5\% level.} 
+\textit{Do file: } \texttt{balance.do}
+\end{table}
+
+
+%\begin{landscape}
+
+% \begin{table}[H]
+% \caption{Belief updating}
+% \label{Belief_updating}
+% \begin{center}
+% \scriptsize{\input{./Tables/exit_vs_initial_exp.tex}}
+% \end{center}
+%  \footnotesize
+% \textit{Notes:} 
+% Dependent variable are expectations measured in the exit survey (for amount and delay respectively). Specification (2) includes basic controls.
+% \textit{Do file: } \texttt{exit\_vs\_initial\_exp.do}
+% \end{table}
+
+
+% \begin{table}[H]
+% \caption{Belief updating (amounts in log)}
+% \label{Belief_updating_log}
+% \begin{center}
+% \scriptsize{\input{./Tables/exit_vs_initial_exp_log.tex}}
+% \end{center}
+%  \footnotesize
+% \textit{Notes:} 
+% Dependent variable are expectations measured in the exit survey (for amount (in log pesos) and delay respectively). Specification (2) includes basic controls.
+% \textit{Do file: } \texttt{exit\_vs\_initial\_exp\_log.do}
+% \end{table}
+
+%include
+%\begin{table}[H]
+%\caption{Belief updating: percentage deviation from prediction}
+%#include: hacer d2/d1
+%\label{Belief_updating_perc}
+%\begin{center}
+%\scriptsize{\input{./Tables/exit_vs_initial_exp_perc.tex}}
+%\end{center}
+% \footnotesize
+%\textit{Notes:} 
+%This regression shows update in beliefs measured as the absolute ratio between the exit response and the initial response, specifically the dependent variable is $\frac{|exit-prediction|}{|initial-prediction |}$ where exit (initial) is the response in the exit (initial) survey and prediction is the prediction from the calculator. What this dependent variable measures is the percentage deviation from the prediction between the two surveys, in this way an outcome of 0 represents a \emph{perfect updating} with respect to the calculator. An outcome of 1 means no updating (or `mirroring' updating; however this is rare). This measure is monotone, in the sense that higher numbers represents higher deviations from the prediction and the initial overconfidence. Therefore the calculator is effective as long as this outcome is between 0 and 1. We drop the outliers, which are the ones above the 90 percentile. We see that in average the calculator is effective in amount. 
+%\textit{Do file: } \texttt{exit\_vs\_initial\_exp\_perc.do}
+%\end{table}
+%\end{landscape}
+
+
+
+
+%\begin{landscape}
+
+%\begin{table}[H]
+%\caption{Treatment regression}
+%\label{tab:treatmentregA}
+%\begin{center}
+%\scriptsize{\input{./Tables/treatment_reg.tex}}
+%\end{center}
+% \footnotesize
+%\textit{Notes:} 
+%Regressions (5) and (6) include basic and strategic variables %respectively.
+%\textit{Do file: } \texttt{peiperreg4A.do peiperreg4B.do}
+%\end{table}
+
+%\begin{table}[H]
+%\caption{Treatment regression (6 months later)}
+%\label{tab:treatmentregA}
+%\begin{center}
+%\scriptsize{\input{./Tables/treatment_reg_persistent.tex}}
+%\end{center}
+% \footnotesize
+%\textit{Notes:} 
+%Regressions (5) and (6) include basic and strategic variables %respectively.
+%\textit{Do file: } \texttt{peiperreg4A\_persistent.do %peiperreg4B\_persistent.do}
+%\end{table}
+
+%\end{landscape}
+
+\pagebreak
+
+%#include
+\begin{table}[H]
+    \caption{Treatment Efects by Month}
+    \label{Table_effects_F}
+    \begin{center}
+    \scriptsize{\input{./Tables/Minicortes_2_PA.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+    Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
+    \textit{Do file: } \texttt{mini\_cortes\_2.do}
+\end{table}
+
+
+% INTERACTION WITH PRIVATE LAWYER
+%\begin{table}[H]
+%    \caption{Treatment Efects by Month}
+%    \label{Table_effects}
+%    \begin{center}
+%    \scriptsize{\input{./Tables/Minicortes_2_int.tex}}
+%    \end{center}
+%    \footnotesize
+%    \textit{Notes:} 
+%    Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
+%    \textit{Do file: } \texttt{mini\_cortes\_2\_int.do}
+%\end{table}
+
+
+
+
+\pagebreak
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Figures}
+
+
+\begin{figure}[H]
+    \caption{Percent that know main legal constitutional entitlement}
+    \label{Knowindemfig}
+    \begin{center}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Employee claims to know}
+            \centering
+            \includegraphics[width=\textwidth]{Knows.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Employee correctly knows }
+                \centering
+                \includegraphics[width=\textwidth]{Correctly_knows.pdf}
+        \end{subfigure}
+        \end{center}
+    {\footnotesize \textit{Notes: } This is based on the subject's answer to two questions: 7.01: "In case of an unjustified firing, the law grants you to get a severance pay stipulated in the Constitution. Do you know how many days of your salary does this account for?" and "7:02: How many days of your salary does this pay account for?". First panel correspond to the first question while second panel to the second one.}
+    {\footnotesize \textit{Do file: } \texttt{peiper.do}}
+\end{figure}
+
+
+
+\begin{figure}[H]
+    \caption{Knowledge about their own claims in lawsuit}
+    \label{Knowtheirclaimsfig}
+    \begin{center}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Const. compensation}
+            \centering
+            \includegraphics[width=\textwidth]{Compensation.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{SARIMSS}
+                \centering
+                \includegraphics[width=\textwidth]{Insurance.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Reinstatement}
+            \centering
+            \includegraphics[width=\textwidth]{Reinstatement.pdf}
+        \end{subfigure}
+            \hfill
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Overtime}
+            \centering
+            \includegraphics[width=\textwidth]{Extra_hrs.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{End of year bonus}
+            \centering
+            \includegraphics[width=\textwidth]{Holiday_bonus.pdf}
+        \end{subfigure}
+            \hfill
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Sunday bonus}
+            \centering
+            \includegraphics[width=\textwidth]{Sunday_bonus.pdf}
+        \end{subfigure}
+    \end{center} 
+        \footnotesize \textit{Notes: Percentage of subjects who correctly answered to the question regarding elements of their claim, by type of benefit asked.}
+        {\footnotesize \textit{Do file: }  \texttt{peiper2.do}}
+\end{figure}
+
+ 
+    
+\begin{figure}[H]
+    \caption{Differences in claims and compensation by case file outcome}
+    \label{claimsvsoutcomes}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Amountasked.png}
+        \end{center}
+    \footnotesize \textit{Notes: This graph shows the average amount (in thousand pesos) asked, won, minimum legal compensation, and minimum legal compensation plus lost wages, by outcome. The bottom legend shows the percentage of cases with each outcome for our database (N=5005). Note that, by definition, workers have no chance of recovery in drops and expiries. In our data, all settlements imply a positive recovery for the worker; finally, \textbf{for judgments, only 24\% of the time does the worker recover anything.}} 
+    {\footnotesize \textit{Script: } \texttt{Amounts.Rmd}}
+\end{figure}
+
+
+  
+\begin{figure}[H]
+    \caption{Delay of case by type of conclusion}
+    \label{DurationFig}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Duracion.pdf}
+        \end{center}
+    {\footnotesize \textit{Notes: Length of the case (in years) , by conclusion. Naturally, laudos (adjudication cases) have much higher duration than settlement cases (convenios).}}
+    {\footnotesize \textit{Do file: } \texttt{peiper5.do}}
+\end{figure}
+
+
+
+\begin{figure}[H]
+    \caption{Difference in what actor says and calculator predicts in amount and probability.}
+    \label{Figure_overconfidence_exp}
+    \begin{center}
+    \begin{subfigure}{0.49\textwidth}
+        \caption{Employee}
+        \centering
+        \includegraphics[width=\textwidth]{difference_amount_employee.pdf}
+    \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{difference_prob_employee.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \caption{Employee Lawyer}
+        \centering
+        \includegraphics[width=\textwidth]{difference_amount_employeelawyer.pdf}
+        \end{subfigure}
+          \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{difference_prob_employeelawyer.pdf}
+    \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Firm Lawyer}
+            \centering
+            \includegraphics[width=\textwidth]{difference_amount_firmlawyer.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{difference_prob_firmlawyer.pdf}
+        \end{subfigure}
+    \end{center}
+     \footnotesize \textit{Notes: Difference (in thousand pesos for amounts, percentage points for probabilities) from what the subject expects vs. what our models predict. Note how, for Employee and employee lawyer, the distribution for amounts is much more skewed to the right than for firm lawyers. This is only natural, since the formers are thinking about expected wins and the latters about expected losses.} 
+      \footnotesize{ \textit{Do file: }  \texttt{oc\_comparison\_B.do}}
+\end{figure}
+
+
+
+\begin{figure}[H]
+   \caption{Experiment flowchart}
+   \label{treatment_flowchart}
+    \begin{center}
+    \includegraphics[width=0.42\textwidth]{./Figuras/Experiment_flowchart.png}
+    \end{center}
+    \footnotesize
+    \textit{Notes: this flowchart shows what happened when subjects arrived to the court.}
+\end{figure}
+    
+
+
+
+\begin{figure}[H]
+    \caption{Calculator treatment format (example)}
+    \label{calc_template}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{calctreat.png}
+        \end{center}
+        {\footnotesize \textit{Notes: An example of the format shown to subjects in calculator treatment group. It shows some data on the worker, the minimum legal amount she deserves for different types of benefits, a small note on average trial durations, and calculator results: probability for each conclusion outcome, average duration and amount won (both conditional on each outcome).}}
+\end{figure}
+
+
+
+
+\begin{figure}[H]
+    \caption{Belief updating after treatment}
+    \label{Figure_updating}
+    \begin{center}
+%    \begin{subfigure}{\textwidth}
+%        \caption{update in beliefs in duration}
+%        \centering
+%        \includegraphics[width=\textwidth]{updatebeleif_duration.pdf}
+%    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \caption{Update in beliefs in amount}
+        \centering
+        \includegraphics[width=\textwidth]{updatebeleif_amount.pdf}
+    \end{subfigure}
+    \end{center}
+     \footnotesize \textit{Notes: Graphs on belief updating. They show the difference (exit-baseline) in amount (in tens-of-thousand pesos) between what's reported in exit and baseline surveys. In order to drop outliers in our sample, we did some trimming and kept survey observations with $\mid exit - baseline \mid < 50k$. This implied dropping 17 obs. for employee surveys, 67 for employee lawyer and 68 for firm lawyer surveys.} 
+      \footnotesize{ \textit{Do file: }  \texttt{Update\_beleifs.do}}
+\end{figure}
+
+
+      
+\begin{figure}[H]
+    \caption{Conciliation over time}
+    \label{Figure_dynamicsConciliation}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{con_overtime.pdf}
+        \end{center}
+        {\footnotesize \textit{Notes: } Conciliation over time in HD database and pilot database.}
+        {\footnotesize \textit{Do file: } \texttt{con\_overtime.do}}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% APPENDIX TABLES
+
+\section{APPENDIX}
+
+\subsection{Tables}
+
+
+
+\begin{table}[H]
+    \caption{Variable list description }
+    \label{tab:SS}
+    \begin{center}
+        \scriptsize{\input{./Tables/Variable_list.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+Detailed description of variables used throughout the paper. The variables marked with \textbf{*} are the ones that made it to the final model.
+\end{table}
+
+
+\begin{table}[H]
+    \caption{Summary statistics table }
+    \label{tab:SS}
+    \begin{center}
+        \tiny{\input{./Tables/SS.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+Summary stats of outcomes, basic and strategic variables
+    \textit{Do file: } \texttt{Table\_SS.do}
+\end{table}
+
+%\pagebreak
+%\begin{center}
+%    \tiny{\input{./Tables/SS_survey.tex}}
+%\end{center}
+%\vspace{5mm}
+%    \footnotesize
+ %   \textit{Notes:} 
+%Summary stats of survey variables for employee, employee's lawyer and firm's lawyer
+%    \textit{Do file: } \texttt{}
+% \pagebreak
+
+
+\begin{table}[H]
+    \caption{Who showed up }
+    \label{whoshowedup}
+    \begin{center}
+        \scriptsize{\input{./Tables/Showed_up.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+We show some stats of who goes to the court. This is important since we can only give the treatment to the parties who go.  We decompose this in all the possible combination of show up: we use E,L,F,D subscripts to denote the different parties E: Employee; L: Employee’s Lawyer;  F: Firm; D: Firm’s Lawyer.
+    \textit{Do file: } \texttt{.do}
+\end{table}
+
+
+
+
+
+
+
+%#appendix
+\begin{table}[H]
+    \caption{Conciliation by type of lawyer}
+    \label{tab:reg_con_oc}
+    \begin{center}
+        \scriptsize{\input{./Tables/concilio_vs_lawyer.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+   Specification (1) refers to basic variables while (2) includes all strategic variables.
+    \textit{Do file: } \texttt{con\_lawyer.do}
+\end{table} 
+
+\begin{landscape}
+
+
+% \begin{table}[H]
+%     \caption{Expectations: Public vs Private Lawyers}
+%     \label{Table_expectation_reg}
+%     \begin{center}
+%         \scriptsize{\input{./Tables/Reg1_Exp.tex}}
+%     \end{center}
+%     \footnotesize
+%     \textit{Notes: Regression on expectation on amount and probability of winning} 
+%     \textit{Do file: } \texttt{peiperreg1A.do}
+% \end{table}
+
+
+%#appendix
+%\begin{table}[H]
+%    \caption{Expectations: Public vs Private Lawyers}
+%    \label{Table_expectation_reg_log}
+%    \begin{center}
+%        \scriptsize{\input{./Tables/Reg1_Exp_log.tex}}
+%    \end{center}
+%    \footnotesize
+%    \textit{Notes: Regression on expectation on amount (in %log pesos) and probability of winning} 
+%    \textit{Do file: } \texttt{peiperreg1A\_log.do}
+%\end{table}
+
+
+\end{landscape}
+
+
+%#appendix 
+\begin{table}[H]
+    \caption{Correlation conciliation vs overconfidence}
+    \label{Table_concvsoc}
+    \begin{center}
+        \scriptsize{\input{./Tables/Reg_con_oc.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+    All measures of OC are relative. Elastictity : Con-OC measures how much does conciliation change when overconfidence changes in 1 standard deviation. Elasticity SD:Con-OC measures how many standard deviations conciliation changes when  overconfidence changes in 1 standard deviation.
+    \textit{Do file: } \texttt{peiperreg3.do peiperreg3\_B.do}
+\end{table}
+
+
+% \begin{table}[H]
+%     \caption{Correlation conciliation  vs overconfidence (log)}
+%     \label{tab:reg_con_oc_log}
+%     \begin{center}
+%         \scriptsize{\input{./Tables/Reg_con_oc_log.tex}}
+%     \end{center}
+%     \footnotesize
+%     \textit{Notes:} 
+%     All measures of OC are relative and in logs. Elastictity : Con-OC measures how much does conciliation change when overconfidence changes in 1 standard deviation. Elasticity SD:Con-OC measures how many standard deviations conciliation changes when  overconfidence changes in 1 standard deviation.
+%     \textit{Do file: } \texttt{peiperreg3\_log.do peiperreg3\_B.do}
+% \end{table}
+
+
+
+%#appendix
+%\begin{table}[H]
+%    \caption{Treatment Efects interacted with OC}
+%    \label{Table_effects}
+%    \begin{center}
+%    \scriptsize{\input{./Tables/Minicortes_2_PB.tex}}
+%    \end{center}
+%    \footnotesize
+%    \textit{Notes:} 
+%    Calc=Conc and Calc=Conc=0 shows the p-value for the %respective tests.
+%    \textit{Do file: } \texttt{mini\_cortes\_2.do}
+%\end{table}
+
+
+\begin{table}[H]
+   \caption{Treatment description}
+    \label{treatment_description}
+    \begin{center}
+    \scriptsize{\input{./Tables/Experiment_description2.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes: This is a short description of the kind of treatment received by each treatment group.} 
+\end{table}
+
+\begin{landscape}
+
+\begin{table}[H]
+\caption{Expectation plaintiff against defendant part}
+\label{Table_exp_plaintiff_def}
+\begin{center}
+\scriptsize{\input{./Tables/exp_plaintiff_def.tex}}
+\end{center}
+ \footnotesize
+\textit{Notes:} 
+The regression includes dummies of which party answered the survey (employee, employee's lawyer or firm) and if the lawyer is public or private. Pvalue1 refers to the p-value for the F-test \emph{ Emp-Public Lawyer=Emp Lawyer-Public Lawyer}, while Pvalue2 corresponds to \emph{ Emp-Public Lawyer=Emp Lawyer-Private Lawyer}
+\textit{Do file: } \texttt{exp\_plaintiff\_def.do}
+\end{table}
+
+\end{landscape}
+
+%#appendix
+\begin{table}[H]
+    \caption{Treatment Effects by Month (including basic variables controls)}
+    \label{Table_effects}
+    \begin{center}
+    \scriptsize{\input{./Tables/Minicortes_2_B_PA.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+    Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
+    \textit{Do file: } \texttt{mini\_cortes\_2\_B.do}
+\end{table}
+
+
+%#appendix
+%\begin{table}[H]
+%    \caption{Treatment Effects interacted with OC (including %basic variables controls)}
+%    \label{Table_effects}
+%    \begin{center}
+%    \scriptsize{\input{./Tables/Minicortes_2_B_PB.tex}}
+%    \end{center}
+%    \footnotesize
+%    \textit{Notes:} 
+%    Calc=Conc and Calc=Conc=0 shows the p-value for the %respective tests.
+%    \textit{Do file: } \texttt{mini\_cortes\_2\_B.do}
+%\end{table}
+
+
+
+%\begin{table}[H]
+%    \caption{Cuts on conciliation}
+%    \label{tab:treatmentregB}
+%    \begin{center}
+%    \scriptsize{\input{./Tables/Minicortes.tex}}
+%    \end{center}
+%    \footnotesize
+%    \textit{Notes:} 
+%    Notes
+%    \textit{Do file: } \texttt{mini\_cortes.do}
+%\end{table}
+
+
+
+\subsection{Figures}
+
+
+
+
+\begin{figure}[H]
+    \caption{Actor's expectations and calculator predictions.}
+    \label{figlabel}
+    \begin{center}
+    \begin{subfigure}{0.49\textwidth}
+        \caption{Employee}
+        \centering
+        \includegraphics[width=\textwidth]{Compensation_comparison_employee.pdf}
+    \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Probability_comparison_employee.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \caption{Employee Lawyer}
+        \centering
+        \includegraphics[width=\textwidth]{Compensation_comparison_EmployeeLawyer.pdf}
+        \end{subfigure}
+          \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Probability_comparison_EmployeeLawyer.pdf}
+    \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Firm Lawyer}
+            \centering
+            \includegraphics[width=\textwidth]{Compensation_comparison_FirmLawyer.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Probability_comparison_FirmLawyer.pdf}
+        \end{subfigure}
+    \end{center}
+     \footnotesize \textit{Notes: Sample distributions for parties' expectations and calculator predictions.} Bandwidth for amount: 0.5 (log) pesos  Bandwidth for probability: 5\%. 
+      \footnotesize{ \textit{Do file: }  \texttt{oc\_comparison.do}}
+\end{figure}
+
+
+
+
+
+\begin{figure}[H]
+    \caption{Histograms of relative OC}
+    \label{hist_rel_oc}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{hist_rel_oc.pdf}
+        \end{center}
+        {\footnotesize \textit{Notes: Histograms of relative overconfidence in amount an d probability. Relative overconfidence is measured as $\frac{survey-calc}{calc}$. The histograms only display up to the 98 percentile.}}
+        \texttt{hist\_rel\_oc.do}
+\end{figure}
+
+      
+\begin{figure}[H]
+\caption{Number of experimental cases: overall, selected and actually treated.}
+\label{treatmentunits}
+\begin{center}
+    \begin{subfigure}{0.49\textwidth}
+        \caption{}
+        \centering
+        \includegraphics[width=\textwidth]{All_Selected.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \caption{}
+        \centering
+        \includegraphics[width=\textwidth]{Selected_ActuallyT.pdf}
+    \end{subfigure}
+    \hfill
+        \begin{subfigure}{0.49\textwidth}
+            \caption{}
+            \centering
+            \includegraphics[width=\textwidth]{ByTreatment.pdf}    
+        \end{subfigure}
+    \end{center}
+     {\footnotesize \textit{Notes: } Notes 
+    The court we are working on is managing about 60 suits per day. Different suits are in different stages of the process (i.e. not all are new suits). Among the eligible ones we are selecting for treatment about 25 approximately. Among these we randomly select some for treatment and controls each day in equal proportions (except for indivisibilities of course). We have one control group that stays with the status quo, a calculator treatment that receives statistical information about the historical outcomes of cases similar to theirs, and a conciliator group that instead of getting statistical information talks with a court conciliator that explains (more on emotive grounds and some personal experience) why settling out of court may sometimes be better.}
+      {\footnotesize \textit{Do file: }  \texttt{peiper6.do}}
+\end{figure}
+
+
+\begin{figure}[H]
+    \label{figure_fotos}
+    \caption{Implementation}
+    \begin{center}
+    \begin{subfigure}{0.4\textwidth}
+        \caption{Survey area}
+        \centering
+        \includegraphics[width=\textwidth]{surveyarea.jpg}
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+        \caption{Calculator treatment area}
+        \centering
+        \includegraphics[width=\textwidth]{calcarea.jpg}
+    \end{subfigure}
+    \hfill
+       \begin{subfigure}{0.4\textwidth}
+        \caption{Conciliator's area}
+        \centering
+        \includegraphics[width=\textwidth]{conciliatorarea.jpg}
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+        \caption{Hearings in our court in a given day}
+        \centering
+        \includegraphics[width=\textwidth]{hearing.jpg}
+    \end{subfigure} 
+    
+    \vspace{5mm}
+    
+     \footnotesize \textit{Notes: A little sample of the environment this experiment was conducted in. The survey area was just in front the counters in which hearings take place.}  
+    \end{center}
+\end{figure}
+
+
+
+
+	
+\pagebreak
+
+
+
+%\subsection{Model}
+%\input{Model.tex}
+%\pagebreak
+
+
+
+% \subsection{Surveys}
+
+% \subsection*{Employee}
+
+% \begin{center}
+% \includepdf[scale=0.8, pages={1-}]{./Surveys/EncuestaACTOR.pdf}
+% \end{center}
+
+
+% \subsection*{Employee's Lawyer}
+
+% \begin{center}
+% \includepdf[scale=0.8, pages={1-}]{./Surveys/EncuestaREPRESENTANTE_ACTOR.pdf}
+% \end{center}
+
+% \subsection*{Firm}
+
+% \begin{center}
+% \includepdf[scale=0.8, pages={1-}]{./Surveys/EncuestaDEMANDADO.pdf}
+% \end{center}
+
+% \subsection*{Firm's Lawyer}
+
+% \begin{center}
+% \includepdf[scale=0.8, pages={1-}]{./Surveys/EncuestaREPRESENTANTE_DEMANDADO.pdf}
+% \end{center}
+
+% \pagebreak
+
+
+
+
+
+
+\end{document}

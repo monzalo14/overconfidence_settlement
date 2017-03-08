@@ -1,0 +1,35 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\chasi_000\Dropbox\Statistics\P10\Results\Results_2\Effect\SS_control_survey.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}28 Feb 2017, 17:52:45
+{txt}
+{com}. su i.ea3_enojo i.ea4_compra i.ea5_estudios i.ea6_trabaja i.ea7_busca_trabajo
+
+{txt}    Variable {c |}       Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 56}
+{space 3}ea3_enojo {c |}
+{space 10}2  {c |}{res}       169     .183432    .3881704          0          1
+{txt}{space 10}3  {c |}{res}       169    .0710059     .257598          0          1
+{txt}{space 10}4  {c |}{res}       169    .1597633    .3674752          0          1
+{txt}{hline 13}{c +}{hline 56}
+{space 12} {c |}
+1.ea4_compra {c |}{res}       166    .0481928    .2148214          0          1
+{txt}{space 12} {c |}
+ea5_estudios {c |}
+{space 10}2  {c |}{res}       169    .2662722    .4433218          0          1
+{txt}{space 10}3  {c |}{res}       169     .260355    .4401324          0          1
+{txt}{space 10}4  {c |}{res}       169    .4023669    .4918324          0          1
+{txt}{space 12} {c |}
+1.ea6_trab~a {c |}{res}       166    .4277108    .4962436          0          1
+{txt}1.ea7_busc~o {c |}{res}       163    .5460123    .4994127          0          1
+{txt}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\chasi_000\Dropbox\Statistics\P10\Results\Results_2\Effect\SS_control_survey.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}28 Feb 2017, 17:52:46
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
