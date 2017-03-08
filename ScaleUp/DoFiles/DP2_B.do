@@ -1,6 +1,6 @@
 clear
 set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
+global directorio C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
 
 
 
@@ -8,11 +8,11 @@ local varlst salario_int_diario anio_nac tipo_jornada horas_sem per_horas hextra
 
 
 
-import delimited "$directorio\DB\DB2\BASE INICIALES AUDIENCIAS MC Append General.csv", clear
+import delimited "$directorio\DB\BASE INICIALES AUDIENCIAS MC Append General.csv", clear
 
 foreach var of varlist `varlst'{
 	destring `var', replace force
 	}
 
 
-save "$directorio\DB\DB2\Iniciales.dta", replace
+save "$directorio\DB\Iniciales.dta", replace

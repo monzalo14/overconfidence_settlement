@@ -1,6 +1,6 @@
 clear
 set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
+global directorio C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
 
 
 
@@ -8,75 +8,75 @@ local varlst salario_int_diario anio_nac tipo_jornada horas_sem per_horas hextra
 
 
 
-import delimited "$directorio\DB\DB2\BASE INICIALES AUDIENCIAS MC append 04_11_16.csv", clear
+import delimited "$directorio\DB\BASE INICIALES AUDIENCIAS MC append 04_11_16.csv", clear
 
 foreach var of varlist `varlst'{
 	destring `var', replace force
 	}
 
-save "$directorio\DB\DB2\Iniciales_1.dta", replace
+save "$directorio\DB\Iniciales_1.dta", replace
 
 
-import delimited "$directorio\DB\DB2\BASE INICIALES AUDIENCIAS MC append 18_11_16.csv", clear
-
-foreach var of varlist `varlst'{
-	destring `var', replace force
-	}
-
-save "$directorio\DB\DB2\Iniciales_2.dta", replace
-
-
-import delimited "$directorio\DB\DB2\BASE INICIALES AUDIENCIAS MC append 11_11_16.csv", clear
+import delimited "$directorio\DB\BASE INICIALES AUDIENCIAS MC append 18_11_16.csv", clear
 
 foreach var of varlist `varlst'{
 	destring `var', replace force
 	}
 
-save "$directorio\DB\DB2\Iniciales_3.dta", replace
+save "$directorio\DB\Iniciales_2.dta", replace
 
 
-import delimited "$directorio\DB\DB2\BASE INICIALES AUDIENCIAS MC append 07_10_16.csv", clear
-
-foreach var of varlist `varlst'{
-	destring `var', replace force
-	}
-
-save "$directorio\DB\DB2\Iniciales_4.dta", replace
-
-
-import delimited "$directorio\DB\DB2\BASE INICIALES AUDIENCIAS MC append 14_10_16.csv", clear
+import delimited "$directorio\DB\BASE INICIALES AUDIENCIAS MC append 11_11_16.csv", clear
 
 foreach var of varlist `varlst'{
 	destring `var', replace force
 	}
 
-save "$directorio\DB\DB2\Iniciales_5.dta", replace
+save "$directorio\DB\Iniciales_3.dta", replace
 
 
-import delimited "$directorio\DB\DB2\BASE INICIALES AUDIENCIAS MC append 21_10_16.csv", clear
-
-foreach var of varlist `varlst'{
-	destring `var', replace force
-	}
-
-save "$directorio\DB\DB2\Iniciales_6.dta", replace
-
-
-import delimited "$directorio\DB\DB2\BASE INICIALES AUDIENCIAS MC append 28_10_16.csv", clear
+import delimited "$directorio\DB\BASE INICIALES AUDIENCIAS MC append 07_10_16.csv", clear
 
 foreach var of varlist `varlst'{
 	destring `var', replace force
 	}
 
-save "$directorio\DB\DB2\Iniciales_7.dta", replace
+save "$directorio\DB\Iniciales_4.dta", replace
+
+
+import delimited "$directorio\DB\BASE INICIALES AUDIENCIAS MC append 14_10_16.csv", clear
+
+foreach var of varlist `varlst'{
+	destring `var', replace force
+	}
+
+save "$directorio\DB\Iniciales_5.dta", replace
+
+
+import delimited "$directorio\DB\BASE INICIALES AUDIENCIAS MC append 21_10_16.csv", clear
+
+foreach var of varlist `varlst'{
+	destring `var', replace force
+	}
+
+save "$directorio\DB\Iniciales_6.dta", replace
+
+
+import delimited "$directorio\DB\BASE INICIALES AUDIENCIAS MC append 28_10_16.csv", clear
+
+foreach var of varlist `varlst'{
+	destring `var', replace force
+	}
+
+save "$directorio\DB\Iniciales_7.dta", replace
 
 
 
-use "$directorio\DB\DB2\Iniciales_1.dta", clear
+use "$directorio\DB\Iniciales_1.dta", clear
 
 
 forvalues i=2/7 {
-	append using "$directorio\DB\DB2\Iniciales_`i'.dta"
+	append using "$directorio\DB\Iniciales_`i'.dta"
 	}
 
-save "$directorio\DB\DB2\Iniciales.dta", replace
+save "$directorio\DB\Iniciales.dta", replace

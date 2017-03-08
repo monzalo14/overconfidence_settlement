@@ -4,16 +4,16 @@ This do file generates all previous variables and does some cleaning of the data
 
 clear
 set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
+global directorio C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
 
 ********************************************************************************
 
-use "$directorio\DB\DB2\Iniciales.dta", clear
+use "$directorio\DB\Iniciales.dta", clear
 duplicates drop  exp anio junta, force
-save "$directorio\DB\DB2\Iniciales_wod.dta", replace
+save "$directorio\DB\Iniciales_wod.dta", replace
 
 ********************************************************************************
-import delimited "$directorio\DB\DB2\seguimiento_audiencias_mc.csv", clear 
+import delimited "$directorio\DB\seguimiento_audiencias_mc.csv", clear 
 
 
 *Checar con Moni Posili
@@ -222,4 +222,4 @@ label variable ea6_trabaja "Works"
 label variable ea7_busca_trabajo "Looking for a job"
 
 
-save "$directorio\DB\DB2\Seguimiento_Juntas.dta", replace
+save "$directorio\DB\Seguimiento_Juntas.dta", replace

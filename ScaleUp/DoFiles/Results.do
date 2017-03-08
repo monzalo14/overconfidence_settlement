@@ -5,11 +5,11 @@ Regressions used as input for the .tex file "Results.tex"
 
 clear
 set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
+global directorio C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
 
 ********************************************************************************
 
-use "$directorio\DB\DB2\Seguimiento_Juntas.dta", clear
+use "$directorio\DB\Seguimiento_Juntas.dta", clear
 
 ********************************************************************************
 
@@ -20,15 +20,15 @@ use "$directorio\DB\DB2\Seguimiento_Juntas.dta", clear
 
 *Presence of actors
 sutex p_*, nobs minmax  ///
-	file("$directorio\Results\Results_2\Effect\presence.tex") replace ///
+	file("$directorio\Effect\presence.tex") replace ///
 	title("Presence of actors") 
 sutex v*, nobs minmax  ///
-	file("$directorio\Results\Results_2\Effect\presence_t.tex") replace ///
+	file("$directorio\Effect\presence_t.tex") replace ///
 	title("Presence of actors") 
 	
 *Update in beleifs
 sutex update_*, nobs minmax  ///
-	file("$directorio\Results\Results_2\Effect\update_beleif.tex") replace ///
+	file("$directorio\Effect\update_beleif.tex") replace ///
 	title("Update in beleifs") 
 
 	
@@ -44,12 +44,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B4=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C4=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B5=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C5=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B4=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C4=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B5=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C5=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D4=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D4=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 *Employee's Lawyer	
 ttest era1_prob_pago==era4_prob_pago_s
@@ -59,12 +59,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B6=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C6=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B7=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C7=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B6=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C6=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B7=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C7=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D6=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D6=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 *Firm's Lawyer	
 ttest erd1_prob_pago==erd4_prob_pago_s
@@ -74,12 +74,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B8=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C8=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B9=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C9=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B8=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C8=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B9=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C9=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D8=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D8=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 
 	*PAYMENT LEVELS
@@ -92,12 +92,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B11=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C11=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B12=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C12=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B11=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C11=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B12=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C12=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D11=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D11=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 *Employee's Lawyer	
 ttest era2_cantidad_pago==era5_cantidad_pago_s
@@ -107,12 +107,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B13=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C13=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B14=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C14=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B13=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C13=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B14=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C14=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D13=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D13=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 *Firm's Lawyer	
 ttest erd2_cantidad_pago==erd5_cantidad_pago_s	
@@ -122,12 +122,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B15=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C15=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B16=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C16=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B15=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C15=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B16=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C16=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D15=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D15=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 
 	*PAYMENT LOGS
@@ -140,12 +140,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B18=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C18=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B19=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C19=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B18=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C18=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B19=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C19=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D18=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D18=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 *Employee's Lawyer	
 ttest log_era2_cantidad_pago==log_era5_cantidad_pago_s
@@ -155,12 +155,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B20=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C20=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B21=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C21=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B20=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C20=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B21=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C21=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D20=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D20=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 *Firm's Lawyer	
 ttest log_erd2_cantidad_pago==log_erd5_cantidad_pago_s	
@@ -170,12 +170,12 @@ local sd1=round(`r(sd_1)', 0.001)
 local sd2=round(`r(sd_2)', 0.001)
 local val_p=round(`r(p)', 0.001)
 
-qui putexcel B22=(`mean1') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C22=(`mean2') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel B23=("(`sd1')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
-qui putexcel C23=("(`sd2')") using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B22=(`mean1') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C22=(`mean2') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel B23=("(`sd1')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel C23=("(`sd2')") using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
-qui putexcel D22=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xlsx", sheet("ttest") modify
+qui putexcel D22=(`val_p') using "$directorio\Effect\ttest.xlsx", sheet("ttest") modify
 
 
 
@@ -183,22 +183,22 @@ qui putexcel D22=(`val_p') using "$directorio\Results\Results_2\Effect\ttest.xls
 
 *Treatments
 latab calcu_p_actora	calcu_p_dem,  replace ///
-	tf("$directorio\Results\Results_2\Effect\tab_calc")
+	tf("$directorio\Effect\tab_calc")
 
 
 ************************************
 
 *Conciliation in the day of treatment with "calculadora"
 latab convenio calcu_p_actora,  replace ///
-	tf("$directorio\Results\Results_2\Effect\con_calc_actor")
-ttesttable convenio calcu_p_actora , tex("$directorio\Results\Results_2\Effect\test_con_calc_actor") ///
+	tf("$directorio\Effect\con_calc_actor")
+ttesttable convenio calcu_p_actora , tex("$directorio\Effect\test_con_calc_actor") ///
 	pre("\begin{table}[H]\centering \caption{\textbf{T-Test: Convenio by Calculadora Actora}}") ///
     post("\end{table}")
 	
 
 latab convenio calcu_p_dem,  replace ///
-	tf("$directorio\Results\Results_2\Effect\con_calc_dem")
-ttesttable convenio calcu_p_dem , tex("$directorio\Results\Results_2\Effect\test_con_calc_dem") ///
+	tf("$directorio\Effect\con_calc_dem")
+ttesttable convenio calcu_p_dem , tex("$directorio\Effect\test_con_calc_dem") ///
 	pre("\begin{table}[H]\centering \caption{\textbf{T-Test: Convenio by Calculadora Demandada}}") ///
     post("\end{table}")
 	
@@ -206,45 +206,45 @@ ttesttable convenio calcu_p_dem , tex("$directorio\Results\Results_2\Effect\test
 	
 *Conciliation in the day of treatment CONDITIONING ON: "TOOK PART OF SURVEY"
 latab convenio calcu_p_actora if registro_p_actora==1,  replace ///
-	tf("$directorio\Results\Results_2\Effect\con_calc_actor_registro1")
+	tf("$directorio\Effect\con_calc_actor_registro1")
 ttesttable convenio calcu_p_actora if registro_p_actora==1, ///
-	tex("$directorio\Results\Results_2\Effect\test_con_calc_actor_registro1") ///
+	tex("$directorio\Effect\test_con_calc_actor_registro1") ///
 	pre("\begin{table}[H]\centering \caption{\textbf{T-Test: Convenio by Calculadora Actora}}") ///
     post("\end{table}")
 	
 latab convenio calcu_p_actora if registro_p_actora==0,  replace ///
-	tf("$directorio\Results\Results_2\Effect\con_calc_actor_registro0")
+	tf("$directorio\Effect\con_calc_actor_registro0")
 ttesttable convenio calcu_p_actora if registro_p_actora==0, ///
-	tex("$directorio\Results\Results_2\Effect\test_con_calc_actor_registro0") ///
+	tex("$directorio\Effect\test_con_calc_actor_registro0") ///
 	pre("\begin{table}[H]\centering \caption{\textbf{T-Test: Convenio by Calculadora Actora}}") ///
     post("\end{table}")
 	
 latab convenio calcu_p_dem if registro_p_dem==1,  replace ///
-	tf("$directorio\Results\Results_2\Effect\con_calc_dem_registro1")
+	tf("$directorio\Effect\con_calc_dem_registro1")
 ttesttable convenio calcu_p_dem if registro_p_dem==1, ///
-	tex("$directorio\Results\Results_2\Effect\test_con_calc_dem_registro1") ///
+	tex("$directorio\Effect\test_con_calc_dem_registro1") ///
 	pre("\begin{table}[H]\centering \caption{\textbf{T-Test: Convenio by Calculadora Demandada}}") ///
     post("\end{table}")
 	
 latab convenio calcu_p_dem if registro_p_dem==0,  replace ///
-	tf("$directorio\Results\Results_2\Effect\con_calc_dem_registro0")	
+	tf("$directorio\Effect\con_calc_dem_registro0")	
 ttesttable convenio calcu_p_dem if registro_p_dem==0, ///
-	tex("$directorio\Results\Results_2\Effect\test_con_calc_dem_registro0") ///
+	tex("$directorio\Effect\test_con_calc_dem_registro0") ///
 	pre("\begin{table}[H]\centering \caption{\textbf{T-Test: Convenio by Calculadora Demandada}}") ///
     post("\end{table}")
 
 
 *Conciliation in the day of treatment with "registro"
 latab convenio registro_p_actora,  replace ///
-	tf("$directorio\Results\Results_2\Effect\con_reg_actor")
-ttesttable convenio registro_p_actora , tex("$directorio\Results\Results_2\Effect\test_con_reg_actor") ///
+	tf("$directorio\Effect\con_reg_actor")
+ttesttable convenio registro_p_actora , tex("$directorio\Effect\test_con_reg_actor") ///
 	pre("\begin{table}[H]\centering \caption{\textbf{T-Test: Convenio by Calculadora Actora}}") ///
     post("\end{table}")
 	
 
 latab convenio registro_p_dem,  replace ///
-	tf("$directorio\Results\Results_2\Effect\con_reg_dem")
-ttesttable convenio registro_p_dem , tex("$directorio\Results\Results_2\Effect\test_con_reg_dem") ///
+	tf("$directorio\Effect\con_reg_dem")
+ttesttable convenio registro_p_dem , tex("$directorio\Effect\test_con_reg_dem") ///
 	pre("\begin{table}[H]\centering \caption{\textbf{T-Test: Convenio by Calculadora Demandada}}") ///
     post("\end{table}")	
 
@@ -258,7 +258,7 @@ era1_prob_pago	era2_cantidad_pago	///
 erd1_prob_pago	erd2_cantidad_pago ///
 		erd4_prob_pago_s erd5_cantidad_pago_s ///
 ea4_compra	ea6_trabaja	ea7_busca_trabajo,  nobs minmax labels	 ///
-	file("$directorio\Results\Results_2\Effect\SS_survey.tex") replace ///
+	file("$directorio\Effect\SS_survey.tex") replace ///
 	title("SS survey variables") 
 
 
@@ -266,7 +266,7 @@ local j=2
 foreach var of varlist ea3_enojo ea5_estudios era3_litigios  erd3_litigios {
 	forvalues i=1/4 {
 		qui su `var' if `var'==`i'
-		qui putexcel C`j'=(r(N)) using "$directorio\Results\Results_2\Effect\TAB_survey.xlsx", sheet("TAB_survey") modify
+		qui putexcel C`j'=(r(N)) using "$directorio\Effect\TAB_survey.xlsx", sheet("TAB_survey") modify
 		local j=`j'+1
 		}
 	local j=`j'+1	
@@ -291,7 +291,7 @@ foreach var of varlist ea1_prob_pago	ea2_cantidad_pago	////
 			
 	qui su `var'
 	local NA=`max_obs'-`r(N)'
-	qui putexcel C`j'=(`NA') using "$directorio\Results\Results_2\Effect\NA.xlsx", sheet("NA") modify
+	qui putexcel C`j'=(`NA') using "$directorio\Effect\NA.xlsx", sheet("NA") modify
 	local j=`j'+1	
 	}
 	
@@ -312,7 +312,7 @@ foreach var of varlist  era1_prob_pago	era2_cantidad_pago	///
 			
 	qui su `var'
 	local NA=`max_obs'-`r(N)'
-	qui putexcel C`j'=(`NA') using "$directorio\Results\Results_2\Effect\NA.xlsx", sheet("NA") modify
+	qui putexcel C`j'=(`NA') using "$directorio\Effect\NA.xlsx", sheet("NA") modify
 	local j=`j'+1	
 	}	
 	
@@ -333,7 +333,7 @@ foreach var of varlist erd1_prob_pago	erd2_cantidad_pago ///
 			
 	qui su `var'
 	local NA=`max_obs'-`r(N)'
-	qui putexcel C`j'=(`NA') using "$directorio\Results\Results_2\Effect\NA.xlsx", sheet("NA") modify
+	qui putexcel C`j'=(`NA') using "$directorio\Effect\NA.xlsx", sheet("NA") modify
 	local j=`j'+1	
 	}		
 *************************************
@@ -408,7 +408,7 @@ graph combine prob_rd pago_rd, colf ycommon scheme(s2mono) graphregion(color(non
 graph combine emp emp_law fir_law, xcommon rows(3) scheme(s2mono) graphregion(color(none)) ///
 	title("Update in beliefs")
 
-graph export "$directorio\Results\Results_2\Figures\update_belief.pdf", replace 
+graph export "$directorio\Figures\update_belief.pdf", replace 
  
 
  
@@ -493,7 +493,7 @@ graph combine prob_rd pago_rd, colf ycommon scheme(s2mono) graphregion(color(non
 graph combine emp emp_law fir_law, xcommon rows(3) scheme(s2mono) graphregion(color(none)) ///
 	title("Initial beliefs")
 
-graph export "$directorio\Results\Results_2\Figures\belief.pdf", replace 
+graph export "$directorio\Figures\belief.pdf", replace 
  
  
  	
@@ -524,7 +524,7 @@ eststo: reg convenio i.calcu_p_actora i.calcu_p_dem junta_*, robust
 estadd scalar Erre=e(r2)
 
 
-esttab using "$directorio\Results\Results_2\Effect\Simple_regression.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Simple_regression.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" ) replace 
 
 	
@@ -542,7 +542,7 @@ estadd scalar Erre=e(r2)
 eststo: reg convenio i.calcu_p_actora##1.p_actor i.calcu_p_dem##1.p_actor, robust
 estadd scalar Erre=e(r2)
 
-esttab using "$directorio\Results\Results_2\Effect\Presence_employee.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Presence_employee.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" ) replace 
 	
 
@@ -574,7 +574,7 @@ estadd scalar Erre=e(r2)
 estadd local conditioning="No Notificacion y Dia Tratamiento"
 
 
-esttab using "$directorio\Results\Results_2\Effect\Notification_dem.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Notification_dem.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "conditioning Conditioning" ) replace 
 	
 	
@@ -603,7 +603,7 @@ estadd scalar Erre=e(r2)
 estadd local conditioning="No Notificacion y Dia Tratamiento"
 
 
-esttab using "$directorio\Results\Results_2\Effect\Notification_actor.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Notification_actor.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "conditioning Conditioning" ) replace 	
 	
 ********************************************************************************
@@ -655,7 +655,7 @@ estadd scalar Erre=e(r2)
 estadd local conditioning="No Notificacion"
 	
 
-esttab using "$directorio\Results\Results_2\Effect\IV.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\IV.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "conditioning Conditioning") replace 
 	
 
@@ -702,38 +702,34 @@ estadd scalar Erre=e(r2)
 estadd local conditioning="No Notificacion"
 	
 
-esttab using "$directorio\Results\Results_2\Effect\Firststage.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Firststage.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "conditioning Conditioning") replace 
 ***************************************
 
 
 *Does calculator works even without survey?
 
-gen treatnosurv_act=dia_tratamiento*(1-registro_p_actora)
-gen treatnosurv_dem=dia_tratamiento*(1-registro_p_dem)
-
-
 eststo clear
 
 	*ACTOR
 *Reduced form
-eststo: reg convenio i.dia_tratamiento##0.registro_p_actora, robust
+eststo: reg convenio i.dia_tratamiento##no_encuestado, robust
 estadd scalar Erre=e(r2)
 *IV
 eststo: ivreg convenio  ///
-	(calcu_p_actora = dia_tratamiento  treatnosurv_act), robust first
+	(calcu_p_actora = dia_tratamiento  no_encuestado), robust first
 estadd scalar Erre=e(r2)
 
 	*DEMANDADO
 *Reduced form
-eststo: reg convenio i.dia_tratamiento##0.registro_p_dem, robust
+eststo: reg convenio i.dia_tratamiento##no_encuestado, robust
 estadd scalar Erre=e(r2)
 *IV
 eststo: ivreg convenio  ///
-	(calcu_p_dem = dia_tratamiento treatnosurv_dem), robust first
+	(calcu_p_dem = dia_tratamiento no_encuestado), robust first
 estadd scalar Erre=e(r2)
 
-esttab using "$directorio\Results\Results_2\Effect\treat_withoutsurvey.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\treat_withoutsurvey.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" ) replace 
 ***************************************
 
@@ -763,7 +759,7 @@ eststo: ivreg convenio junta_*  notificado ///
 estadd scalar Erre=e(r2)
 
 
-esttab using "$directorio\Results\Results_2\Effect\IV_2instruments.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\IV_2instruments.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" ) replace 
 
 ******************************************	
@@ -800,7 +796,7 @@ eststo: reg registro_p_dem junta_*  notificado ///
 estadd scalar Erre=e(r2)
 
 
-esttab using "$directorio\Results\Results_2\Effect\FirstStage_2instruments.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\FirstStage_2instruments.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" ) replace 
 	
 ********************************************************************************	
@@ -822,7 +818,7 @@ eststo: reg convenio i.calcu_p_actor i.calcu_p_dem i.era3_litigios i.erd3_litigi
 estadd scalar Erre=e(r2)
 
 
-esttab using "$directorio\Results\Results_2\Effect\Num_litigios.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Num_litigios.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared") replace 
 	
 
@@ -848,7 +844,7 @@ estadd scalar Erre=e(r2)
 qui su update_prob_rd
 estadd scalar IndVarMean=r(mean)
 
-esttab using "$directorio\Results\Results_2\Effect\Update_beleifs_prob.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Update_beleifs_prob.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "IndVarMean IndVarMean") replace 
 	
 **********
@@ -870,7 +866,7 @@ estadd scalar Erre=e(r2)
 qui su update_pago_rd
 estadd scalar IndVarMean=r(mean)
 
-esttab using "$directorio\Results\Results_2\Effect\Update_beleifs_pago.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Update_beleifs_pago.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "IndVarMean IndVarMean") replace 
 	
 	
@@ -960,7 +956,7 @@ estadd scalar Erre=e(r2)
 
 
 
-esttab using "$directorio\Results\Results_2\Effect\Conciliator.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Conciliator.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" ) replace 
 	
 
@@ -970,7 +966,7 @@ esttab using "$directorio\Results\Results_2\Effect\Conciliator.csv", se star(* 0
 *Controlling with answers of employee in entrance survey
 
 	*Summary Statistics of controls
-log using "$directorio\Results\Results_2\Effect\SS_control_survey.smcl", replace	
+log using "$directorio\Effect\SS_control_survey.smcl", replace	
 su i.ea3_enojo i.ea4_compra i.ea5_estudios i.ea6_trabaja i.ea7_busca_trabajo
 log close
 
@@ -989,7 +985,7 @@ eststo: reg convenio i.calcu_p_actora i.calcu_p_dem ///
 estadd scalar Erre=e(r2)
 
 
-esttab using "$directorio\Results\Results_2\Effect\Answers_employee.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Answers_employee.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" ) replace 
 	
 	
@@ -1001,14 +997,14 @@ keep if num_actores==1
 rename expediente exp
 duplicates drop  exp anio junta, force
 
-merge 1:1 exp anio junta using "$directorio\DB\DB2\Iniciales_wod.dta", keep(3)
+merge 1:1 exp anio junta  using "$directorio\DB\Iniciales_wod.dta", keep(3)
 
 
 *Controlling with iniciales
 
 	*Summary Statistics of controls
 sutex dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac, nobs minmax replace ///
-	file("$directorio\Results\Results_2\Effect\iniciales.tex") ///
+	file("$directorio\Effect\iniciales.tex") ///
 	title("Covariates iniciales") 
 
 eststo clear
@@ -1026,11 +1022,11 @@ eststo: reg convenio  i.calcu_p_actora i.calcu_p_dem ///
 estadd scalar Erre=e(r2)	
 
 
-esttab using "$directorio\Results\Results_2\Effect\Control_iniciales.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$directorio\Effect\Control_iniciales.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" ) replace 
 	
 
-*Take up treatment regression
+*Take up treatment regression (calculator)
 	
 eststo clear
 
@@ -1050,17 +1046,34 @@ qui su calcu_p_dem if dia_tratamiento==1
 estadd scalar DepVarMean=r(mean)
 
 
-eststo: reg dummy_calculadora_partes  ///
+esttab using "$directorio\Effect\Take_up_calc.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+	scalars("Erre R-squared" "DepVarMean DepVarMean") replace 
+	
+	
+*Take up treatment regression (survey)
+	
+eststo clear
+
+eststo: reg registro_p_actora ///
+	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac ///
+	if dia_tratamiento==1 , robust
+estadd scalar Erre=e(r2)
+qui su registro_p_actora if dia_tratamiento==1
+estadd scalar DepVarMean=r(mean)
+
+
+eststo: reg registro_p_dem  ///
 	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac ///
 	if dia_tratamiento==1, robust
 estadd scalar Erre=e(r2)
-qui su dummy_calculadora_partes if dia_tratamiento==1
+qui su registro_p_dem if dia_tratamiento==1
 estadd scalar DepVarMean=r(mean)
 
-esttab using "$directorio\Results\Results_2\Effect\Take_up.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+
+esttab using "$directorio\Effect\Take_up_survey.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean") replace 
 	
-
+	
 restore	
 
 ***************************************
