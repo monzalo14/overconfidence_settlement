@@ -11,6 +11,7 @@
 \usepackage{amsthm}
 \usepackage{subcaption}
 \usepackage{listings}
+\usepackage{lscape}
 \usepackage{tikz}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
 \usepackage{fullpage}
@@ -33,11 +34,9 @@
             \node[shape=circle,draw,inner sep=.05pt] (char) {#1};}}
             
 
-
 \newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em} {\thmnote{#3 }#1}
 \theoremstyle{named}
 \newtheorem*{namedtheorem}{}
-
 
 
 \newcounter{exercisecounter}
@@ -77,7 +76,7 @@
 \hrulefill
 
 
-\section{\Huge{Some Summary Statistics}}
+\section{Some Summary Statistics}
 
 \vspace{7mm}
 
@@ -89,7 +88,12 @@ Summary statistics of basic subject characteristics. All variables coming from c
 \scriptsize{\input{\folder/admin_stats.tex}}
 \end{center}
 
+
 \pagebreak
+
+\begin{center}
+\scriptsize{\input{\folder/TAB_survey.tex}}
+\end{center}
 
 \subsection*{Expectation Stats}
 
@@ -117,7 +121,7 @@ We provide two measures: Update in beliefs in probability and payment.\\
 \begin{center}
 \includegraphics[width=\textwidth]{./Figures/belief.pdf}
 \end{center}
-{\footnotesize \textit{The histograms are trimmed at the 90 percentile in the case for amount. Width of bins are \$50,000 pesos for the case of amount and 10\% for the case of probability.}}
+{\footnotesize \textit{The histograms are trimmed at the 75 percentile in the case for amount. Width of bins are \$30,000 pesos for the case of amount and 10\% for the case of probability.}}
 \end{figure}
 
 
@@ -126,7 +130,7 @@ We provide two measures: Update in beliefs in probability and payment.\\
 \begin{center}
 \includegraphics[width=\textwidth]{./Figures/update_belief.pdf}
 \end{center}
-{\footnotesize \textit{The histograms measures the update in relative terms. Width of bins is 0.25 }}
+{\footnotesize \textit{The histograms measures the update in relative terms. It displays the distribution from the percentile 5 to 95.}}
 \end{figure}
 
 \pagebreak
@@ -135,6 +139,36 @@ Now we test difference in initial and exit survey in expectations. The following
 
 \begin{center}
 \scriptsize{\input{\folder/ttest.tex}}
+\end{center}
+
+\pagebreak
+
+\section{ITT and ATT regressions}
+
+\begin{landscape}
+\subsection*{ITT and Second Stage ATT}
+
+\begin{center}
+\scriptsize{\input{\folder/ITT_ATT.tex}}
+\end{center}
+
+\end{landscape}
+
+\pagebreak
+
+
+\subsection*{First Stage for ATT regressions}
+
+\begin{center}
+\scriptsize{\input{\folder/FS_ATT.tex}}
+\end{center}
+
+
+\section{Take up regression (calculator and survey)}
+
+
+\begin{center}
+\scriptsize{\input{\folder/Take_up.tex}}
 \end{center}
 
 
