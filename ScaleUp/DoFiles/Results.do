@@ -340,59 +340,104 @@ foreach var of varlist erd1_prob_pago	erd2_cantidad_pago ///
 
 
 *HISTOGRAMS EXPECTATIONS 
+*Hight in mean for update in beleif graph
+local hightub=50
+*Hight in mean for initial beleif graph
+local hightib=20
 
-qui su update_pago_a if  update_pago_a>=-1.5 & update_pago_a <=2
 
-twoway (hist update_pago_a if update_pago_a>=-1.5 & update_pago_a <=2 ///
-	, percent w(.25) xlabel(-1.5(1)2)  ///
+local hb_pago=0	
+qui su update_pago_a, d	
+local hb_pago=max(`hb_pago', `r(p95)')
+qui su update_pago_ra, d	
+local hb_pago=max(`hb_pago', `r(p95)')
+qui su update_pago_rd, d	
+local hb_pago=max(`hb_pago', `r(p95)')
+
+local lb_pago=0	
+qui su update_pago_a, d	
+local lb_pago=min(`lb_pago', `r(p5)')
+qui su update_pago_ra, d	
+local lb_pago=min(`lb_pago', `r(p5)')
+qui su update_pago_rd, d	
+local lb_pago=min(`lb_pago', `r(p5)')
+
+local binwidth_pago=(`hb_pago'-`lb_pago')/9
+local step_pago=(`hb_pago'-`lb_pago')/2
+***
+
+local hb_pr=0	
+qui su update_prob_a, d	
+local hb_pr=max(`hb_pr', `r(p95)')
+qui su update_prob_ra, d	
+local hb_pr=max(`hb_pr', `r(p95)')
+qui su update_prob_rd, d	
+local hb_pr=max(`hb_pr', `r(p95)')
+
+local lb_pr=0	
+qui su update_prob_a, d	
+local lb_pr=min(`lb_pr', `r(p5)')
+qui su update_prob_ra, d	
+local lb_pr=min(`lb_pr', `r(p5)')
+qui su update_prob_rd, d	
+local lb_pr=min(`lb_pr', `r(p5)')
+
+local binwidth_pr=(`hb_pr'-`lb_pr')/9
+local step_pr=(`hb_pr'-`lb_pr')/2
+***
+
+qui su update_pago_a if  update_pago_a>=`lb_pago' & update_pago_a <=`hb_pago'
+
+twoway (hist update_pago_a if update_pago_a>=`lb_pago' & update_pago_a <=`hb_pago' ///
+	, percent w(`binwidth_pago') xlabel(`lb_pago' `step_pago' 0 `hb_pago')  ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  subtitle("Payment") legend(off)  ) ///
-	(scatteri 0 `r(mean)' 80 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightub' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(pago_a, replace) note("Number of observations: `r(N)'", size(small))
 	
-qui su update_pago_ra if  update_pago_ra>=-1.5 & update_pago_ra <=2
+qui su update_pago_ra if  update_pago_ra>=`lb_pago' & update_pago_ra <=`hb_pago'
 
-twoway (hist update_pago_ra if update_pago_ra>=-1.5 & update_pago_ra <=2 ///
-	, percent w(.25) xlabel(-1.5(1)2)  ///
+twoway (hist update_pago_ra if update_pago_ra>=`lb_pago' & update_pago_ra <=`hb_pago' ///
+	, percent w(`binwidth_pago') xlabel(`lb_pago' `step_pago' 0 `hb_pago')  ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")   legend(off)  ) ///
-	(scatteri 0 `r(mean)' 80 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightub' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(pago_ra, replace) note("Number of observations: `r(N)'", size(small))
 	
-qui su update_pago_rd if  update_pago_rd>=-1.5 & update_pago_rd <=2
+qui su update_pago_rd if  update_pago_rd>=`lb_pago' & update_pago_rd <=`hb_pago'
 
-twoway (hist update_pago_rd if update_pago_rd>=-1.5 & update_pago_rd <=2 ///
-	, percent w(.25) xlabel(-1.5(1)2)  ///
+twoway (hist update_pago_rd if update_pago_rd>=`lb_pago' & update_pago_rd <=`hb_pago' ///
+	, percent w(`binwidth_pago') xlabel(`lb_pago' `step_pago' 0 `hb_pago') ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  legend(off)  ) ///
-	(scatteri 0 `r(mean)' 80 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightub' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(pago_rd, replace) note("Number of observations: `r(N)'", size(small))
 	
-qui su update_prob_a if  update_prob_a>=-1 & update_prob_a <=4
+qui su update_prob_a if  update_prob_a>=`lb_pr' & update_prob_a <=`hb_pr'
 
-twoway (hist update_prob_a if update_prob_a>=-1 & update_prob_a <=4 ///
-	, percent w(.25) xlabel(-1(1)4)  ///
+twoway (hist update_prob_a if update_prob_a>=`lb_pr' & update_prob_a <=`hb_pr' ///
+	, percent w(`binwidth_pr') xlabel(`lb_pr' `step_pr' 0 `hb_pr')  ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  subtitle("Probability") legend(off)  ) ///
-	(scatteri 0 `r(mean)' 70 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightub' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(prob_a, replace) note("Number of observations: `r(N)'", size(small))
 
-qui su update_prob_ra if  update_prob_ra>=-1 & update_prob_ra <=4
+qui su update_prob_ra if  update_prob_ra>=`lb_pr' & update_prob_ra <=`hb_pr'
 
-twoway (hist update_prob_ra if update_prob_ra>=-1 & update_prob_ra <=4 ///
-	, percent w(.25) xlabel(-1(1)4) ///
+twoway (hist update_prob_ra if update_prob_ra>=`lb_pr' & update_prob_ra <=`hb_pr' ///
+	, percent w(`binwidth_pr') xlabel(`lb_pr' `step_pr' 0 `hb_pr') ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  legend(off)  ) ///
-	(scatteri 0 `r(mean)' 70 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightub' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(prob_ra, replace) note("Number of observations: `r(N)'", size(small))
 		
-qui su update_prob_rd if  update_prob_rd>=-1 & update_prob_rd <=4
+qui su update_prob_rd if  update_prob_rd>=`lb_pr' & update_prob_rd <=`hb_pr'
 
-twoway (hist update_prob_rd if update_prob_rd>=-1 & update_prob_rd <=4 ///
-	, percent w(.25) xlabel(-1(1)4)  ///
+twoway (hist update_prob_rd if update_prob_rd>=`lb_pr' & update_prob_rd <=`hb_pr' ///
+	, percent w(`binwidth_pr') xlabel(`lb_pr' `step_pr' 0 `hb_pr')  ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  legend(off)  ) ///
-	(scatteri 0 `r(mean)' 80 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightub' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(prob_rd, replace) note("Number of observations: `r(N)'", size(small))
 
 
@@ -430,7 +475,7 @@ twoway (hist ea2_cantidad_pago if   ea2_cantidad_pago <=`cutoff' ///
 	, percent w(`width') xlabel(0(`jump')`cutoff')  ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  subtitle("Payment")  legend(off)  ) ///
-	(scatteri 0 `r(mean)' 80 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightib' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(pago_a, replace) note("Number of observations: `r(N)'", size(small))
 		
 qui su era2_cantidad_pago if   era2_cantidad_pago <=`cutoff'
@@ -439,7 +484,7 @@ twoway (hist era2_cantidad_pago if   era2_cantidad_pago <=`cutoff' ///
 	, percent w(`width') xlabel(0(`jump')`cutoff')  ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")   legend(off)  ) ///
-	(scatteri 0 `r(mean)' 80 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightib' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(pago_ra, replace) note("Number of observations: `r(N)'", size(small))
 		
 qui su ea2_cantidad_pago if   ea2_cantidad_pago <=`cutoff'
@@ -448,7 +493,7 @@ twoway (hist ea2_cantidad_pago if   ea2_cantidad_pago <=`cutoff' ///
 	, percent w(`width') xlabel(0(`jump')`cutoff')  ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")   legend(off)  ) ///
-	(scatteri 0 `r(mean)' 80 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightib' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(pago_rd, replace) note("Number of observations: `r(N)'", size(small))
 	
 	
@@ -459,7 +504,7 @@ twoway (hist ea1_prob_pago ///
 	, percent w(10) xlabel(0(10)100)  ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  subtitle("Probability") legend(off)  ) ///
-	(scatteri 0 `r(mean)' 40 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightib' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(prob_a, replace) note("Number of observations: `r(N)'", size(small))
 
 qui su era1_prob_pago 
@@ -468,7 +513,7 @@ twoway (hist era1_prob_pago  ///
 	, percent w(10) xlabel(0(10)100) ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  legend(off)  ) ///
-	(scatteri 0 `r(mean)' 25 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightib' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(prob_ra, replace) note("Number of observations: `r(N)'", size(small))
 		
 qui su erd1_prob_pago
@@ -477,7 +522,7 @@ twoway (hist erd1_prob_pago ///
 	, percent w(10) xlabel(0(10)100) ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  legend(off)  ) ///
-	(scatteri 0 `r(mean)' 40 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' `hightib' `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(prob_rd, replace) note("Number of observations: `r(N)'", size(small))
 
 
@@ -802,6 +847,109 @@ esttab using "$directorio\Effect\FirstStage_2instruments.csv", se star(* 0.1 ** 
 ********************************************************************************	
 
 
+*ITT
+
+eststo clear
+
+*ITT
+eststo: reg convenio dia_tratamiento, robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg convenio dia_tratamiento junta_* notificado , robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg convenio dia_tratamiento##p_actor junta_* notificado , robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg convenio dia_tratamiento##0.no_encuestado junta_* notificado , robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg convenio dia_tratamiento##c.num_conciliadores junta_* notificado , robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg convenio dia_tratamiento##c.busyness junta_* notificado , robust 
+estadd scalar Erre=e(r2)
+
+*ATT
+gen calcu_a_x_ep=calcu_p_actora*p_actor
+gen calcu_d_x_ep=calcu_p_dem*p_actor
+
+gen dt_x_ep=dia_tratamiento*p_actor
+
+
+	*PLAINTIFF
+eststo: ivreg convenio junta_*  notificado ///
+	(calcu_p_actora = dia_tratamiento  ) ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+eststo: ivreg convenio junta_* notificado ///
+	(calcu_p_actora calcu_a_x_ep =  dia_tratamiento dt_x_ep) ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+	*DEFENDANT
+eststo: ivreg convenio junta_*  notificado ///
+	(calcu_p_dem = dia_tratamiento  ) ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+eststo: ivreg convenio junta_* notificado ///
+	(calcu_p_dem calcu_d_x_ep =  dia_tratamiento dt_x_ep) ///
+	, robust
+estadd scalar Erre=e(r2)
+
+
+esttab using "$directorio\Effect\ITT_ATT.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+	scalars("Erre R-squared" ) replace 
+
+******************************************	
+	
+*First Stage
+
+eststo clear
+
+	*PLAINTIFF
+eststo: reg calcu_p_actora dia_tratamiento junta_*  notificado ///
+	if convenio!=.  ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg calcu_p_actora dia_tratamiento dt_x_ep junta_*  notificado ///
+	if convenio!=.  ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg calcu_a_x_ep dia_tratamiento dt_x_ep junta_*  notificado ///
+	if convenio!=.  ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+	*DEFENDANT
+eststo: reg calcu_p_dem dia_tratamiento junta_*  notificado ///
+	if convenio!=.  ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg calcu_p_dem dia_tratamiento dt_x_ep junta_*  notificado ///
+	if convenio!=.  ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+eststo: reg calcu_d_x_ep dia_tratamiento dt_x_ep junta_*  notificado ///
+	if convenio!=.  ///
+	, robust 
+estadd scalar Erre=e(r2)
+
+
+esttab using "$directorio\Effect\FS_ATT.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+	scalars("Erre R-squared" ) replace 
+	
+	
+
+********************************************************************************
+
+
 *Controlling for number of litigios
 
 eststo clear
@@ -995,6 +1143,7 @@ preserve
 *Merge with iniciales DB
 keep if num_actores==1 
 rename expediente exp
+rename ao anio
 duplicates drop  exp anio junta, force
 
 merge 1:1 exp anio junta  using "$directorio\DB\Iniciales_wod.dta", keep(3)
@@ -1003,22 +1152,22 @@ merge 1:1 exp anio junta  using "$directorio\DB\Iniciales_wod.dta", keep(3)
 *Controlling with iniciales
 
 	*Summary Statistics of controls
-sutex dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac, nobs minmax replace ///
+sutex gen  c_antiguedad  c_indem reinst tipo_abogado_ac, nobs minmax replace ///
 	file("$directorio\Effect\iniciales.tex") ///
 	title("Covariates iniciales") 
 
 eststo clear
 
 eststo: reg convenio  i.calcu_p_actora ///
-	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac, robust
+	gen  c_antiguedad  c_indem reinst tipo_abogado_ac, robust
 estadd scalar Erre=e(r2)
 
 eststo: reg convenio  i.calcu_p_dem ///
-	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac, robust
+	gen  c_antiguedad  c_indem reinst tipo_abogado_ac, robust
 estadd scalar Erre=e(r2)	
 
 eststo: reg convenio  i.calcu_p_actora i.calcu_p_dem ///
-	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac, robust
+	gen  c_antiguedad  c_indem reinst tipo_abogado_ac, robust
 estadd scalar Erre=e(r2)	
 
 
@@ -1031,7 +1180,7 @@ esttab using "$directorio\Effect\Control_iniciales.csv", se star(* 0.1 ** 0.05 *
 eststo clear
 
 eststo: reg calcu_p_actora ///
-	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac ///
+	gen  c_antiguedad  c_indem reinst tipo_abogado_ac ///
 	if dia_tratamiento==1 , robust
 estadd scalar Erre=e(r2)
 qui su calcu_p_actora if dia_tratamiento==1
@@ -1039,7 +1188,7 @@ estadd scalar DepVarMean=r(mean)
 
 
 eststo: reg calcu_p_dem  ///
-	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac ///
+	gen  c_antiguedad  c_indem reinst tipo_abogado_ac ///
 	if dia_tratamiento==1, robust
 estadd scalar Erre=e(r2)
 qui su calcu_p_dem if dia_tratamiento==1
@@ -1055,7 +1204,7 @@ esttab using "$directorio\Effect\Take_up_calc.csv", se star(* 0.1 ** 0.05 *** 0.
 eststo clear
 
 eststo: reg registro_p_actora ///
-	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac ///
+	gen  c_antiguedad  c_indem reinst tipo_abogado_ac ///
 	if dia_tratamiento==1 , robust
 estadd scalar Erre=e(r2)
 qui su registro_p_actora if dia_tratamiento==1
@@ -1063,7 +1212,7 @@ estadd scalar DepVarMean=r(mean)
 
 
 eststo: reg registro_p_dem  ///
-	dummy_gen  c_antiguedad  c_indem dummy_reinst tipo_abogado_ac ///
+	gen  c_antiguedad  c_indem reinst tipo_abogado_ac ///
 	if dia_tratamiento==1, robust
 estadd scalar Erre=e(r2)
 qui su registro_p_dem if dia_tratamiento==1

@@ -7,8 +7,7 @@ set more off
 global directorio C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
 
 ********************************************************************************
-
-use "$directorio\DB\Iniciales.dta", clear
+import delimited "$directorio\DB\bases_iniciales.csv", clear
 duplicates drop  exp anio junta, force
 save "$directorio\DB\Iniciales_wod.dta", replace
 
@@ -20,6 +19,7 @@ import delimited "$directorio\DB\seguimiento_audiencias_mc.csv", clear
 
 drop update*
 drop junta_2
+drop v1
 *Necesito una variable que indiue junta
 
 *Presence of parts
