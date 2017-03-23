@@ -1,3 +1,4 @@
+source('00_setup')
 source('toolbox.R')
 
 # Cargamos ambas bases: dfp para el piloto, dfs para el scale-up
@@ -86,4 +87,14 @@ df <- rbind(dfp_selected, dfs_selected)
 # Meter iniciales y encuestas
 # Sumar conciliadores activos en ese horario y hacer medida de busyness del conciliador
 # *Recordar: ¿clustering de SEs?
+
+#Guardamos en RDS
+
+saveRDS(df, '../DB/seguimiento_joint.RDS')
+saveRDS(dfp, '../DB/seguimiento_pilot.RDS')
+
+# Guardamos en csv
+
+write.csv(df, '../DB/seguimiento_joint.csv')
+write.csv(dfp, '../DB/seguimiento_pilot.csv')
 

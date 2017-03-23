@@ -1,6 +1,3 @@
-# Pedos de encoding en Bach
-Sys.setlocale('LC_ALL', 'es_ES')  
-
 instalar <- function(paquete) {
   if (!require(paquete,character.only = TRUE, 
                quietly = TRUE, 
@@ -16,7 +13,7 @@ instalar <- function(paquete) {
 }
 
 paquetes <- c('dplyr', 'lubridate', 'ggplot2', 'Hmisc', 'RColorBrewer', 'psych', 'knitr', 'vcd',
-              'devtools', 'readxl')
+              'devtools', 'readxl', 'stringr')
 
 lapply(paquetes, instalar)
 rm(paquetes, instalar)
