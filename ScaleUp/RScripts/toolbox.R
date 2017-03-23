@@ -61,12 +61,15 @@ joint_vars <- c('junta',
                 'p_rdem',
                 'convenio',
                 'desistimiento',
+                'notificado',
+                'tratamiento', 
                 'num_conciliadores',
                 'junta_2',
                 'junta_7',
                 'junta_9', 
                 'junta_11',
                 'junta_16',
-                'dummy_calculadora_partes'
+                'dummy_calculadora_partes',
+                'piloto_1'
 )
 
