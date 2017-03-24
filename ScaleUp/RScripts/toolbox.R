@@ -20,7 +20,7 @@ nombres_pilot <- list('p_demandado' = 'p_dem',
                      'cantidad_de_convenio' = 'cantidad_convenio',
                      'cantidad_de_desistimiento' = 'cantidad_desistimiento',
                      'se_concilio' = 'convenio',
-                     'se_desisti' = 'desistimiento',
+                     'se_desistio' = 'desistimiento',
                      'horario_audiencia' = 'horario_aud')
 
 get_name <- function(x){
@@ -70,6 +70,8 @@ joint_vars <- c('junta',
                 'junta_11',
                 'junta_16',
                 'dummy_calculadora_partes',
-                'piloto_1'
+                'piloto_1',
+                'calcu_p_actora', 
+                'calcu_p_dem'
 )
 

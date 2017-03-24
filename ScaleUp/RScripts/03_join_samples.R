@@ -1,4 +1,4 @@
-source('00_setup')
+source('00_setup.R')
 source('toolbox.R')
 
 # Cargamos ambas bases: dfp para el piloto, dfs para el scale-up
@@ -49,7 +49,9 @@ dfp <- dfp %>%
          conciliadores = 'AGUSTIN;MARGARITA',
          junta = '7',
          piloto_1 = 1,
-         horario_audiencia = limpia_horario_pilot(horario_audiencia)) %>%
+         horario_audiencia = limpia_horario_pilot(horario_audiencia),
+         calcu_p_actora = 1,
+         calcu_p_dem = 1) %>%
   decode_names_df()
   
 # Pilot crear dummies de junta y de conciliadores
@@ -73,7 +75,7 @@ for(jun in juntas){
   dfp[paste("junta", jun, sep = "_")] <- ifelse(dfp$junta == jun, 1, 0)
 }
 
-dfp$num_conciliadores <- dfp %>% select(starts_with('conciliador_')) %>% rowSums
+dfp$num_conciliadores <- dfp %>% select(starts_with('conciliador_')) %>% rowSums()
 
 dfp_selected <- dfp %>% 
   select(one_of(joint_vars))
@@ -95,6 +97,6 @@ saveRDS(dfp, '../DB/seguimiento_pilot.RDS')
 
 # Guardamos en csv
 
-write.csv(df, '../DB/seguimiento_joint.csv')
-write.csv(dfp, '../DB/seguimiento_pilot.csv')
+write.csv(df, '../DB/seguimiento_joint.csv', na = '')
+write.csv(dfp, '../DB/seguimiento_pilot.csv', na = '')
 
