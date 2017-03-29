@@ -1,9 +1,17 @@
+/*******************************************************************************
+This do file creates the ITT and ATT tables from the joint database
+*******************************************************************************/
+
+clear
+set more off
+global directorio C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
+
 ********************************************************************************
 import delimited "$directorio\DB\seguimiento_joint.csv", clear 
 
 drop junta_2
 drop v1
-*Necesito una variable que indiue junta
+*Necesito una variable que indique junta
 
 *Presence of parts
 foreach var of varlist p_* {
@@ -38,7 +46,8 @@ estadd scalar Erre=e(r2)
 eststo: reg convenio tratamiento##c.num_conciliadores junta_* notificado , robust 
 estadd scalar Erre=e(r2)
 
-
+*We only keep data from the ScaleUp
+ 
 keep if piloto_1==0
 
 *ATT
