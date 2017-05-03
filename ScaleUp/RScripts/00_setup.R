@@ -12,8 +12,8 @@ instalar <- function(paquete) {
   }
 }
 
-paquetes <- c('dplyr', 'lubridate', 'ggplot2', 'Hmisc', 'RColorBrewer', 'psych', 'knitr', 'vcd',
-              'devtools', 'readxl', 'stringr')
+paquetes <- c('dplyr', 'lubridate', 'ggplot2', 'tidyr', 'Hmisc', 'RColorBrewer', 'psych', 'knitr', 'vcd',
+              'devtools', 'readxl', 'stringr', 'foreign', 'lattice')
 
 lapply(paquetes, instalar)
 rm(paquetes, instalar)
