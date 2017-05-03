@@ -1,8 +1,7 @@
 clear
 set more off
 global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
-global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\Overconfidence and settlement
-
+global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\Paper
 ********************************************************************************
 	*DB: Calculator:5005
 import delimited "$directorio\DB\observaciones_tope.csv", clear 
@@ -82,6 +81,19 @@ gen perc_con_t2=.
 gen perc_con_t3=.
 gen time=.
 
+*Months after treatment
+gen fechatreat=date(fechalista,"DMY")
+gen months_after_treat=(fechater-fechatreat)/30
+replace months_after_treat=. if months_after_treat<0
+xtile perc_at=months_after_treat, nq(99)
+replace months_after_treat=. if perc_at>=99
+
+gen perc_con_pilot_at=.
+gen perc_con_t1_at=.
+gen perc_con_t2_at=.
+gen perc_con_t3_at=.
+
+
 qui su con
 local obs=`r(N)'
 qui su con if tratamientoquelestoco==1
@@ -91,6 +103,7 @@ local obs2=`r(N)'
 qui su con if tratamientoquelestoco==3
 local obs3=`r(N)'
 local n=1
+*Conciliation after initial sue
 forvalues i=0(0.25)60 {
 
 	*Total
@@ -110,25 +123,57 @@ forvalues i=0(0.25)60 {
 	local n=`n'+1
 	
 	}
+local n=1	
+*Conciliation after treatment
+forvalues i=0(0.25)7 {
+
+	*Total
+	qui count if  months_after_treat<=`i' & con==1
+	qui replace perc_con_pilot_at=`r(N)'/`obs' in `n'
+	*Control
+	qui count if  months_after_treat<=`i' & con==1 & tratamientoquelestoco==1
+	qui replace perc_con_t1_at=`r(N)'/`obs1' in `n'
+	*Calculator
+	qui count if  months_after_treat<=`i' & con==1 & tratamientoquelestoco==2
+	qui replace perc_con_t2_at=`r(N)'/`obs2' in `n'	
+	*Conciliator
+	qui count if  months_after_treat<=`i' & con==1 & tratamientoquelestoco==3
+	qui replace perc_con_t3_at=`r(N)'/`obs3' in `n'	
+	
+	qui replace time=`i' in `n'
+	local n=`n'+1
+	
+	}
 
 keep perc_con* time
 drop if time==.
 merge 1:1 time using `temp5005', nogen
 
+*Months after treatment
+twoway 	(line perc_con_t1_at time if time<=7, lwidth(medthick) lpattern(solid)) ///
+		(line perc_con_t2_at time if time<=7, lwidth(medthick) lpattern(dash)) ///
+		(line perc_con_t3_at time if time<=7, lwidth(medthick) lpattern(dot)) ///
+	, graphregion(color(none)) scheme(s2mono)  ///
+	xtitle("Months after treatment") ytitle(" ") ///
+	xlabel(0(2)7) ///
+	legend(order(1 "Ctrl" 2 "Calc" 3 "Conc") rows(1)) name(treat, replace)
+
+*Months after initial sue
 twoway 	(line perc_con_t1 time, lwidth(medthick) lpattern(solid)) ///
 		(line perc_con_t2 time, lwidth(medthick) lpattern(dash)) ///
 		(line perc_con_t3 time, lwidth(medthick) lpattern(dot)) ///
 	, graphregion(color(none)) scheme(s2mono)  ///
 	xtitle("Months after initial sue") ytitle(" ") ///
 	xlabel(0(10)60) ///
-	legend(order(1 "Ctrl" 2 "Calc" 3 "Conc") rows(1)) name(treat, replace)
-	
+	legend(order(1 "Ctrl" 2 "Calc" 3 "Conc") rows(1)) name(sue, replace)
+
+*HD	
 twoway 	(line perc_con_5005 time, lwidth(medthick) lpattern(solid)) ///
 		(line perc_con_5005 time, lwidth(medthick) lpattern(solid)) ///
 	, graphregion(color(none)) scheme(s2mono)  ///
-	xtitle("Months after initial sue") ytitle("Percentage of conciliation files") ///
+	xtitle("Months after initial sue") ytitle("Percentage of conciliation") ///
 	xlabel(0(10)60) ///
 	legend(order(1 "DB: 5005")) name(db5005, replace)
 
-graph combine db5005 treat,  row(1)  graphregion(color(none)) scheme(s2mono)
+graph combine db5005 sue treat,  row(1)  graphregion(color(none)) scheme(s2mono)
 graph export "$sharelatex/Figuras/con_overtime.pdf", replace 

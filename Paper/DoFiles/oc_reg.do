@@ -65,6 +65,7 @@ eststo: reg  c.rel_oc ///
 estadd scalar Erre=e(r2)
 qui su rel_oc 
 estadd scalar OCMean=r(mean)
+estadd scalar OCSD=r(sd)
 
 eststo: reg  c.rel_oc ///
 	abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -73,6 +74,7 @@ eststo: reg  c.rel_oc ///
 estadd scalar Erre=e(r2)
 qui su rel_oc 
 estadd scalar OCMean=r(mean)
+estadd scalar OCSD=r(sd)
 
 eststo: reg  c.rel_oc ///
 	abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -81,6 +83,7 @@ eststo: reg  c.rel_oc ///
 estadd scalar Erre=e(r2)
 qui su rel_oc 
 estadd scalar OCMean=r(mean)
+estadd scalar OCSD=r(sd)
 
 eststo: reg  c.rel_oc ///
 	abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -89,7 +92,7 @@ eststo: reg  c.rel_oc ///
 estadd scalar Erre=e(r2)
 qui su rel_oc 
 estadd scalar OCMean=r(mean)
-
+estadd scalar OCSD=r(sd)
 
 
 ********************************EMPLOYEE'S LAWYER*******************************
@@ -147,7 +150,7 @@ eststo: reg  c.rel_oc ///
 estadd scalar Erre=e(r2)
 qui su rel_oc 
 estadd scalar OCMean=r(mean)
-
+estadd scalar OCSD=r(sd)
 
 
 ********************************FIRM'S LAWYER*******************************
@@ -205,9 +208,9 @@ eststo: reg  c.rel_oc ///
 estadd scalar Erre=e(r2)
 qui su rel_oc 
 estadd scalar OCMean=r(mean)
-
+estadd scalar OCSD=r(sd)
 
 *************************
 
 esttab using "$directorio\Results\Results_3\Regressions\oc_reg.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
-	scalars("Erre R-squared" "OCMean OC_Mean") replace 
+	scalars("Erre R-squared" "OCMean OC_Mean" "OCSD OCSD") replace 

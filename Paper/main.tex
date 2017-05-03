@@ -8,7 +8,7 @@
 
 \title{Overconfidence and settlement: evidence from Mexican labor courts\thanks{We would like to thank Sebastian Garcia, Isaac Meza, Diana Roman, and Monica Zamudio (``la banda pesada'' and ``los mas aca'') for superhuman research assistance.  All errors are ours.}}
 \author{Joyce Sadka \and Enrique Seira  \and Christopher Woodruff }
-\date{This draft:  20 January, 2017 \\[2 cm]}
+\date{This draft:  \today \\[2 cm]}
 
 %\vspace{.5in}
 
@@ -336,10 +336,21 @@ We have much left to do. In a current scale up for first hearings, we elicit exp
     \end{center}
     \footnotesize    
     \textit{Notes:} 
-    Summary stats of beliefs, total \& by type of (employee's) lawyer. First column displays beliefs without any conditioning, second columns conditions on knowing type of lawyer. Third and fourth columns of Panel B and C are condition on employee answering the survey so that comparison across is allowed.
+    Summary stats of beliefs, total \& by type of (employee's) lawyer.
     \textit{Do file: } \texttt{Table\_SS.do  Table\_SS\_bylawyer.do}
 \end{table}
 
+\begin{table}[H]
+    \caption{Baseline expectations comparison between parts}
+    \label{Table_expectations_plaintiff_defendant}
+    \begin{center}
+       \scriptsize{\input{./Tables/SS_B.tex}}
+    \end{center}
+    \footnotesize    
+    \textit{Notes:} 
+    
+    \textit{Do file: } \texttt{Table\_SS\_bylawyer.do}
+\end{table}
 
 \pagebreak
 
@@ -385,7 +396,8 @@ We have much left to do. In a current scale up for first hearings, we elicit exp
 \end{center}
  \footnotesize
 \textit{Notes:} 
-Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very angry, and the scale is increasing. We use a measure of relative overconvidence which is the \textit{percentage} quantity expected over the calculators prediction.
+\emph{Mistreated} variable refers to the survey question: "How well do you think you were treated by the firm?". The omitted category is "Very Good", while 1, 2 and 3 refer to "Fairly Well", "Not so well" and "Not well at all".
+Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very good, and the scale is increasing, i.e. the worker feels more mistreated . We use a measure of relative overconfidence which is the \textit{percentage} quantity expected over the calculators prediction.
 \textit{Do file: } \texttt{oc\_reg.do oc\_reg\_B.do}
 \end{table}
 

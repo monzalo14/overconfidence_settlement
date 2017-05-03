@@ -20,19 +20,19 @@ X = xlsread('X.xlsx');
 
 tic
 [I1, xcut(1),ycut(1),l1,m(1,1) ] = optim2d_conv( X ,1, [0,0] );
-t(1,1)=toc;
+time(1,1)=toc;
 
 tic
 [I2, xcut(2),ycut(2),l2,m(2,1) ] = optim2d_conv( X ,2, [0,0] );
-t(2,1)=toc;
+time(2,1)=toc;
 
 tic
 [I3, xcut(3),ycut(3),l3,m(3,1) ] = optim2d_conv( X ,3, [0,0] );
-t(3,1)=toc;
+time(3,1)=toc;
 
 tic
 [I4, xcut(4),ycut(4),l4,m(4,1) ] = optim2d_conv( X ,4, [0,0] );
-t(4,1)=toc;
+time(4,1)=toc;
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
