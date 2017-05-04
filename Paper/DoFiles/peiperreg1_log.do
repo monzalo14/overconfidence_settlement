@@ -34,6 +34,11 @@ replace liq_total=log(liq_total)
 replace c_total=1 if c_total==0
 replace c_total=log(c_total)
 
+*Tenure | Daily wage | Weekle hours in logs
+foreach var of varlist c_antiguedad salario_diario horas_sem {
+	replace `var'=1 if `var'==0
+	replace `var'=log(`var')
+	}
 
 /***********************
        REGRESSIONS

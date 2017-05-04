@@ -1,8 +1,7 @@
 /* Tabla de summary statistics de variables dependeintes e independientes de las 
 diversas regresiones */
 
-global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\Overconfidence and settlement
-
+global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\Paper
 
 ********************************************************************************
 	*DB: Calculator:5005
@@ -401,18 +400,7 @@ local n=5
 local m=6
 foreach var of varlist masprob dineromasprob tiempomasprob ///
 	{
-	qui su `var' 
-	
-	*Mean
-	local mu=round(r(mean),0.01)
-	qui putexcel B`n'=("`mu'")  using "$sharelatex/Tables/SS.xlsx", ///
-		sheet("SS_A") modify			
-	*Std Dev
-	local std=round(r(sd),0.01)
-	local sd="(`std')"
-	qui putexcel B`m'=("`sd'")  using "$sharelatex/Tables/SS.xlsx", ///
-		sheet("SS_A") modify	
-		
+
 	qui su `var' if tipodeabogadocalc!=.
 	
 	*Mean
@@ -430,11 +418,7 @@ foreach var of varlist masprob dineromasprob tiempomasprob ///
 	}
 
 	*Obs
-	qui su tiempomasprob 
-	qui putexcel B11=("`r(N)'")  using "$sharelatex/Tables/SS.xlsx", ///
-	sheet("SS_A") modify
-	
-	qui su tiempomasprob if tipodeabogadocalc!=.
+	qui su masprob if tipodeabogadocalc!=.
 	qui putexcel C11=("`r(N)'")  using "$sharelatex/Tables/SS.xlsx", ///
 	sheet("SS_A") modify
 
@@ -452,18 +436,7 @@ local n=13
 local m=14
 foreach var of varlist masprob dineromasprob tiempomasprob ///
 	{
-	qui su `var'
-		
-	*Mean
-	local mu=round(r(mean),0.01)
-	qui putexcel B`n'=("`mu'")  using "$sharelatex/Tables/SS.xlsx", ///
-		sheet("SS_A") modify			
-	*Std Dev
-	local std=round(r(sd),0.01)
-	local sd="(`std')"
-	qui putexcel B`m'=("`sd'")  using "$sharelatex/Tables/SS.xlsx", ///
-		sheet("SS_A") modify						
-	
+
 	qui su `var' if tipodeabogadocalc!=.
 	
 	*Mean
@@ -481,11 +454,7 @@ foreach var of varlist masprob dineromasprob tiempomasprob ///
 	}
 
 	*Obs
-	qui su tiempomasprob 
-	qui putexcel B19=("`r(N)'")  using "$sharelatex/Tables/SS.xlsx", ///
-	sheet("SS_A") modify
-	
-	qui su tiempomasprob if tipodeabogadocalc!=.
+	qui su masprob if tipodeabogadocalc!=.
 	qui putexcel C19=("`r(N)'")  using "$sharelatex/Tables/SS.xlsx", ///
 	sheet("SS_A") modify
 	
@@ -504,18 +473,7 @@ local n=21
 local m=22
 foreach var of varlist masprob dineromasprob tiempomasprob ///
 	{
-	qui su `var'
-	
-	*Mean
-	local mu=round(r(mean),0.01)
-	qui putexcel B`n'=("`mu'")  using "$sharelatex/Tables/SS.xlsx", ///
-		sheet("SS_A") modify			
-	*Std Dev
-	local std=round(r(sd),0.01)
-	local sd="(`std')"
-	qui putexcel B`m'=("`sd'")  using "$sharelatex/Tables/SS.xlsx", ///
-		sheet("SS_A") modify			
-			
+
 	qui su `var' if tipodeabogadocalc!=.
 	
 	*Mean
@@ -533,11 +491,7 @@ foreach var of varlist masprob dineromasprob tiempomasprob ///
 	}
 
 	*Obs
-	qui su tiempomasprob 
-	qui putexcel B27=("`r(N)'")  using "$sharelatex/Tables/SS.xlsx", ///
-	sheet("SS_A") modify
-	
-	qui su tiempomasprob if tipodeabogadocalc!=.
+	qui su masprob if tipodeabogadocalc!=.
 	qui putexcel C27=("`r(N)'")  using "$sharelatex/Tables/SS.xlsx", ///
 	sheet("SS_A") modify
 	
