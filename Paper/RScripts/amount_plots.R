@@ -23,10 +23,7 @@ df <- readRDS('../DB/observaciones.RDS') %>%
   filter(!(modo_termino == 2 & liq_total != 0), 
          !(modo_termino == 4 & liq_total !=0)) # %>%
 # mutate_each(funs(((function(x){x/1000})(.))), one_of(vars))
-```
 
-
-```{r}
 # Preparo los datos para tener la matriz que necesito de modos de tÃ©rmino, nombre de la variable y cantidad promedio.
 df_plot <- df %>%
   select(one_of(vars), modo_termino) %>%
@@ -47,7 +44,7 @@ rownames(df_plot) <- c('Amount asked', 'Amount won', 'Min. comp. by law', 'Min. 
 colnames(df_plot) <- c('Conciliation', 'Drop', 'Court ruling', 'Expiry')
 ylim <- range(df_plot)*c(1,1.25)
 
-# Generamos los porcentajes que necesitamos de cada modo de término:
+# Generamos los porcentajes que necesitamos de cada modo de t�rmino:
 prop_mt <- df %>% count(modo_termino) %>% 
   mutate(n = n*100 / nrow(df)) %>%
   filter(!is.na(modo_termino))
@@ -55,7 +52,7 @@ prop_mt <- df %>% count(modo_termino) %>%
 prop_mt_leg <- paste0(colnames(df_plot), ' - ',
                       substr(as.character(prop_mt$n), 1, 5), '%')
 
-# Defino las gráficas y les pongo legends
+# Defino las gr�ficas y les pongo legends
 
 par(mar = c(6.1, 5.1, 2.1, 3.1))
 barplot(df_plot, 
