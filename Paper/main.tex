@@ -305,8 +305,10 @@ We have much left to do. In a current scale up for first hearings, we elicit exp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %BIBLIOGRAPHY
 \nocite{*}
-\printbibliography
 
+%\bibliographystyle{apalike}
+%\bibliography{References}
+\printbibliography
 
 
 
@@ -336,18 +338,18 @@ We have much left to do. In a current scale up for first hearings, we elicit exp
     \end{center}
     \footnotesize    
     \textit{Notes:} 
-    Summary stats of beliefs, total \& by type of (employee's) lawyer.
+    Summary statistics of parties' beliefs. We show mean and standard deviation for the whole sample, \& dividing by type of employee's lawyer.
     \textit{Do file: } \texttt{Table\_SS.do  Table\_SS\_bylawyer.do}
 \end{table}
 
 \begin{table}[H]
-    \caption{Baseline expectations comparison between parts}
+    \caption{Baseline expectations comparison between parties}
     \label{Table_expectations_plaintiff_defendant}
     \begin{center}
        \scriptsize{\input{./Tables/SS_B.tex}}
     \end{center}
     \footnotesize    
-    \textit{Notes:} 
+    \textit{Notes: Summary statistics on parties' beliefs, conditioning on having survey data for both parties. Since there are few observations for which both client and lawyer answered the survey, we take a simple average whenever that is the case.} 
     
     \textit{Do file: } \texttt{Table\_SS\_bylawyer.do}
 \end{table}
@@ -614,10 +616,10 @@ The number of cases assigned to the 3 different groups is very similar, and is c
     \caption{Differences in claims and compensation by case file outcome}
     \label{claimsvsoutcomes}
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{Amountasked.png}
+        \includegraphics[width=0.7\textwidth]{Amountasked.tiff}
         \end{center}
     \footnotesize \textit{Notes: This graph shows the average amount (in thousand pesos) asked, won, minimum legal compensation, and minimum legal compensation plus lost wages, by outcome. The bottom legend shows the percentage of cases with each outcome for our database (N=5005). Note that, by definition, workers have no chance of recovery in drops and expiries. In our data, all settlements imply a positive recovery for the worker; finally, \textbf{for judgments, only 24\% of the time does the worker recover anything.}} 
-    {\footnotesize \textit{Script: } \texttt{Amounts.Rmd}}
+    {\footnotesize \textit{Script: } \texttt{amount\_plots.R}}
 \end{figure}
 
 
