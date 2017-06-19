@@ -317,30 +317,30 @@ We have much left to do. In a current scale up for first hearings, we elicit exp
 
 %#include
 \begin{table}[H]
-    \caption{Summary statistics table}
-    \label{Sum_Stats}
+    \caption{Summary statistics table }
+    \label{tab:SS}
     \begin{center}
-       \scriptsize{\input{./Tables/SS_bylawyer.tex}}
+        \tiny{\input{./Tables/SS.tex}}
     \end{center}
     \footnotesize
     \textit{Notes:} 
-    Summary stats of outcomes, basic and strategic variables by type of (employee's) lawyer.
-    \textit{Do file: } \texttt{Table\_SS\_bylawyer.do}
+Summary stats of outcomes, basic and strategic variables
+    \textit{Do file: } \texttt{Table\_SS.do}
 \end{table}
 
 
-%#include
 \begin{table}[H]
-    \caption{Baseline Expectations}
-    \label{Table_expectations}
+    \caption{Summary statistics table by end mode }
+    \label{tab:SS}
     \begin{center}
-       \scriptsize{\input{./Tables/SS_A.tex}}
+        \tiny{\input{./Tables/SS_bymodotermino.tex}}
     \end{center}
-    \footnotesize    
+    \footnotesize
     \textit{Notes:} 
-    Summary statistics of parties' beliefs. We show mean and standard deviation for the whole sample, \& dividing by type of employee's lawyer.
-    \textit{Do file: } \texttt{Table\_SS.do  Table\_SS\_bylawyer.do}
+Summary stats of outcomes, basic and strategic variables by end mode.
+    \textit{Do file: } \texttt{Table\_SS\_bymodotermino.do}
 \end{table}
+
 
 \begin{table}[H]
     \caption{Baseline expectations comparison between parties}
@@ -510,16 +510,29 @@ The number of cases assigned to the 3 different groups is very similar, and is c
 
 %#include
 \begin{table}[H]
-    \caption{Treatment Efects by Month}
+    \caption{Treatment Effects by months after treatment}
     \label{Table_effects_F}
     \begin{center}
-    \scriptsize{\input{./Tables/Minicortes_2_PA.tex}}
+    \scriptsize{\input{./Tables/minicortes_monthstreatment.tex}}
     \end{center}
     \footnotesize
     \textit{Notes:} 
     Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
-    \textit{Do file: } \texttt{mini\_cortes\_2.do}
+    \textit{Do file: } \texttt{minicortes\_monthstreatment.do}
 \end{table}
+
+
+% \begin{table}[H]
+%     \caption{Treatment Efects by Month}
+%     \label{Table_effects_F}
+%     \begin{center}
+%     \scriptsize{\input{./Tables/Minicortes_2_PA.tex}}
+%     \end{center}
+%     \footnotesize
+%     \textit{Notes:} 
+%     Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
+%     \textit{Do file: } \texttt{mini\_cortes\_2.do}
+% \end{table}
 
 
 % INTERACTION WITH PRIVATE LAWYER
@@ -547,6 +560,29 @@ The number of cases assigned to the 3 different groups is very similar, and is c
 
 \section{Figures}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics{covariates_categorical.png}
+    \caption{Covariate distribution for Pilot and Historical Data: continuous variables}
+    \label{covariates_categorical}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Covariate distribution in Historical and Pilot data}
+\label{covariate_distribution}
+    \begin{center}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Continuous variables}
+            \centering
+            \includegraphics[width=\textwidth]{covariates_continous.png}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \caption{Categorical variables}
+            \centering
+            \includegraphics[width=\textwidth]{covariates_categorical.png}
+        \end{subfigure}
+    \end{center}
+\end{figure}
 
 \begin{figure}[H]
     \caption{Percent that know main legal constitutional entitlement}
@@ -724,10 +760,17 @@ The number of cases assigned to the 3 different groups is very similar, and is c
     \caption{Conciliation over time}
     \label{Figure_dynamicsConciliation}
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{con_overtime.pdf}
+    \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=1\textwidth]{con_overtime.pdf}
+     \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}    
+         \centering
+        \includegraphics[width=1\textwidth]{beta_monthsafter.pdf}
+     \end{subfigure}
         \end{center}
-        {\footnotesize \textit{Notes: } Conciliation over time in HD database and pilot database.}
-        {\footnotesize \textit{Do file: } \texttt{con\_overtime.do}}
+        {\footnotesize \textit{Notes: } Conciliation over time in HD database and pilot database. Figure on the left shows the effect of conciliation on treated against control for different months after initial sue.}
+        {\footnotesize \textit{Do file: } \texttt{con\_overtime.do , beta\_monthsafter.do}}
 \end{figure}
 
 
@@ -754,15 +797,15 @@ Detailed description of variables used throughout the paper. The variables marke
 
 
 \begin{table}[H]
-    \caption{Summary statistics table }
-    \label{tab:SS}
+    \caption{Baseline Expectations}
+    \label{Table_expectations}
     \begin{center}
-        \tiny{\input{./Tables/SS.tex}}
+       \scriptsize{\input{./Tables/SS_A.tex}}
     \end{center}
-    \footnotesize
+    \footnotesize    
     \textit{Notes:} 
-Summary stats of outcomes, basic and strategic variables
-    \textit{Do file: } \texttt{Table\_SS.do}
+    Summary statistics of parties' beliefs. We show mean and standard deviation for the whole sample, \& dividing by type of employee's lawyer.
+    \textit{Do file: } \texttt{Table\_SS.do  Table\_SS\_bylawyer.do}
 \end{table}
 
 %\pagebreak
@@ -909,15 +952,15 @@ The regression includes dummies of which party answered the survey (employee, em
 
 %#appendix
 \begin{table}[H]
-    \caption{Treatment Effects by Month (including basic variables controls)}
+    \caption{Treatment Effects by months after treatment (including basic variables controls)}
     \label{Table_effects}
     \begin{center}
-    \scriptsize{\input{./Tables/Minicortes_2_B_PA.tex}}
+    \scriptsize{\input{./Tables/minicortes_monthstreatment_B.tex}}
     \end{center}
     \footnotesize
     \textit{Notes:} 
     Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
-    \textit{Do file: } \texttt{mini\_cortes\_2\_B.do}
+    \textit{Do file: } \texttt{minicortes\_monthstreatment.do}
 \end{table}
 
 
