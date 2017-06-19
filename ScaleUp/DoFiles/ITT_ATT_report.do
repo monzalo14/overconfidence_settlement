@@ -54,6 +54,14 @@ estadd scalar Erre=e(r2)
 qui su convenio if e(sample)
 estadd scalar DepVarMean=r(mean)
 
+	*BOTH
+gen calcu_both=(calculadoras_partes==2)	
+eststo: ivreg convenio junta_*   ///
+	(calcu_both = dia_tratamiento  ) ///
+	, robust cluster(junta) 
+estadd scalar Erre=e(r2)
+qui su convenio if e(sample)
+estadd scalar DepVarMean=r(mean)
 
 esttab using "$directorio\Effect\ITT_ATT_report.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" ) replace 
@@ -74,6 +82,14 @@ estadd scalar DepVarMean=r(mean)
 
 	*DEFENDANT
 eststo: reg calcu_p_dem dia_tratamiento junta_*   ///
+	if convenio!=.  ///
+	, robust cluster(junta) 
+estadd scalar Erre=e(r2)
+qui su calcu_p_dem if e(sample)
+estadd scalar DepVarMean=r(mean)
+
+	*BOTH
+eststo: reg calcu_both dia_tratamiento junta_*   ///
 	if convenio!=.  ///
 	, robust cluster(junta) 
 estadd scalar Erre=e(r2)

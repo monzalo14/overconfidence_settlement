@@ -24,8 +24,7 @@ format fecha_treatment %td
 
 *Months after initial sue
 gen fechadem=date(fecha_demanda,"DMY")
-gen fechater=fecha_convenio
-gen months_after=(fechater-fechadem)/30
+gen months_after=(fecha_treatment-fechadem)/30
 replace months_after=. if months_after<0
 xtile perc=months_after, nq(99)
 replace months_after=. if perc>=99
