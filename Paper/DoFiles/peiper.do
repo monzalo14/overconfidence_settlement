@@ -1,8 +1,3 @@
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
-global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\Overconfidence and settlement
-
 
 use "$directorio\DB\Calculadora_wod.dta", clear	
 merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep( 2 3)
@@ -227,7 +222,7 @@ forvalues i=1/2 {
 		   legend(row(2) order( 2 "Primary" 3 "Secondary" 4 "High-school" 5 "+ High-school" 6 "No" 7 "Yes") ) ///
 		   xlabel( 1 "Total" 5 "Education" 8.5 "Repeated P.", noticks) ///
 		   ytitle("Percentage Correct") ///
-		   ylabel (0(0.2)1) ///
+		   ylabel (0(0.2)0.6) ///
 		   scheme(s2mono) graphregion(color(none)) 
 
 		   

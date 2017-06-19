@@ -1,7 +1,3 @@
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
-global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\Paper
 ********************************************************************************
 	*DB: Calculator:5005
 import delimited "$directorio\DB\observaciones_tope.csv", clear 
@@ -55,11 +51,14 @@ merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) 
 
 
 *Persistent conciliation variable
+replace seconcilio=1 if c1_fecha_con==fechalista
 destring c1_se_concilio, replace force
 replace c1_se_concilio=seconcilio if missing(c1_se_concilio)
 replace c1_se_concilio=. if c1_se_concilio==2
 bysort expediente anio : egen conciliation=max(c1_se_concilio)
 
+*Conciliation date
+replace c1_fecha_convenio=fechalista if seconcilio==1 & c1_se_concilio==1
 gen fecha_con=date(c1_fecha_convenio,"DMY")
 bysort expediente anio : egen fecha_convenio=max(fecha_con)
 format fecha_convenio %td
@@ -81,9 +80,13 @@ gen perc_con_t2=.
 gen perc_con_t3=.
 gen time=.
 
+*Treatment date
+gen fecha_treat=date(fechalista,"DMY")
+bysort expediente anio : egen fecha_treatment=min(fecha_treat)
+format fecha_treatment %td
+
 *Months after treatment
-gen fechatreat=date(fechalista,"DMY")
-gen months_after_treat=(fechater-fechatreat)/30
+gen months_after_treat=(fechater-fecha_treatment)/30
 replace months_after_treat=. if months_after_treat<0
 xtile perc_at=months_after_treat, nq(99)
 replace months_after_treat=. if perc_at>=99
@@ -175,5 +178,5 @@ twoway 	(line perc_con_5005 time, lwidth(medthick) lpattern(solid)) ///
 	xlabel(0(10)60) ///
 	legend(order(1 "DB: 5005")) name(db5005, replace)
 
-graph combine db5005 sue treat,  row(1)  graphregion(color(none)) scheme(s2mono)
+graph combine db5005  treat,  row(1)  graphregion(color(none)) scheme(s2mono)
 graph export "$sharelatex/Figuras/con_overtime.pdf", replace 

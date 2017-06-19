@@ -3,10 +3,6 @@ This do file generates all output, such as SS, Two-way tables, Histograms and
 Regressions used as input for the .tex file "Results.tex"
 *******************************************************************************/
 
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
-
 ********************************************************************************
 
 use "$directorio\DB\Seguimiento_Juntas.dta", clear

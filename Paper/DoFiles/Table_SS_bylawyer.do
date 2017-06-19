@@ -1,8 +1,6 @@
 /* Tabla de summary statistics de variables dependeintes e independientes de las 
 diversas regresiones */
 
-global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\Overconfidence and settlement
-
 
 
 /*									PUBLIC LAWYER								*/
@@ -1017,6 +1015,9 @@ egen masprob_defendant=rowmean(masprob_fir masprob_firlaw)
 egen dinero_defendant=rowmean(dineromasprob_fir dineromasprob_firlaw)
 egen tiempo_defendant=rowmean(tiempomasprob_fir tiempomasprob_firlaw)
 
+
+*We use only cases with BOTH parties having answered the survey
+keep if masprob_plaintiff!=. & masprob_defendant!=.
 
 
 local n=5

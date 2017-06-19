@@ -1,7 +1,6 @@
-/* Tabla de summary statistics de variables dependeintes e independientes de las 
+/* Tabla de summary statistics de variables dependientes e independientes de las 
 diversas regresiones */
 
-global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\Paper
 
 ********************************************************************************
 	*DB: Calculator:5005
