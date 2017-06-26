@@ -58,9 +58,11 @@ plot_titles_cont <- c('Wage', 'Tenure', 'Weekly working hours', 'Severance Pay',
 
 plot_covariates_cont <- function(var, plot_title){
   ggplot(df, aes_string(var, color = 'hd', linetype = 'hd')) +
-    geom_line(stat = 'density', size = 1) +
+  geom_density(aes(y = ..scaled..), size = 1) + 
     scale_y_continuous(labels = scales::percent_format()) +
     labs(title = plot_title, x = '', y = 'Percent') +
+    scale_colour_manual(values = c('gray77', 'gray43'), 
+                      name = '') +
     guides(color = F, linetype = F) +
     theme_classic()
 }
@@ -71,7 +73,6 @@ p3 <- plot_covariates_cont(continuas[3], plot_titles_cont[3])
 p4 <- plot_covariates_cont(continuas[4], plot_titles_cont[4])
 p5 <- plot_covariates_cont(continuas[5], plot_titles_cont[5])
 p6 <- plot_covariates_cont(continuas[6], plot_titles_cont[6])
-
 
 multiplot(p1, p2, p3, p4, p5, p6, cols = 2)
 
@@ -89,28 +90,18 @@ x[is.na(x)] <- '0'
 x
 }
 
-df %>%
-  select(one_of(factores)) %>% 
-  mutate_at(vars(-hd), aux_factor) %>%
-  mutate_all(aux_nas) %>%
-  gather(key = var, value = valor, -hd) %>% 
-  group_by(hd, var, valor) %>%
-  summarise(suma = n()) %>%
-  ungroup() %>%
-  group_by(var, hd) %>%
-  mutate(freq = suma/sum(suma)) %>%
-  ungroup() %>%
-  mutate_at(vars(hd, valor), factores_fun) -> prop
 
-ggplot() +
-  geom_bar(data = prop,
-           aes(x = var, 
-               y = freq,
-               fill = valor,
-               group = hd), 
-           stat = 'identity',
-           position = 'dodge',
-           color = 'black') +
+df %>%
+  select(one_of(factores)) %>%
+  # mutate_all(aux_nas) %>% 
+  gather(key = var, value = valor, -hd) %>% 
+  mutate(valor = aux_factor(valor)) %>% 
+  ggplot(aes(y = valor, x = as.factor(var), group = hd)) +
+  geom_bar(aes(fill = hd), stat = 'summary', fun.y = mean, position = 'dodge') +
+  stat_summary(fun.data = mean_cl_normal,
+               geom = 'errorbar', 
+               position = position_dodge(width = 0.85), 
+               width = 0.2) +
   scale_x_discrete(labels = c('abogado_pub' = 'Public Lawyer',
                               'codem' = 'Co-defendant',
                               'gen' = 'Gender', 
@@ -119,7 +110,11 @@ ggplot() +
                               'sarimssinf' = 'Social Security',
                               'trabajador_base' = 'At-will worker')) +
   scale_y_continuous(labels = scales::percent_format()) +
-  labs(y = 'Percent', x = 'Variable') +
-  theme_classic()
-
-
+  labs(y = 'Percent', x = 'Variable') + 
+  scale_fill_manual(values = c('gray77', 'gray53'), 
+                    name = '',
+                    labels = c('Pilot Data', 'Historic Data')) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+ggsave('../Figuras/covariates_categorical.png')
