@@ -2,6 +2,20 @@
 
 source('multiplot.R')
 
+factores <- c('gen',
+              'codem',
+              'reinst',
+              'indem',
+              'trabajador_base',
+              'sarimssinf',
+              'abogado_pub', 
+              'hd')
+
+continuas <- names(pilot)[!(names(pilot) %in% factores)]
+
+factores_fun <- function(x){as.factor(as.character(x))}
+log_fun <- function(x){log(1 + (as.numeric(x)))}
+
 pilot <- read.csv('../DB/calculadora.csv') %>%
         dplyr::select(sueldo = salariodiariointegrado, 
                gen = gen,
@@ -16,9 +30,10 @@ pilot <- read.csv('../DB/calculadora.csv') %>%
                trabajador_base = trabbase,
                sarimssinf = sarimssinfo,
                abogado_pub = tipodeabogadocalc) %>%
-        mutate(hd = 0)
+        mutate(hd = 0) 
 
 hd <- readRDS('../DB/observaciones.RDS') %>%
+      filter(junta == '7') %>%
       dplyr::select(sueldo,
              gen,
              c_antiguedad,
@@ -32,40 +47,23 @@ hd <- readRDS('../DB/observaciones.RDS') %>%
              trabajador_base,
              sarimssinf, 
              abogado_pub) %>%
-      mutate(hd = 1)
+  mutate(hd = 1)
 
-factores <- c('gen',
-              'codem',
-              'reinst',
-              'indem',
-              'trabajador_base',
-              'sarimssinf',
-              'abogado_pub', 
-              'hd')
-
-continuas <- names(pilot)[!(names(pilot) %in% factores)]
-
-factores_fun <- function(x){as.factor(as.character(x))}
-
-df <- rbind(pilot, hd) %>%
-        mutate_at(vars(one_of(factores)), factores_fun)
-
-
-plot_covariates_cont <- function(var, plot_title){
-  ggplot(df) +
-    geom_density(aes_string(x = var, color = 'hd', group = 'hd'), size = 1) +
-    labs(title = plot_title, x = '') +
-    theme_bw()
-}
+df <- rbind(hd, pilot)%>%
+      mutate_at(vars(one_of(factores)), factores_fun) %>%
+      mutate_at(vars(one_of(continuas)), log_fun)
 
 plot_titles_cont <- c('Wage', 'Tenure', 'Weekly working hours', 'Severance Pay', '20 days', 'Overtime')
 
-# plots_cont <- list()
 
-#for(i in seq(continuas)){
- # p <- plot_covariates_cont(data, continuas[i], plot_titles_cont[i])
-  #plots_cont <- append(plots_cont, p)
-#}
+plot_covariates_cont <- function(var, plot_title){
+  ggplot(df, aes_string(var, color = 'hd', linetype = 'hd')) +
+    geom_line(stat = 'density', size = 1) +
+    scale_y_continuous(labels = scales::percent_format()) +
+    labs(title = plot_title, x = '', y = 'Percent') +
+    guides(color = F, linetype = F) +
+    theme_classic()
+}
 
 p1 <- plot_covariates_cont(continuas[1], plot_titles_cont[1])
 p2 <- plot_covariates_cont(continuas[2], plot_titles_cont[2])
@@ -85,30 +83,43 @@ multiplot(p1, p2, p3, p4, p5, p6, cols = 2)
 
 ##################
 
-
-plot_covariates_cat <- function(var, plot_title){
-  ggplot(na.omit(df)) +
-    geom_bar(aes_string(x = var, color = 'hd', group = 'hd', fill = 'hd'), size = 1) +
-    labs(title = plot_title, x = '') +
-    theme_bw()
+aux_factor <- function(x){as.numeric(as.character(x))}
+aux_nas <- function(x){
+x[is.na(x)] <- '0'
+x
 }
 
-factores <- factores[1:7]
+df %>%
+  select(one_of(factores)) %>% 
+  mutate_at(vars(-hd), aux_factor) %>%
+  mutate_all(aux_nas) %>%
+  gather(key = var, value = valor, -hd) %>% 
+  group_by(hd, var, valor) %>%
+  summarise(suma = n()) %>%
+  ungroup() %>%
+  group_by(var, hd) %>%
+  mutate(freq = suma/sum(suma)) %>%
+  ungroup() %>%
+  mutate_at(vars(hd, valor), factores_fun) -> prop
 
-plot_titles_cat <- c('Gender', 
-                     'Suing third party', 
-                     'Reinstatement',
-                     'Severance pay',
-                     'At-will worker',
-                     'Social Security Benefits',
-                     'Public lawyer')
+ggplot() +
+  geom_bar(data = prop,
+           aes(x = var, 
+               y = freq,
+               fill = valor,
+               group = hd), 
+           stat = 'identity',
+           position = 'dodge',
+           color = 'black') +
+  scale_x_discrete(labels = c('abogado_pub' = 'Public Lawyer',
+                              'codem' = 'Co-defendant',
+                              'gen' = 'Gender', 
+                              'indem' = 'Severance Pay',
+                              'reinst' = 'Reinstatement',
+                              'sarimssinf' = 'Social Security',
+                              'trabajador_base' = 'At-will worker')) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(y = 'Percent', x = 'Variable') +
+  theme_classic()
 
-c1 <- plot_covariates_cat(factores[1], plot_titles_cat[1])
-c2 <- plot_covariates_cat(factores[2], plot_titles_cat[2])
-c3 <- plot_covariates_cat(factores[3], plot_titles_cat[3])
-c4 <- plot_covariates_cat(factores[4], plot_titles_cat[4])
-c5 <- plot_covariates_cat(factores[5], plot_titles_cat[5])
-c6 <- plot_covariates_cat(factores[6], plot_titles_cat[6])
-c7 <- plot_covariates_cat(factores[7], plot_titles_cat[7])
 
-multiplot(c1, c2, c3, c4, c5, c6, c7, cols = 2)
