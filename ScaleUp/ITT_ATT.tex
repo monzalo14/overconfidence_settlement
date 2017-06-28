@@ -144,6 +144,28 @@ We provide two measures: Update in beliefs in probability and payment.\\
 
 \pagebreak
 
+
+\begin{figure}[H]
+\label{update}
+\begin{center}
+\includegraphics[width=\textwidth]{./Figures/updatebeleif_amount.pdf}
+\end{center}
+{\footnotesize \textit{Notes: Graphs on belief updating. They show the following statistic: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says. }}
+{\footnotesize \textit{Do file: } \texttt{Update\_beleifs.do}}
+\end{figure}
+
+
+\pagebreak
+
+The following table displays a regression of conciliation against the statistics of updating
+\[\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|\]
+
+\begin{center}
+\scriptsize{\input{\folder/con_vs_update.tex}}
+\end{center}
+
+
+
 Now we test difference in initial and exit survey in expectations. The following table shows the results.
 
 \begin{center}

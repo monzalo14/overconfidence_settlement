@@ -73,6 +73,6 @@ twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(.1) xla
 
 
 graph combine employee_amount employeeslawyer_amount firmlawyer_amount, ///
-	xcommon ycommon rows(3)  graphregion(color(none))	note("Graphs by treatment", size(small)) 
+	xcommon ycommon rows(3)  graphregion(color(none))	
 graph export "$directorio/Figures/updatebeleif_amount.pdf", replace 
 	

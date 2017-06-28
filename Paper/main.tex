@@ -745,7 +745,7 @@ The number of cases assigned to the 3 different groups is very similar, and is c
         \includegraphics[width=\textwidth]{updatebeleif_amount.pdf}
     \end{subfigure}
     \end{center}
-     \footnotesize \textit{Notes: Graphs on belief updating. They show the difference (exit-baseline) in amount (in tens-of-thousand pesos) between what's reported in exit and baseline surveys. In order to drop outliers in our sample, we did some trimming and kept survey observations with $\mid exit - baseline \mid < 50k$. This implied dropping 17 obs. for employee surveys, 67 for employee lawyer and 68 for firm lawyer surveys.} 
+     \footnotesize \textit{Notes: Graphs on belief updating. They show the following statistic: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says.} 
       \footnotesize{ \textit{Do file: }  \texttt{Update\_beleifs.do}}
 \end{figure}
 
@@ -775,17 +775,17 @@ The number of cases assigned to the 3 different groups is very similar, and is c
     \begin{center}
     \begin{subfigure}{0.49\textwidth}
     \centering
-        \includegraphics[width=1\textwidth]{}
+        \includegraphics[width=1\textwidth]{oos_fit_liqtotal.tiff}
      \end{subfigure}
      
         \begin{subfigure}{0.49\textwidth}    
          \centering
-        \includegraphics[width=1\textwidth]{}
+        \includegraphics[width=1\textwidth]{oos_fit_duracion.tiff}
      \end{subfigure}
      
      \begin{subfigure}{0.49\textwidth}
     \centering
-        \includegraphics[width=1\textwidth]{}
+        \includegraphics[width=1\textwidth]{oss_fit_categorical.tiff}
      \end{subfigure}
      
         \end{center}
