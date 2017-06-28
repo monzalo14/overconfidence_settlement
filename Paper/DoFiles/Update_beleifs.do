@@ -22,12 +22,15 @@ gen update_comp=abs((ES_1_4-comp_esp)/(A_5_5-comp_esp))
 
 drop if tratamientoquelestoco==0
  
+qui su update_comp
+local tot_obs=`r(N)'
+qui su update_comp if  update_comp>=0 & update_comp <=1
+local perc_obs=`r(N)'/`tot_obs'*100
+local perc_obs : di %3.1f `perc_obs'
 
-qui su update_comp if tratamientoquelestoco!=0 & update_comp>=0 & update_comp <=1
-
-twoway (hist update_comp if tratamientoquelestoco!=0 & update_comp>=0 & update_comp <=1, percent w(.1) xlabel(0(0.1)1) ///
+twoway (hist update_comp if  update_comp>=0 & update_comp <=1, percent w(.1) xlabel(0(0.1)1) ///
 	by(tratamientoquelestoco, legend(off) row(1) title("") ///
-		subtitle("Employee") note("") graphregion(color(none))) ///
+		subtitle("Employee") note("%obs: `perc_obs'", size(small)) graphregion(color(none))) ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("") ) ///
 	(scatteri 0 `r(mean)' 40 `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -47,12 +50,15 @@ gen update_comp=abs((ES_1_4-comp_esp)/(RA_5_5-comp_esp))
 
 drop if tratamientoquelestoco==0
 
+qui su update_comp
+local tot_obs=`r(N)'
+qui su update_comp if  update_comp>=0 & update_comp <=1
+local perc_obs=`r(N)'/`tot_obs'*100
+local perc_obs : di %3.1f `perc_obs'
 
-qui su update_comp if update_comp>=0 & update_comp <=1
-
-twoway (hist update_comp if tratamientoquelestoco!=0 & update_comp>=0 & update_comp <=1, percent w(.1) xlabel(0(0.1)1) ///
+twoway (hist update_comp if  update_comp>=0 & update_comp <=1, percent w(.1) xlabel(0(0.1)1) ///
 	by(tratamientoquelestoco, legend(off) row(1) title("") ///
-		subtitle("Employee's Lawyer") note("") graphregion(color(none))) ///
+		subtitle("Employee's Lawyer") note("%obs: `perc_obs'", size(small)) graphregion(color(none))) ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("") ) ///
 	(scatteri 0 `r(mean)' 40 `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -72,12 +78,15 @@ gen update_comp=abs((ES_1_4-comp_esp)/(RD5_5-comp_esp))
 
 drop if tratamientoquelestoco==0
 
+qui su update_comp
+local tot_obs=`r(N)'
+qui su update_comp if  update_comp>=0 & update_comp <=1
+local perc_obs=`r(N)'/`tot_obs'*100
+local perc_obs : di %3.1f `perc_obs'
 
-qui su update_comp if tratamientoquelestoco!=0 & update_comp>=0 & update_comp <=1
-
-twoway (hist update_comp if tratamientoquelestoco!=0 & update_comp>=0 & update_comp <=1, percent w(.1) xlabel(0(0.1)1) ///
+twoway (hist update_comp if update_comp>=0 & update_comp <=1, percent w(.1) xlabel(0(0.1)1) ///
 	by(tratamientoquelestoco, legend(off) row(1) title("") ///
-		subtitle("Firm's Lawyer") note("") graphregion(color(none))) ///
+		subtitle("Firm's Lawyer") note("%obs: `perc_obs'", size(small)) graphregion(color(none))) ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("") ) ///
 	(scatteri 0 `r(mean)' 40 `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///

@@ -4,7 +4,7 @@ This do file generates all previous variables and does some cleaning of the data
 
 clear
 set more off
-global directorio C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
+global directorio C:\Users\xps-seira\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
 
 ********************************************************************************
 import delimited "$directorio\DB\bases_iniciales.csv", clear
@@ -223,3 +223,29 @@ label variable ea7_busca_trabajo "Looking for a job"
 
 
 save "$directorio\DB\Seguimiento_Juntas.dta", replace
+
+
+
+********************************************************************************
+import delimited "$directorio\DB\predicciones.csv", clear
+
+gen aux_id=substr(id_exp, strpos(id_exp,"/")+1,length(id_exp))
+
+*Junta
+gen junta=substr(id_exp,1,strpos(id_exp,"/")-1)  
+destring junta, force replace
+
+*Exp
+gen exp=substr(aux_id,1,strpos(aux_id,"/")-1) 
+destring exp, force replace
+
+*Anio
+gen anio=substr(aux_id,strpos(aux_id,"/")+1,length(aux_id)) 
+destring anio, force replace
+	
+duplicates drop  exp anio junta, force
+drop aux_id 
+
+save "$directorio\DB\predicciones.dta", replace
+
+********************************************************************************
