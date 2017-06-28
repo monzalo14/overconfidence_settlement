@@ -1,6 +1,6 @@
 predict_yhat <- function(data, model_name, variable){
   data$pred <- predict(get(model_name), newdata = data)
-  data$y <- data[[variable]]
+  data$y <- log(1+data[[variable]])
   data %>% select(y, pred)
 }
 

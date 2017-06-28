@@ -117,4 +117,4 @@ df %>%
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
   
-ggsave('../Figuras/covariates_categorical.png')
+ggsave('../Figuras/covariates_categorical.tiff')
