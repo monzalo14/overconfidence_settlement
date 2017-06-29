@@ -17,6 +17,34 @@ replace p_actor=(p_actor==1)
 rename tratamientoquelestoco treatment
 
 
+
+/*
+AGREGAR ESTO.........
+
+tab treatment cita
+
+
+ gen itt=(cita!=0)
+ 
+tab treatment itt
+
+TRATAMIENT |
+ O QUE LES |          itt
+      TOCO |         0          1 |     Total
+-----------+----------------------+----------
+         0 |       104      1,973 |     2,077 
+         1 |        23        364 |       387 
+         2 |        23        349 |       372 
+         3 |        22        363 |       385 
+-----------+----------------------+----------
+     Total |       172      3,049 |     3,221 
+
+
+. reg p_acto itt if treatment!=0
+
+
+
+*/
 eststo clear
 
 *Summons on conciliaton and presence of employee
