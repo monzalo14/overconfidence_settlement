@@ -1,6 +1,7 @@
 # Scatter plots de predicciones
 # Continuas
 source('aux_oos_plots.R')
+source('multiplot.R')
 load('../Calculator/data/validation_models.RData')
 load('../Calculator/data/test_data.RData')
 #load(datos)
@@ -11,12 +12,12 @@ outcomes = c('caducidad',
              'convenio', 
              'desiste', 
              'laudo_gana', 
-             'laudo_pierde')
+             'laudo_pierde') 
 
 cont_modelname_list = c(paste0('mod_duracion_', outcomes),
                         'mod_liqtotal_laudo_gana', 'mod_liqtotal_convenios')
 cont_variablename_list = c(rep('liqtotal', 2), rep('duracion', 5)) 
-cont_title_list = c('Expiry', 'Settlement', 'Drop', 'Winning Court Ruling', 'Losing Court Ruling', 'Settlement', 'Winning Court Ruling')
+cont_title_list = c('Expiry', 'Settlement', 'Drop', 'Winning Court Ruling', 'Losing Court Ruling', 'Winning Court Ruling', 'Settlement')
 data_list = list('mod_duracion_caducidad' = duracion_caducidad_test,
                  'mod_duracion_convenio' = duracion_convenio_test,
                  'mod_duracion_desiste' = duracion_desiste_test,
@@ -28,11 +29,6 @@ data_list = list('mod_duracion_caducidad' = duracion_caducidad_test,
 names(cont_title_list) = cont_modelname_list
 names(cont_variablename_list) = cont_modelname_list
 names(cont_modelname_list) = cont_modelname_list
-
-
-oos_plot_lt_convenio <- plot_oos_fit_r2(lt_convenio_test, 'mod_liqtotal_convenios', 'y')
-oos_plot_duracion_convenio <- plot_oos_fit_r2(duracion_convenio_test, 'mod_duracion_convenio', 'y')
-oos_plot_duracion_desiste <- plot_oos_fit_r2(duracion_desiste_test, 'mod_duracion_desiste', 'y')
 
 
 # Generamos listas de gráficas, para duración y liqtotal
