@@ -41,12 +41,36 @@
 \hrulefill
 
 
+
+
 \subsection*{Balance Table}
+
+\begin{figure}[H]
+    \caption{Cumulative number of cases by date}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{cum_num_cases.pdf}
+        \end{center}
+    {\footnotesize \textit{Notes:Cumulative number of cases by date.}}
+    {\footnotesize \textit{Do file: } \texttt{cum\_num\_cases.do}}
+\end{figure}
+
+
 
 \begin{table}[H]
 \caption{Balance table}
 \begin{center}
 \scriptsize{\input{./Tables/Balance.tex}}
+\end{center}
+ \footnotesize
+\textit{Notes: Balance table on some variables. Rightmost columns shows p-value for a multivariate tests of means between different arm treatments.} 
+\textit{Do file: } \texttt{balance.do}
+\end{table}
+
+
+\begin{table}[H]
+\caption{Balance table from 2017-06-15}
+\begin{center}
+\scriptsize{\input{./Tables/Balance_c.tex}}
 \end{center}
  \footnotesize
 \textit{Notes: Balance table on some variables. Rightmost columns shows p-value for a multivariate tests of means between different arm treatments.} 
