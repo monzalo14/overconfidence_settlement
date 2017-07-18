@@ -3,7 +3,7 @@ title: " "
 output: 
   pdf_document: 
     keep_tex: yes
-  number_sections: true
+    number_sections: true
 ---
 
 ```{r setup, include=FALSE}
