@@ -43,17 +43,24 @@ duracion_plot_list <- lapply(cont_modelname_list[1:5],
 lt_laudogana = plot_oos_fit_r2(lt_laudo_gana_test, 'mod_liqtotal_laudo_gana', 'y')
 lt_convenio = plot_oos_fit_r2(lt_convenio_test, 'mod_liqtotal_convenios', 'y')
 
-lt_plot_list = list(lt_laudogana, lt_convenio)
+lt_plot_list = list('mod_liqtotal_laudo_gana' = lt_laudogana,
+                    'mod_liqtotal_convenio' = lt_convenio)
 
-multiplot(duracion_plot_list[[1]], 
-          duracion_plot_list[[2]],
-          duracion_plot_list[[3]],
-          duracion_plot_list[[4]],
-          duracion_plot_list[[5]], 
-          cols = 2)
+plot_list = append(lt_plot_list, duracion_plot_list)
 
-multiplot(lt_laudogana, 
-          lt_convenio)
+lapply(names(plot_list), 
+       function(x) ggsave(filename = paste('../Figuras/', x,".tiff", sep = ""), plot = plot_list[[x]]))
+
+
+# multiplot(duracion_plot_list[[1]], 
+#           duracion_plot_list[[2]],
+#           duracion_plot_list[[3]],
+#           duracion_plot_list[[4]],
+#           duracion_plot_list[[5]], 
+#           cols = 2)
+# 
+# multiplot(lt_laudogana, 
+#           lt_convenio)
 
 # Clasificadores
 

@@ -24,7 +24,6 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Motivation},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -72,9 +71,9 @@
 }
 
 \setlength{\droptitle}{-2em}
-  \title{Motivation}
-  \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
+  \title{}
+  \pretitle{\vspace{\droptitle}}
+  \posttitle{}
   \author{}
   \preauthor{}\postauthor{}
   \date{}
@@ -82,7 +81,8 @@
 
 
 \begin{document}
-\maketitle
+
+\section{Motivation}\label{motivation}
 
 Mexican labour courts face a large and growing backlog of cases. The
 backlog is made worse by case settlement rates that are low by
@@ -121,24 +121,7 @@ the lawsuit).
 
 \section{First Pilot}\label{first-pilot}
 
-\subsection{Data}\label{data}
-
-The data for the calculator developed for the pilot came from a sample
-of 1000 concluded case files from a single subcourt (subcourt 7).
-Defendants in subcourt 7 consist mostly of firms in XXX industries, so
-we were careful in correctly labeling casefiles containing at least one
-outsourcing firm within the list of defendants.
-
-We coded data directly from casefiles, and then randomly inspected 20\%
-of the data entries by comparing the manually coded databases against
-the actual casefiles to ensure that the initial coding was accurate. Our
-data cleaning process was fairly standard. We then examined the data for
-outliers, recoding as necessary We excluded a small number of cases for
-which key information was missing.
-
-\subsection{Models}\label{models}
-
-\subsubsection{Our questions}\label{our-questions}
+\subsection{Our questions}\label{our-questions}
 
 We aimed to provide three pieces of information:
 
@@ -159,13 +142,26 @@ These questions were addressed as one classification problem -for the
 first case- and two regression/prediction problems -for the second and
 third cases.
 
-\subsubsection{Training and Evaluation}\label{training-and-evaluation}
+\subsection{Data}\label{data}
+
+The data for our first calculator came from a sample of 1000 concluded
+case files from a single subcourt (subcourt 7). Defendants in subcourt 7
+consist mostly of outsourcing, transportation firms and gas stations.
+
+We coded data directly from casefiles, and then randomly inspected 20\%
+of the data entries by comparing the manually coded databases against
+the actual casefiles to ensure that the initial coding was accurate. Our
+data cleaning process was fairly standard. We then examined the data for
+outliers, recoding as necessary We excluded a small number of cases for
+which key information was missing.
+
+\subsection{Models}\label{models}
 
 For all three questions, the sample was divided in 70-30 training and
 test sets. We simplified categorical variables in order to remove sparse
 groups in our covariates.
 
-\paragraph{Probability of outcomes}\label{probability-of-outcomes}
+\subsubsection{Discrete outcomes}\label{discrete-outcomes}
 
 We aggregated the ending possibilites for casefiles into 5 different
 outcomes:
@@ -183,10 +179,9 @@ outcomes:
   Drop
 \end{itemize}
 
-For our classification problem, the dependent variable -a categorical
-variable depicting the case ending- was recoded into 5 dummy variables.
-The following models were then tested for classification of each binary
-outcome:
+The dependent variable -a categorical variable depicting the case
+ending- was recoded into 5 dummy variables. The following models were
+then tested for classification of each binary outcome:
 
 A. Logistic Regression
 
@@ -203,11 +198,9 @@ Due to our sample size, all hyperparameters were chosen specifically to
 avoid overfitting. Models were chosen for each outcome based on
 classification accuracy for the test set.
 
-\textbf{XXX (1) } ** Propuestas:** \textbf{A. Poner unos histogramas de
-accuracy rate entre modelos } \textbf{B. Poner unas tablitas de la
-métrica en cuestión (i.e.~accuracy rate y MAPD) }
+XXX
 
-\paragraph{Prediction models}\label{prediction-models}
+\subsubsection{Continuous outcomes}\label{continuous-outcomes}
 
 We set out to predict expected lawsuit duration for each given outcome.
 Predicting expected compensation was only required for Settlements and
@@ -231,11 +224,9 @@ measure was chosen because we had no zero values in our dependent
 variables and were inclined to giving rather conservative predictions to
 parties.
 
-\textbf{XXX (2) } ** Propuestas:** \textbf{A. Poner unas scatter plots
-de y vs.~ygorro como las que hice para el paper. } \textbf{B. Poner unas
-tablitas de la métrica en cuestión (i.e.~accuracy rate y MAPD)}
+XXXXX
 
-\subsection{Information}\label{information}
+\subsection{Display of Information}\label{display-of-information}
 
 Our prediction sheets were generated for each subject in real time, and
 contained the following information:
@@ -248,7 +239,21 @@ contained the following information:
 
 \section{Scale-Up}\label{scale-up}
 
-\subsection{Data}\label{data-1}
+\subsection{Our Questions}\label{our-questions-1}
+
+We narrowed our original set of questions to answering:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Given a case ending in a court ruling, how likely is to recover a
+  positive compensation?
+\item
+  What would be that expected compensation?
+\item
+  Given a case ending in settlement, what would be the expected
+  compensation? \#\# Data
+\end{enumerate}
 
 This scale-up was running in 5 different subcourts -including subcourt
 7- so we coded an additional 4000 casefiles from the new subcourts, from
@@ -265,25 +270,7 @@ subject and the information we were sharing, so we decided to limit our
 predictions and include some personalized information on the worker,
 intended to shed some light on the drivers of our predictions.
 
-\subsubsection{Our Questions}\label{our-questions-1}
-
-We narrowed our original set of questions to answering:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Given a case ending in a court ruling, how likely is to recover a
-  positive compensation?
-\item
-  What would be that expected compensation?
-\item
-  Given a case ending in settlement, what would be the expected
-  compensation?
-\end{enumerate}
-
-\subsubsection{Training and Evaluation}\label{training-and-evaluation-1}
-
-\paragraph{Probability of winning}\label{probability-of-winning}
+\subsubsection{Discrete outcomes}\label{discrete-outcomes-1}
 
 Our classification problem became slightly different. In order to assess
 the unbalancedness of our court rulings sample -only 24\% of court
@@ -301,7 +288,7 @@ of trees ranging between 900 and 1500.
 Our final model resulted in a Random Forest of 1200 CARTs, which yielded
 an 86\% accuracy rate on test classification.
 
-\paragraph{Expected compensations}\label{expected-compensations}
+\subsubsection{Continuous outcomes}\label{continuous-outcomes-1}
 
 In order for our results to be easily interpreted and taking advantage
 of our bigger sample size, we decided to use more standard regression
@@ -320,7 +307,7 @@ de errores con las que evaluamos los modelos (les anexo el doc, por si
 no lo recuerdan). Puedo poner esas, aunque no me encantan, puedo poner
 una tablita con los MSE, puedo hacer otras\ldots{} Como me digan**
 
-\subsection{Information}\label{information-1}
+\subsection{Display of Information}\label{display-of-information-1}
 
 The information sheets were generated before time for this operation,
 and handed out to subjects in treatment days. The sheets had the

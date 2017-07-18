@@ -10,8 +10,8 @@ to_keep = c('fecha',
             'fecha_despido', 
             'giro', 
             'prob_ganar', 
-            'cantidad_ganar', 
-            'salario', 
+            'cantidad_ganar',
+            'salario',
             'per_salario')
 
 tratamientos_1 = read_excel('../Raw/captacion_tratamientos_1.xlsx', sheet = 'BaseControl', skip = 3) %>%
@@ -41,16 +41,16 @@ tratamientos_1 = tratamientos_1 %>%
                          salario_diario = sueldo/sueldo_per)
 
 tratamientos_23 = tratamientos_23 %>%
-                  select(one_of(diccionario$nombre_2)) %>%
                   mutate(sueldo_per = recode(as.character(sueldo_per),
                                              'Diario' = '1', 'Semanal' = '7',
                                              'Quincenal' = '15', 'Mensual' = '30'),
                          sueldo_per = as.numeric(sueldo_per),
                          salario_diario = sueldo/sueldo_per,
                          grupo_tratamiento = as.character(grupo_tratamiento)) 
-                  
+
 df = bind_rows(tratamientos_1, tratamientos_23) %>%
+    filter(!is.na(nombre_actor)) %>%
     mutate(prob_ganar = replace(prob_ganar, prob_ganar == 0, NA),
-           cantidad_ganar = replace(cantidad_ganar, cantidad_ganar == 0, NA))
+           cantidad_ganar = replace(cantidad_ganar, cantidad_ganar == 0, NA)) 
 
 write.csv(df, '../DB/treatment_data.csv', na = '', row.names = F)
