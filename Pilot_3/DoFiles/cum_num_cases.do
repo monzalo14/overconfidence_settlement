@@ -20,7 +20,7 @@ twoway (tsline cum if treatment==1,  graphregion(color(none)) ///
 	xtitle("Date") ytitle("#") lwidth(thick) lcolor(dkgreen)) ///
 	(tsline cum if treatment==4,  graphregion(color(none)) ///
 	xtitle("Date") ytitle("#") lwidth(thick) lcolor(black)) ///
-	, scheme(s2mono) legend(order(1 "1A" 2 "1B" 3 "3" 4 "4"))
+	, scheme(s2mono) legend(order(1 "1A" 2 "1B" 3 "3" 4 "4") rows(1))
 graph export "$directorio/Figuras/cum_num_cases_tr.pdf", replace 
 
 collapse (sum) dow, by(date)
