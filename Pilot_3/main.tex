@@ -45,14 +45,26 @@
 
 \subsection*{Balance Table}
 
+
+
+
 \begin{figure}[H]
-    \caption{Cumulative number of cases by date}
+    \caption{Cumulative number of cases by date/treatment}
+    \label{}
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{cum_num_cases.pdf}
-        \end{center}
-    {\footnotesize \textit{Notes:Cumulative number of cases by date.}}
-    {\footnotesize \textit{Do file: } \texttt{cum\_num\_cases.do}}
+    \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=\textwidth]{cum_num_cases.pdf}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=\textwidth]{cum_num_cases_tr.pdf}
+     \end{subfigure}
+  \end{center}
+        {\footnotesize \textit{Notes:Cumulative number of cases by date and treatment.}}
+         {\footnotesize \textit{Do file: } \texttt{cum\_num\_cases.do}}
 \end{figure}
+
 
 
 
@@ -77,5 +89,15 @@
 \textit{Do file: } \texttt{balance.do}
 \end{table}
 
+
+\begin{table}[H]
+\caption{Balance table with july data}
+\begin{center}
+\scriptsize{\input{./Tables/Balance_july.tex}}
+\end{center}
+ \footnotesize
+\textit{Notes: Balance table on some variables. Rightmost columns shows p-value for a multivariate tests of means between different arm treatments.} 
+\textit{Do file: } \texttt{balance.do}
+\end{table}
 
 \end{document}

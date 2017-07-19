@@ -38,6 +38,10 @@ format date %td
 gen dow = dow( date )
 gen mon_tue=inrange(dow,1,2)
 
+*Number of days each treatment occured
+by grupo_tratamiento fecha_alta, sort: gen nvals = _n ==1
+by grupo_tratamiento: egen num_days=sum(nvals)
+
 save "$directorio\DB\treatment_data.dta", replace
 
 ********************************************************************************
