@@ -1,5 +1,5 @@
 # Cargamos los datos
-
+library(dplyr)
 source('multiplot.R')
 
 factores <- c('gen',
@@ -57,10 +57,16 @@ plot_titles_cont <- c('Wage', 'Tenure', 'Weekly working hours', 'Severance Pay',
 
 
 plot_covariates_cont <- function(var, plot_title){
+  x = df %>% filter(hd == 1) %>% select_(var)
+  y = df %>% filter(hd == 0) %>% select_(var)
+  m = ks.test(x, y)
+  p = format(m$p.value, digits = 3)
+  
   ggplot(df, aes_string(var, color = 'hd', linetype = 'hd')) +
   geom_density(aes(y = ..scaled..), size = 1) + 
     scale_y_continuous(labels = scales::percent_format()) +
-    labs(title = plot_title, x = '', y = 'Percent') +
+    labs(title = plot_title, x = '', y = 'Percent',
+         subtitle = bquote(P-value==.(p))) +
     scale_colour_manual(values = c('gray77', 'gray43'), 
                       name = '') +
     guides(color = F, linetype = F) +
@@ -90,6 +96,10 @@ x[is.na(x)] <- '0'
 x
 }
 
+# ggbarplot(ToothGrowth, x = "dose", y = "len", add = "mean_se",
+#           color = "supp", palette = "jco", 
+#           position = position_dodge(0.8))+
+#   stat_compare_means(aes(group = supp), label = "p.signif", label.y = 29)
 
 df %>%
   select(one_of(factores)) %>%
