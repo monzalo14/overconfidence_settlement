@@ -73,6 +73,10 @@ plot_covariates_cont <- function(var, plot_title){
     theme_classic()
 }
 
+
+tiff(file = "../Figuras/covariates_continous.tiff", width = 3750, height = 2800, units = "px", res = 800) 
+
+
 p1 <- plot_covariates_cont(continuas[1], plot_titles_cont[1])
 p2 <- plot_covariates_cont(continuas[2], plot_titles_cont[2])
 p3 <- plot_covariates_cont(continuas[3], plot_titles_cont[3])
@@ -81,6 +85,8 @@ p5 <- plot_covariates_cont(continuas[5], plot_titles_cont[5])
 p6 <- plot_covariates_cont(continuas[6], plot_titles_cont[6])
 
 multiplot(p1, p2, p3, p4, p5, p6, cols = 2)
+
+dev.off()
 
 # ggsave('../Figuras/covariates_continous.png')
 
