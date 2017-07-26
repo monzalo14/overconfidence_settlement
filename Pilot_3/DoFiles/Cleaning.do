@@ -2,6 +2,7 @@
 import delimited "$directorio\DB\treatment_data.csv", clear
 duplicates drop
 drop if missing(fecha_alta)
+drop if id_main<16 & !missing(id_main)
 
 *Gen dummies
 foreach var of varlist reclutamiento dummy_confianza dummy_desc_sem ///
@@ -13,7 +14,13 @@ foreach var of varlist reclutamiento dummy_confianza dummy_desc_sem ///
 	 }
 
 *Covariates
-replace prob_ganar=prob_ganar/100 if prob_ganar>1
+replace prob_ganar=prob_ganar/100 if prob_ganar>1 & !missing(prob_ganar)
+
+gen na_prob=0
+replace na_prob=1 if missing(prob_ganar)
+
+gen na_cant=0
+replace na_cant=1 if missing(cantidad_ganar)
 
 gen retail=(giro==46) if !missing(giro)
 
@@ -31,16 +38,13 @@ gen top_sue=(top_demandado!="NINGUNO") if !missing(top_demandado)
 
 gen big_size=inrange(tamao_establecimiento,3,4) if !missing(tamao_establecimiento)
 
-gen date=date(fecha_alta, "DMY")
+gen date=date(fecha_alta, "YMD")
 format date %td
 
 *Dummy Monday | Tuesday
 gen dow = dow( date )
 gen mon_tue=inrange(dow,1,2)
 
-*Number of days each treatment occured
-by grupo_tratamiento fecha_alta, sort: gen nvals = _n ==1
-by grupo_tratamiento: egen num_days=sum(nvals)
 
 save "$directorio\DB\treatment_data.dta", replace
 
