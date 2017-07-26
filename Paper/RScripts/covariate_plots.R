@@ -1,5 +1,8 @@
 # Cargamos los datos
 library(dplyr)
+library(ggplot2)
+library(ggsignif)
+
 source('multiplot.R')
 
 factores <- c('gen',
@@ -10,8 +13,6 @@ factores <- c('gen',
               'sarimssinf',
               'abogado_pub', 
               'hd')
-
-continuas <- names(pilot)[!(names(pilot) %in% factores)]
 
 factores_fun <- function(x){as.factor(as.character(x))}
 log_fun <- function(x){log(1 + (as.numeric(x)))}
@@ -31,6 +32,8 @@ pilot <- read.csv('../DB/calculadora.csv') %>%
                sarimssinf = sarimssinfo,
                abogado_pub = tipodeabogadocalc) %>%
         mutate(hd = 0) 
+
+continuas <- names(pilot)[!(names(pilot) %in% factores)]
 
 hd <- readRDS('../DB/observaciones.RDS') %>%
       filter(junta == '7') %>%
@@ -57,8 +60,8 @@ plot_titles_cont <- c('Wage', 'Tenure', 'Weekly working hours', 'Severance Pay',
 
 
 plot_covariates_cont <- function(var, plot_title){
-  x = df %>% filter(hd == 1) %>% select_(var)
-  y = df %>% filter(hd == 0) %>% select_(var)
+  x = pilot[[var]]
+  y = hd[[var]]
   m = ks.test(x, y)
   p = format(m$p.value, digits = 3)
   
@@ -102,10 +105,18 @@ x[is.na(x)] <- '0'
 x
 }
 
-# ggbarplot(ToothGrowth, x = "dose", y = "len", add = "mean_se",
-#           color = "supp", palette = "jco", 
-#           position = position_dodge(0.8))+
-#   stat_compare_means(aes(group = supp), label = "p.signif", label.y = 29)
+# cat = df %>%
+#   select(one_of(factores)) %>%
+#   # mutate_all(aux_nas) %>% 
+#   gather(key = var, value = valor, -hd) %>% 
+#   mutate(valor = aux_factor(valor)) 
+# 
+# ggbarplot(cat, x = "var", y = "valor",
+#           fill = "hd", color = "hd", 
+#           add = 'mean_se', palette = c('gray77', 'gray53'),
+#           position = position_dodge()) +
+#   stat_compare_means(aes(group = hd), label = "p.signif")
+
 
 df %>%
   select(one_of(factores)) %>%
@@ -131,6 +142,7 @@ df %>%
                     name = '',
                     labels = c('Pilot Data', 'Historic Data')) +
   theme_classic() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  geom_signif(comparisons)
   
 ggsave('../Figuras/covariates_categorical.tiff')
