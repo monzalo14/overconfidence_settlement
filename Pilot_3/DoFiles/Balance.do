@@ -9,7 +9,7 @@ drop if grupo_tratamiento=="0"
 egen treatment=group(grupo_tratamiento)
 
 *Varlist 
-local balance_all_vlist mujer prob_ganar cantidad_ganar sueldo  salario_diario ///
+local balance_all_vlist mujer prob_ganar na_prob cantidad_ganar na_cant sueldo  salario_diario ///
 	retail outsourcing mon_tue 
 	
 local balance_23_vlist	high_school angry diurno top_sue big_size ///
@@ -53,6 +53,9 @@ use "$directorio\DB\treatment_data.dta", clear
 
 drop if grupo_tratamiento=="0"
 egen treatment=group(grupo_tratamiento)
+*Number of days each treatment occured
+by grupo_tratamiento fecha_alta, sort: gen nvals = _n ==1
+by grupo_tratamiento: egen num_days=sum(nvals)
 
 *Number of days
 qui su num_days if treatment==1 
@@ -81,14 +84,15 @@ qui putexcel F`i'=(`r(N)') using "$directorio\Tables\Balance.xlsx", sheet("Balan
 ********************************************************************************
 ********************************************************************************
 
-
+use "$directorio\DB\treatment_data.dta", clear
 ********************************************************************************
 *Balance test of treatment assignment from 2017-06-15 
-
+drop if grupo_tratamiento=="0"
+egen treatment=group(grupo_tratamiento)
 keep if date>=date("2017-06-15" , "YMD")
 
 *Varlist 
-local balance_all_vlist mujer prob_ganar cantidad_ganar sueldo  salario_diario ///
+local balance_all_vlist mujer prob_ganar na_prob cantidad_ganar na_cant sueldo  salario_diario ///
 	retail outsourcing mon_tue 
 	
 local balance_23_vlist	high_school angry diurno top_sue big_size ///
@@ -133,6 +137,9 @@ use "$directorio\DB\treatment_data.dta", clear
 drop if grupo_tratamiento=="0"
 egen treatment=group(grupo_tratamiento)
 keep if date>=date("2017-06-15" , "YMD")
+*Number of days each treatment occured
+by grupo_tratamiento fecha_alta, sort: gen nvals = _n ==1
+by grupo_tratamiento: egen num_days=sum(nvals)
 
 *Number of days
 qui su num_days if treatment==1 
@@ -162,14 +169,16 @@ qui putexcel F`i'=(`r(N)') using "$directorio\Tables\Balance.xlsx", sheet("Balan
 ********************************************************************************
 
 
+use "$directorio\DB\treatment_data.dta", clear
 ********************************************************************************
-*Balance test of treatment assignment with only July data 
-
+*Balance test of treatment assignment from July
+drop if grupo_tratamiento=="0"
+egen treatment=group(grupo_tratamiento)
 keep if date>=date("2017-07-01" , "YMD")
 
 *Varlist 
-local balance_all_vlist mujer prob_ganar cantidad_ganar sueldo  salario_diario ///
-	retail outsourcing mon_tue 
+local balance_all_vlist mujer prob_ganar na_prob cantidad_ganar na_cant sueldo  salario_diario ///
+	retail outsourcing mon_tue  
 	
 local balance_23_vlist	high_school angry diurno top_sue big_size ///
 	reclutamiento dummy_confianza dummy_desc_sem ///
@@ -212,17 +221,20 @@ use "$directorio\DB\treatment_data.dta", clear
 
 drop if grupo_tratamiento=="0"
 egen treatment=group(grupo_tratamiento)
-keep if date>=date("2017-06-15" , "YMD")
+keep if date>=date("2017-07-01" , "YMD")
+*Number of days each treatment occured
+by grupo_tratamiento fecha_alta, sort: gen nvals = _n ==1
+by grupo_tratamiento: egen num_days=sum(nvals)
 
 *Number of days
 qui su num_days if treatment==1 
-qui putexcel C`i'=(`r(mean)') using "$directorio\Tables\Balance.xlsx", sheet("Balance_july") modify
+capture qui putexcel C`i'=(`r(mean)') using "$directorio\Tables\Balance.xlsx", sheet("Balance_july") modify
 qui su num_days if treatment==2		
-qui putexcel D`i'=(`r(mean)') using "$directorio\Tables\Balance.xlsx", sheet("Balance_july") modify
+capture qui putexcel D`i'=(`r(mean)') using "$directorio\Tables\Balance.xlsx", sheet("Balance_july") modify
 qui su num_days if treatment==3	
-qui putexcel E`i'=(`r(mean)') using "$directorio\Tables\Balance.xlsx", sheet("Balance_july") modify
+capture qui putexcel E`i'=(`r(mean)') using "$directorio\Tables\Balance.xlsx", sheet("Balance_july") modify
 qui su num_days if treatment==4	
-qui putexcel F`i'=(`r(mean)') using "$directorio\Tables\Balance.xlsx", sheet("Balance_july") modify
+capture qui putexcel F`i'=(`r(mean)') using "$directorio\Tables\Balance.xlsx", sheet("Balance_july") modify
 
 local i=`i'+1
 	
