@@ -1,11 +1,5 @@
 /*Effect/Update on beleifs*/
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
-drop _merge
-
-
 *Employee
 use "$directorio\DB\Calculadora_wod.dta", clear	
 merge m:1 folio using "$directorio/DB/Merge_Actor_OC.dta", keep(2 3) nogen

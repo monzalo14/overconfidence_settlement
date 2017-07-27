@@ -1111,6 +1111,54 @@ The regression includes dummies of which party answered the survey (employee, em
 \pagebreak
 
 
+\begin{figure}[H]
+    \caption{Out of sample fit for duration predictions}
+    \label{duration_predictions}
+    \begin{center}
+    \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=.75\textwidth]{mod_duracion_caducidad.tiff}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=.75\textwidth]{mod_duracion_convenio.tiff}
+     \end{subfigure}
+     \hfill
+         \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=.75\textwidth]{mod_duracion_laudo_pierde.tiff}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=.75\textwidth]{mod_duracion_laudo_gana.tiff}
+     \end{subfigure}
+     \hfill
+         \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=.75\textwidth]{mod_duracion_desiste.tiff}
+     \end{subfigure}
+        \end{center}
+        {\footnotesize \textit{Notes: } Scatter plot of duration predictions and outcomes }
+        {\footnotesize \textit{RScript: }  \texttt{covariate_plots.R}}
+\end{figure}
+
+
+\begin{figure}[H]
+    \caption{Out of sample fit for compensation predictions}
+    \label{}
+    \begin{center}
+    \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=.75\textwidth]{mod_liqtotal_convenio.tiff}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+    \centering
+        \includegraphics[width=.75\textwidth]{mod_liqtotal_laudo_gana.tiff}
+     \end{subfigure}
+  \end{center}
+        {\footnotesize \textit{Notes: } Scatter plot of compensation predictions and outcomes.}
+        {\footnotesize \textit{RScript: }  \texttt{covariate_plots.R}}
+\end{figure}
 
 %\subsection{Model}
 %\input{Model.tex}
