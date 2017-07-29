@@ -56,10 +56,10 @@ test_convenio$pred = exp(predict(modelo_convenio, newdata = test_convenio))
 r2_laudo <- get_r2(test_laudo)
 r2_convenio <- get_r2(test_laudo)
 
-ggplot(test_laudo, aes(x = pred, y = liq_total_tope)) +
+ggplot(test_laudo, aes(x = pred/1000, y = liq_total_tope/1000)) +
   geom_point() +
   geom_smooth(method = 'lm', se = FALSE, color = 'red4') +
-  labs(title = 'Compensation in Winning Court Ruling',
+  labs(title = 'Winning Court Ruling',
        x = 'Prediction', y = 'y') + 
   theme_classic() +
   labs(subtitle = bquote(R^{2}==.(r2_laudo)), x = 'Prediction')
@@ -67,7 +67,7 @@ ggplot(test_laudo, aes(x = pred, y = liq_total_tope)) +
 ggsave('../Figures/prediction_laudo.tiff')
 
 
-ggplot(test_convenio, aes(x = pred, y = liq_total_tope)) +
+ggplot(test_convenio, aes(x = pred/1000, y = liq_total_tope/1000)) +
   geom_point() +
   geom_smooth(method = 'lm', se = FALSE, color = 'red4') +
   labs(title = 'Compensation in Settlement',
