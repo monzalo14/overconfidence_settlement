@@ -330,19 +330,6 @@ Summary stats of outcomes, basic and strategic variables
 
 
 \begin{table}[H]
-    \caption{Summary statistics table by end mode }
-    \label{tab:SS}
-    \begin{center}
-        \tiny{\input{./Tables/SS_bymodotermino.tex}}
-    \end{center}
-    \footnotesize
-    \textit{Notes:} 
-Summary stats of outcomes, basic and strategic variables by end mode.
-    \textit{Do file: } \texttt{Table\_SS\_bymodotermino.do}
-\end{table}
-
-
-\begin{table}[H]
     \caption{Baseline expectations comparison between parties}
     \label{Table_expectations_plaintiff_defendant}
     \begin{center}
@@ -575,7 +562,7 @@ The number of cases assigned to the 3 different groups is very similar, and is c
             \includegraphics[width=\textwidth]{covariates_categorical.tiff}
         \end{subfigure}
     \end{center}
-    {\footnotesize \textit{Notes: } Covariate distributions for historical -used to calibrate our calculator- and pilot data. All continuous variables are plotted in logs. Color guide is the same for both variable types.}
+    {\footnotesize \textit{Notes: } Covariate distributions for historical -used to calibrate our calculator- and pilot data. All continuous variables are plotted in logs. Color guide is the same for both variable types. Plots for continuous variables show the p-value of a Kolmogorov–Smirnov test in the subtitle. In the categorical covariates plot, we show significance of a two-sided t-test of differences in means between samples.}
     {\footnotesize \textit{Script: } \texttt{covariate\_plots.R}}
 \end{figure}
 
@@ -791,6 +778,17 @@ The number of cases assigned to the 3 different groups is very similar, and is c
 Detailed description of variables used throughout the paper. The variables marked with \textbf{*} are the ones that made it to the final model.
 \end{table}
 
+\begin{table}[H]
+    \caption{Summary statistics table by end mode }
+    \label{tab:SS}
+    \begin{center}
+        \tiny{\input{./Tables/SS_bymodotermino.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+Summary stats of outcomes, basic and strategic variables by end mode.
+    \textit{Do file: } \texttt{Table\_SS\_bymodotermino.do}
+\end{table}
 
 \begin{table}[H]
     \caption{Baseline Expectations}

@@ -11,7 +11,7 @@ diversas regresiones */
 ********************************************************************************
 
 	*DB: Calculator:5005
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
 	capture replace X=0 if X<0 & X~=.
@@ -221,8 +221,8 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 
 ********************************************************************************
 	*DB: March Pilot
-use "$directorio\DB\DB3\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$directorio\DB\Calculadora_wod.dta", keep(1 3) nogen
+use "$sharelatex\DB\Base_Seguimiento.dta", clear
+merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
 
 
 *Persistent conciliation variable
@@ -365,11 +365,11 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 	
 ********************************************************************************
 	*DB: March Pilot merged with surveys (Table 1A)
-use "$directorio\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
 
 preserve
 *Employee
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
 rename A_5_1 masprob_employee
 replace masprob=masprob/100
 rename A_5_5 dineromasprob_employee
@@ -407,7 +407,7 @@ restore
 
 preserve
 *Employee's Lawyer
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Actor.dta" , keep(2 3)
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3)
 rename RA_5_1 masprob
 replace masprob=masprob/100
 rename RA_5_5 dineromasprob
@@ -443,7 +443,7 @@ restore
 
 preserve
 *Firm's Lawyer
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3)
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3)
 rename RD5_1_1 masprob
 replace masprob=masprob/100
 rename RD5_5 dineromasprob
@@ -486,7 +486,7 @@ restore
 ********************************************************************************
 
 	*DB: Calculator:5005
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
 	capture replace X=0 if X<0 & X~=.
@@ -698,8 +698,8 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 	
 ********************************************************************************
 	*DB: March Pilot
-use "$directorio\DB\DB3\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$directorio\DB\Calculadora_wod.dta", keep(1 3) nogen
+use "$sharelatex\DB\Base_Seguimiento.dta", clear
+merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
 
 
 *Persistent conciliation variable
@@ -843,11 +843,11 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 	
 ********************************************************************************
 	*DB: March Pilot merged with surveys (Table 1A)
-use "$directorio\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
 
 preserve
 *Employee
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
 rename A_5_1 masprob_employee
 replace masprob=masprob/100
 rename A_5_5 dineromasprob_employee
@@ -888,7 +888,7 @@ restore
 
 preserve
 *Employee's Lawyer
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Actor.dta" , keep(2 3)
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3)
 rename RA_5_1 masprob
 replace masprob=masprob/100
 rename RA_5_5 dineromasprob
@@ -924,7 +924,7 @@ restore
 
 preserve
 *Firm's Lawyer
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3)
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3)
 rename RD5_1_1 masprob
 replace masprob=masprob/100
 rename RD5_5 dineromasprob
@@ -968,9 +968,9 @@ restore
 *Baseline expectations by defendant/plaintiff and type of lawyer
 ********************************************************************************
 
-use "$directorio/DB/Merge_Encuestas.dta", clear
+use "$sharelatex/Raw/Merge_Encuestas.dta", clear
 duplicates drop folio ES_fecha, force
-merge m:1 folio using "$directorio\DB\Calculadora_wod.dta", keep(1 3) nogen
+merge m:1 folio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
 
 
 *Employee

@@ -1,5 +1,5 @@
-use "$directorio\DB\DB3\Base_Seguimiento.dta", clear
-merge m:m fechalista expediente anio using "$sharelatex\DB\citatorios.dta"
+use "$sharelatex\DB\Base_Seguimiento.dta", clear
+merge m:m fechalista expediente anio using "$sharelatex\Raw\citatorios.dta"
 
 
 
@@ -71,7 +71,7 @@ estadd scalar DepVarMean=r(mean)
 
 
 *************************
-esttab using "$sharelatex/Tables/summons.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex/Tables/reg_results/summons.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean") replace 
 	
 

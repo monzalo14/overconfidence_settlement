@@ -1,7 +1,7 @@
 ********************************************************************************
 ********************************EXPECTATION*************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
 *Homologación de variables
 rename  trabbase  trabajador_base
 rename  antigedad   c_antiguedad 
@@ -30,7 +30,7 @@ eststo clear
 
 preserve
 *Employee
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3)
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3)
 rename A_5_1 masprob_employee
 rename A_5_5 dineromasprob_employee
 
@@ -70,7 +70,7 @@ restore
 
 preserve
 *Employee's Lawyer
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Actor.dta" , keep(2 3)
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3)
 rename RA_5_1 masprob_law_emp
 replace masprob=masprob/100
 rename RA_5_5 dineromasprob_law_emp
@@ -112,7 +112,7 @@ restore
 
 preserve
 *Firm's Lawyer
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3)
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3)
 rename RD5_1_1 masprob_law_firm
 replace masprob=masprob/100
 rename RD5_5 dineromasprob_law_firm
@@ -152,7 +152,7 @@ estadd local dummygiro="`no'"
 restore
 
 ********************************************************************************
-esttab using "$directorio\Results\Results_3\Regressions\Reg1_expectation.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\Reg1_expectation.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" "dummygiro DummyGiro" ) replace 
 
 ********************************************************************************

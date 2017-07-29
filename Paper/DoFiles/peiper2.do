@@ -1,7 +1,7 @@
 
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(3)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(3)
 
 
 	
@@ -253,13 +253,11 @@ forvalues i=1/6 {
 		   scheme(s2mono) graphregion(color(none)) 
 	
 	if `i'==1 {
-		graph export "$directorio/Plots/Figuras/Compensation.pdf", replace
 		graph export "$sharelatex\Figuras\Compensation.pdf", replace 
 
 
 	}
 	else {
-		graph export "$directorio/Plots/Figuras//`asked'.pdf", replace 
 		graph export "$sharelatex\Figuras\\`asked'.pdf", replace 
 
 

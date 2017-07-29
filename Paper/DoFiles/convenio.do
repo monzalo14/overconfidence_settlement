@@ -1,4 +1,4 @@
-use "$directorio\DB\DB2\Seguimiento_Juntas.dta", clear
+use "$sharelatex\DB\Seguimiento_Juntas.dta", clear
 
 collapse (mean) mean_con=convenio (sd) sd_con=convenio (count) n_con=convenio ///
 		, by(junta calcu_p_actora)
@@ -93,14 +93,14 @@ twoway (bar mean_con junta_calcu if calcu==0, color(dkgreen) lcolor(black) ) ///
 	   title("Porcentaje Convenios") ///
 	   subtitle("Parte actora") ///
 	   scheme(s2mono) graphregion(color(none)) 
-graph export "$directorio/Plots/Figuras/convenio_act.pdf", replace
+graph export "$sharelatex/Figuras/convenio_act.pdf", replace
 
 	   
 	   
 ********************************************************************************
 
 
-use "$directorio\DB\DB2\Seguimiento_Juntas.dta", clear
+use "$sharelatex\DB\Seguimiento_Juntas.dta", clear
 
 collapse (mean) mean_con=convenio (sd) sd_con=convenio (count) n_con=convenio ///
 		, by(junta calcu_p_dem)
@@ -195,7 +195,7 @@ twoway (bar mean_con junta_calcu if calcu==0, color(dkgreen) lcolor(black) ) ///
 	   title("Porcentaje Convenios") ///
 	   subtitle("Parte demandada") ///
 	   scheme(s2mono) graphregion(color(none)) 
-graph export "$directorio/Plots/Figuras/convenio_dem.pdf", replace
+graph export "$sharelatex/Figuras/convenio_dem.pdf", replace
 
 
 

@@ -1,9 +1,5 @@
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
 
-
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
@@ -115,7 +111,7 @@ estadd scalar Erre=e(r2)
 
 
 ********************************************************************************
-esttab using "$directorio\Results\Results_3\Regressions\Reg1_con_log.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\Reg1_con_log.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" "dummygiro DummyGiro") replace 
 
 ********************************************************************************
@@ -193,7 +189,7 @@ estadd scalar Erre=e(r2)
 
 
 ********************************************************************************
-esttab using "$directorio\Results\Results_3\Regressions\Reg1_lau_log.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\Reg1_lau_log.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" "dummygiro DummyGiro" ) replace 
 
 ********************************************************************************

@@ -1,13 +1,7 @@
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
-global sharelatex C:\Users\chasi_000\Dropbox\Apps\ShareLaTeX\Overconfidence and settlement
-
-
 
 ********************************************************************************
 	*DB: Calculator:5005
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
 	capture replace X=0 if X<0 & X~=.
@@ -74,5 +68,5 @@ estadd scalar DepVarMean=r(mean)
 
 *************************
 
-esttab using "$directorio\Results\Results_3\Regressions\concilio_vs_lawyer.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\concilio_vs_lawyer.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" ) replace 

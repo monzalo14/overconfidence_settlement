@@ -1,8 +1,8 @@
  
 *EMPLOYEE
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Merge_Actor_OC.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco )
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Merge_Actor_OC.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco )
 
 *Drop outlier
 xtile perc=A_5_8, nq(99)
@@ -92,9 +92,9 @@ estadd scalar DepVarMean=r(mean)
 ********************************************************************************
 
 *EMPLOYEE'S LAWYER
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Merge_Representante_Actor_OC.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco )
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Merge_Representante_Actor_OC.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco )
 
 
 rename ES_1_5 time_s
@@ -179,9 +179,9 @@ estadd scalar DepVarMean=r(mean)
 ********************************************************************************
 
 *FIRM'S LAWYER
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Merge_Representante_Demandado_OC.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco )
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Merge_Representante_Demandado_OC.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco )
 
 
 rename ES_1_5 time_s
@@ -266,5 +266,5 @@ estadd scalar DepVarMean=r(mean)
 
 ******************
 
-esttab using "$directorio\Results\Results_3\Regressions\exit_vs_initial_exp_log.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\exit_vs_initial_exp_log.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean") replace 

@@ -1,9 +1,9 @@
 /*Overconfidence plots*/
 
 ************************************Employee************************************
-use  "$directorio\DB\Calculadora.dta", clear
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
-merge m:1 folio using "$directorio/DB/Append Encuesta Inicial Actor.dta", keep(2 3) nogen
+use  "$sharelatex\DB\Calculadora.dta", clear
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+merge m:1 folio using "$sharelatex/Raw/Append Encuesta Inicial Actor.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
 duplicates drop folio tratamientoqueles secon, force
@@ -47,9 +47,9 @@ graph export "$sharelatex/Figuras/difference_prob_employee.pdf", replace
 
 
 ************************************Employe's Lawyer****************************
-use  "$directorio\DB\Calculadora.dta", clear
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
-merge m:m folio using "$directorio/DB/Append Encuesta Inicial Representante Actor.dta", keep(2 3) nogen
+use  "$sharelatex\DB\Calculadora.dta", clear
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+merge m:m folio using "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
 duplicates drop folio tratamientoqueles secon, force
@@ -90,9 +90,9 @@ graph export "$sharelatex/Figuras/difference_prob_employeelawyer.pdf", replace
 
 
 ************************************Firm's Lawyer*******************************
-use  "$directorio\DB\Calculadora.dta", clear
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
-merge m:m folio using "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta", keep(2 3) nogen
+use  "$sharelatex\DB\Calculadora.dta", clear
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+merge m:m folio using "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
 duplicates drop folio tratamientoqueles secon, force

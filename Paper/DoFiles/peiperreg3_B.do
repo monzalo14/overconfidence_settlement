@@ -10,9 +10,9 @@
 *************************************EMPLOYEE***********************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 drop _merge
 
 replace seconcilio=0 if seconcilio==.
@@ -88,9 +88,9 @@ estadd scalar std_dev_X=r(sd)
 ********************************EMPLOYEE'S LAWYER*******************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 drop _merge
 
 replace seconcilio=0 if seconcilio==.
@@ -167,9 +167,9 @@ estadd scalar std_dev_X=r(sd)
 ********************************FIRM'S LAWYER*******************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 drop _merge
 
 replace seconcilio=0 if seconcilio==.
@@ -247,5 +247,5 @@ estadd scalar std_dev_X=r(sd)
 
 *************************
 
-esttab using "$directorio\Results\Results_3\Regressions\concilio_vs_oc_b.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\concilio_vs_oc_b.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" "std_dev_Y std_dev_Y" "OCMean OC_Mean" "std_dev_X std_dev_X") replace 

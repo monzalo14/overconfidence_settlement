@@ -1,11 +1,8 @@
 /*Plots dummies lawyers*/
 
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
 set matsize 1500
 
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
@@ -84,7 +81,6 @@ twoway (histogram beta_simple ,  percent color(ltblue)) ///
 	   title("Coefficient dummies lawyer office") ///
 	   xtitle("Beta coefficients") ytitle("Frequency") ///
 	   graphregion(color(none)) scheme(s2mono) 
-graph export "$directorio/Plots/Figuras/Beta_dum.pdf", replace 
 graph export "$sharelatex/Figuras/Beta_dum.pdf", replace 
 
 

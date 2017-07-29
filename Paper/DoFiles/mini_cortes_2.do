@@ -1,5 +1,5 @@
-use "$directorio\DB\DB3\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$directorio\DB\Calculadora_wod.dta", keep(1 3)
+use "$sharelatex\DB\Base_Seguimiento.dta", clear
+merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3)
 drop _merge
 
 
@@ -147,9 +147,9 @@ foreach corte in june july aug sept oct {
 *************************************EMPLOYEE***********************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
-merge m:m expediente anio using "$directorio\DB\DB3\Base_Seguimiento.dta", keep(1 3) keepusing(tratamientoquelestoco c1_se_concilio p_actor c1_fecha_convenio seconcilio)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+merge m:m expediente anio using "$sharelatex\DB\Base_Seguimiento.dta", keep(1 3) keepusing(tratamientoquelestoco c1_se_concilio p_actor c1_fecha_convenio seconcilio)
 drop _merge
 
 *Persistent conciliation variable
@@ -249,9 +249,9 @@ estadd scalar Pvalue_=r(p)
 ********************************EMPLOYEE'S LAWYER*******************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
-merge m:m expediente anio using "$directorio\DB\DB3\Base_Seguimiento.dta", keep(1 3) keepusing(tratamientoquelestoco c1_se_concilio p_actor c1_fecha_convenio seconcilio)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
+merge m:m expediente anio using "$sharelatex\DB\Base_Seguimiento.dta", keep(1 3) keepusing(tratamientoquelestoco c1_se_concilio p_actor c1_fecha_convenio seconcilio)
 drop _merge
 
 *Persistent conciliation variable
@@ -347,9 +347,9 @@ estadd scalar Pvalue_=r(p)
 ********************************FIRM'S LAWYER*******************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
-merge m:m expediente anio using "$directorio\DB\DB3\Base_Seguimiento.dta", keep(1 3) keepusing(tratamientoquelestoco c1_se_concilio p_actor c1_fecha_convenio seconcilio)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
+merge m:m expediente anio using "$sharelatex\DB\Base_Seguimiento.dta", keep(1 3) keepusing(tratamientoquelestoco c1_se_concilio p_actor c1_fecha_convenio seconcilio)
 drop _merge
 
 *Persistent conciliation variable
@@ -443,5 +443,5 @@ estadd scalar Pvalue_=r(p)
 
 
 	*************************
-	esttab using "$directorio\Results\Results_3\Regressions\treatment_reg_minicortes_2.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+	esttab using "$sharelatex\Tables\reg_results\treatment_reg_minicortes_2.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" "IntMean InteractionVarMean" "Pvalue Pvalue" "Pvalue_ Pvalue_") replace 

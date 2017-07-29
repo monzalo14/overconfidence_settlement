@@ -1,11 +1,11 @@
 /*Effect/Update on beleifs*/
 
 *Employee
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using "$directorio/DB/Merge_Actor_OC.dta", keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using "$sharelatex/Raw/Merge_Actor_OC.dta", keep(2 3) nogen
 rename ES_fecha fecha
 
-merge 1:1 folio fecha using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
+merge 1:1 folio fecha using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
 
 *Drop outlier
 xtile perc=A_5_8, nq(99)
@@ -27,16 +27,16 @@ twoway (hist update_comp if  update_comp>=0 & update_comp <=1, percent w(.1) xla
 		subtitle("Employee") note("%obs: `perc_obs'", size(small)) graphregion(color(none))) ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("") ) ///
-	(scatteri 0 `r(mean)' 40 `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' 30 `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(employee_amount, replace) 
 	
 
 *Employee's Lawyer
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using "$directorio/DB/Merge_Representante_Actor_OC.dta", keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using "$sharelatex/Raw/Merge_Representante_Actor_OC.dta", keep(2 3) nogen
 rename ES_fecha fecha
 
-merge m:1 folio fecha using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
+merge m:1 folio fecha using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
 duplicates drop folio fecha tratamientoquelestoco, force
 
 *Measure of update in beliefs:  |P-E_e|/|P-E_b|
@@ -55,16 +55,16 @@ twoway (hist update_comp if  update_comp>=0 & update_comp <=1, percent w(.1) xla
 		subtitle("Employee's Lawyer") note("%obs: `perc_obs'", size(small)) graphregion(color(none))) ///
 	scheme(s2mono) graphregion(color(none)) ///
 	xtitle("") ) ///
-	(scatteri 0 `r(mean)' 40 `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
+	(scatteri 0 `r(mean)' 30 `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
 	, name(employeeslawyer_amount, replace) 
 	
 	
 *Firm's Lawyer
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using "$directorio/DB/Merge_Representante_Demandado_OC.dta", keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using "$sharelatex/Raw/Merge_Representante_Demandado_OC.dta", keep(2 3) nogen
 rename ES_fecha fecha
 
-merge m:1 folio fecha using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
+merge m:1 folio fecha using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
 duplicates drop folio fecha tratamientoquelestoco, force
 
 *Measure of update in beliefs:  |P-E_e|/|P-E_b|

@@ -1,7 +1,7 @@
 /*Treatment regression*/
 
-use "$directorio\DB\DB3\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$directorio\DB\Calculadora_wod.dta", keep(1 3)
+use "$sharelatex\DB\Base_Seguimiento.dta", clear
+merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3)
 drop _merge
 
 *Persistent conciliation variable
@@ -81,5 +81,5 @@ estadd scalar IntMean=r(mean)
 
 *************************
 
-esttab using "$directorio\Results\Results_3\Regressions\treatment_reg_persistent.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\treatment_reg_persistent.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" "IntMean InteractionVarMean") replace 

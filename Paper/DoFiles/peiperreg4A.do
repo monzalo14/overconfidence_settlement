@@ -1,7 +1,7 @@
 /*Treatment regression*/
 
-use "$directorio\_aux\Programa_Aleatorizacion.dta", clear
-merge m:1 folio using "$directorio\DB\Calculadora_wod.dta", keep(1 3)
+use "$sharelatex\DB\Programa_Aleatorizacion.dta", clear
+merge m:1 folio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3)
 drop _merge
 
 
@@ -72,5 +72,5 @@ estadd scalar IntMean=r(mean)
 
 *************************
 
-esttab using "$directorio\Results\Results_3\Regressions\treatment_reg.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\treatment_reg.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" "IntMean InteractionVarMean") replace 

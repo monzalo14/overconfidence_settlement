@@ -1,9 +1,9 @@
 
 
 *EMPLOYEE LAWYER
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 
 	*Expectations variables	
 *Dinero
@@ -54,9 +54,9 @@ tempfile tempemplaw
 save `tempemplaw'
 
 *FIRM LAWYER
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 
 	*Expectations variables	
 *Dinero
@@ -107,9 +107,9 @@ tempfile tempfirlaw
 save `tempfirlaw'
 
 *EMPLOYEE
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 
 *Outliers
 xtile perc=A_5_5, nq(100)
@@ -314,5 +314,5 @@ estadd scalar Pvalue2=r(p)
 
 
 *************************
-esttab using "$directorio\Results\Results_3\Regressions\exp_plaintiff_def.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\exp_plaintiff_def.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean"  "Pvalue1 Pvalue1" "Pvalue2 Pvalue2") replace 

@@ -1,9 +1,7 @@
 clear
 set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
 
-
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 
 *Percentage of cases not ended: 29%
@@ -41,5 +39,4 @@ twoway (hist duracion if modo_termino==3, w(.15) percent color(gs10) lcolor(gs2)
 	   
 graph combine gr1 gr2, xcommon rows(2)	 scheme(s2mono) graphregion(color(none)) ///
 	title("Length of case")
-graph export "$directorio/Plots/Figuras/Duracion.pdf", replace
 graph export "$sharelatex\Figuras\Duracion.pdf", replace 

@@ -1,6 +1,6 @@
-use "$directorio\DB\DB3\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$directorio\DB\Calculadora_wod.dta", keep(1 3) nogen
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+use "$sharelatex\DB\Base_Seguimiento.dta", clear
+merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
 
 
 

@@ -1,6 +1,6 @@
 ********************************************************************************
 	*DB: Calculator:5005
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
 	capture replace X=0 if X<0 & X~=.
@@ -45,9 +45,9 @@ save `temp5005'
 
 ********************************************************************************
 	*DB: March Pilot
-use "$directorio\DB\DB3\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$directorio\DB\Calculadora_wod.dta", keep(1 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) nogen keepusing(tratamientoquelestoco)
+use "$sharelatex\DB\Base_Seguimiento.dta", clear
+merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) nogen keepusing(tratamientoquelestoco)
 
 
 *Persistent conciliation variable

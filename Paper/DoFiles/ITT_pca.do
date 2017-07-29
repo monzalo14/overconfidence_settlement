@@ -1,8 +1,8 @@
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
-merge m:m folio using "$directorio/_aux/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 drop _merge
 
 ********************************************************************************
@@ -118,5 +118,5 @@ estadd scalar indvarmean=r(mean)
 
 
 
-esttab using "$sharelatex\Tables\ITT_pca.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\ITT_pca.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "indvarmean IndVarMean") replace 

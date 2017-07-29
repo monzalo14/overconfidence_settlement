@@ -1,6 +1,6 @@
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep( 2 3)
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep( 2 3)
 
 
 
@@ -227,13 +227,11 @@ forvalues i=1/2 {
 
 		   
 	if `i'==2 {
-		graph export "$directorio/Plots/Figuras/Correctly_knows.pdf", replace
 		graph export "$sharelatex\Figuras\Correctly_knows.pdf", replace 
 
 
 	}
 	else {
-		graph export "$directorio/Plots/Figuras//`sabe'.pdf", replace 
 		graph export "$sharelatex\Figuras\\`sabe'.pdf", replace 
 
 

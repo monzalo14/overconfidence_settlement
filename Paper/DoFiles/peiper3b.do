@@ -1,9 +1,5 @@
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
 
-
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
@@ -113,6 +109,5 @@ twoway (bar mean_won_asked v1 if modo_termino==1, color(blue) ) ///
 	   title(" ") ///
 	   scheme(s2mono) graphregion(color(none))
 	   
-graph export "$directorio/Plots/Figuras/ratio.pdf", replace
 graph export "$sharelatex/Figuras/ratio.pdf", replace 
 	

@@ -1,6 +1,6 @@
 /*Compliance table*/
 
-use "$directorio\_aux\Programa_Aleatorizacion.dta", clear
+use "$sharelatex\DB\Programa_Aleatorizacion.dta", clear
 
 *Compliance rate
 levelsof tratamientoquelestoco, local(levels)
@@ -17,24 +17,24 @@ foreach l of local levels {
 
 *Compliance with survey (Baseline and exit survey)	
 
-merge 1:1 folio fecha using "$directorio/_aux/Append Encuesta Inicial Actor.dta", keep(1 3)
+merge 1:1 folio fecha using "$sharelatex/DB/Append Encuesta Inicial Actor.dta", keep(1 3)
 	*Identifies when employee answered
 gen ans_A=(_merge==3)
 drop _merge
 
-merge 1:1 folio fecha using "$directorio/_aux/Append Encuesta Inicial Demandado.dta", keep(1 3)
+merge 1:1 folio fecha using "$sharelatex/DB/Append Encuesta Inicial Demandado.dta", keep(1 3)
 gen ans_D=(_merge==3)
 drop _merge
 
-merge 1:1 folio fecha using "$directorio/_aux/Append Encuesta Inicial Representante Actor.dta", keep(1 3)
+merge 1:1 folio fecha using "$sharelatex/DB/Append Encuesta Inicial Representante Actor.dta", keep(1 3)
 gen ans_RA=(_merge==3)
 drop _merge
 
-merge 1:1 folio fecha using "$directorio/_aux/Append Encuesta Inicial Representante Demandado.dta", keep(1 3)
+merge 1:1 folio fecha using "$sharelatex/DB/Append Encuesta Inicial Representante Demandado.dta", keep(1 3)
 gen ans_RD=(_merge==3)
 drop _merge
 
-merge 1:1 folio fecha using "$directorio/_aux/SalidaCompliance.dta", keep(1 3)
+merge 1:1 folio fecha using "$sharelatex/DB/SalidaCompliance.dta", keep(1 3)
 
 *Identificador ES no vacía (anyone answered)
 gen ID_ES=(_merge==3)

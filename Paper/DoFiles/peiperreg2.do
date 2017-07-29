@@ -1,9 +1,5 @@
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
 
-
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
@@ -102,5 +98,5 @@ estadd scalar Erre=e(r2)
 estadd local Conditioning="`reg'"
 
 
-esttab using "$directorio\Results\Results_3\Regressions\Reg2_lawyer.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+esttab using "$sharelatex\Tables\reg_results\Reg2_lawyer.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
 	scalars("Erre R-squared" "DepVarMean DepVarMean" "Conditioning Conditioning") replace 

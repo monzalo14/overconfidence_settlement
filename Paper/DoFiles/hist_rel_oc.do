@@ -12,8 +12,8 @@ HISTOGRAM OF RELATIVE OVERCONFIDENCE
 *************************************EMPLOYEE***********************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
 
 *Outliers
 xtile perc=A_5_5, nq(100)
@@ -36,8 +36,8 @@ twoway (hist rel_oc, percent w(3) ) ///
 ********************************EMPLOYEE'S LAWYER*******************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
 
 *Outliers
 xtile perc=RA_5_5, nq(100)
@@ -61,8 +61,8 @@ twoway (hist rel_oc, percent w(3) ) ///
 ********************************FIRM'S LAWYER*******************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
 
 *Outliers
 xtile perc=RD5_5, nq(100)
@@ -99,8 +99,8 @@ graph combine emp emplaw firlaw, cols(1) xcommon ///
 *************************************EMPLOYEE***********************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:1 folio using  "$directorio/DB/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
 
 *Regression with crossed effect overconfidence
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
@@ -120,8 +120,8 @@ twoway (hist rel_oc, percent w(1.5) ) ///
 ********************************EMPLOYEE'S LAWYER*******************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
 
 *Regression with crossed effect overconfidence
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
@@ -142,8 +142,8 @@ twoway (hist rel_oc, percent w(1.5) ) ///
 ********************************FIRM'S LAWYER*******************************
 ********************************************************************************
 
-use "$directorio\DB\Calculadora_wod.dta", clear	
-merge m:m folio using  "$directorio/DB/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
+use "$sharelatex\DB\Calculadora_wod.dta", clear	
+merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
 
 *Regression with crossed effect overconfidence
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)

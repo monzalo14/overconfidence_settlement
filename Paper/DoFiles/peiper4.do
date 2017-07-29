@@ -1,9 +1,5 @@
-clear
-set more off
-global directorio C:\Users\chasi_000\Dropbox\Statistics\P10
 
-
-import delimited "$directorio\DB\observaciones_tope.csv", clear 
+import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
@@ -78,4 +74,4 @@ twoway (scatter liq_total c_total  if modo_termino==1 , msymbol(circle_hollow) m
 
 graph combine gr_desist gr_laudo gr_cad gr_desist2 gr_laudo2 gr_cad2, ///
 	row(3) col(2) colf scheme(s2mono) graphregion(color(none))		   
-graph export "$directorio/Plots/Figuras/Scatter1.pdf", replace
+graph export "$sharelatex/Figuras/Scatter1.pdf", replace
