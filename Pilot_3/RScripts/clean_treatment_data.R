@@ -12,7 +12,8 @@ to_keep = c('fecha',
             'prob_ganar', 
             'cantidad_ganar',
             'salario',
-            'per_salario')
+            'per_salario', 
+            'genero')
 
 tratamientos_1 = read_excel('../Raw/captacion_tratamientos_1.xlsx', sheet = 'BaseControl', skip = 3) %>%
                 select(one_of(to_keep))
@@ -30,6 +31,8 @@ diccionario = read_excel('../Raw/diccionario.xlsx') %>%
               select(-definicion) %>%
               na.omit()
 
+diccionario[10 ,] = c('genero', 'genero')
+
 setnames(tratamientos_1, old = diccionario$nombre_1, new = diccionario$nombre_2) 
 
 ## Creamos salario diario para cada dataset
@@ -46,7 +49,8 @@ tratamientos_23 = tratamientos_23 %>%
                                              'Quincenal' = '15', 'Mensual' = '30'),
                          sueldo_per = as.numeric(sueldo_per),
                          salario_diario = sueldo/sueldo_per,
-                         grupo_tratamiento = as.character(grupo_tratamiento)) 
+                         grupo_tratamiento = as.character(grupo_tratamiento)) %>%
+                  filter(id_main > 16)
 
 df = bind_rows(tratamientos_1, tratamientos_23) %>%
     filter(!is.na(nombre_actor)) %>%

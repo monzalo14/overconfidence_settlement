@@ -2,6 +2,7 @@
 library(dplyr)
 library(ggplot2)
 library(ggsignif)
+library(broom)
 
 source('multiplot.R')
 
@@ -79,14 +80,13 @@ plot_covariates_cont <- function(var, plot_title){
 
 tiff(file = "../Figuras/covariates_continous.tiff", width = 3750, height = 2800, units = "px", res = 800) 
 
-
 p1 <- plot_covariates_cont(continuas[1], plot_titles_cont[1])
 p2 <- plot_covariates_cont(continuas[2], plot_titles_cont[2])
 p3 <- plot_covariates_cont(continuas[3], plot_titles_cont[3])
 p4 <- plot_covariates_cont(continuas[4], plot_titles_cont[4])
 p5 <- plot_covariates_cont(continuas[5], plot_titles_cont[5])
 p6 <- plot_covariates_cont(continuas[6], plot_titles_cont[6])
-
+  
 multiplot(p1, p2, p3, p4, p5, p6, cols = 2)
 
 dev.off()
@@ -105,44 +105,57 @@ x[is.na(x)] <- '0'
 x
 }
 
-# cat = df %>%
-#   select(one_of(factores)) %>%
-#   # mutate_all(aux_nas) %>% 
-#   gather(key = var, value = valor, -hd) %>% 
-#   mutate(valor = aux_factor(valor)) 
-# 
-# ggbarplot(cat, x = "var", y = "valor",
-#           fill = "hd", color = "hd", 
-#           add = 'mean_se', palette = c('gray77', 'gray53'),
-#           position = position_dodge()) +
-#   stat_compare_means(aes(group = hd), label = "p.signif")
-
-
-df %>%
+cat = df %>%
   select(one_of(factores)) %>%
   # mutate_all(aux_nas) %>% 
   gather(key = var, value = valor, -hd) %>% 
-  mutate(valor = aux_factor(valor)) %>% 
-  ggplot(aes(y = valor, x = as.factor(var), group = hd)) +
-  geom_bar(aes(fill = hd), stat = 'summary', fun.y = mean, position = 'dodge') +
-  stat_summary(fun.data = mean_cl_normal,
-               geom = 'errorbar', 
-               position = position_dodge(width = 0.85), 
-               width = 0.2) +
-  scale_x_discrete(labels = c('abogado_pub' = 'Public Lawyer',
-                              'codem' = 'Co-defendant',
-                              'gen' = 'Gender', 
-                              'indem' = 'Severance Pay',
-                              'reinst' = 'Reinstatement',
-                              'sarimssinf' = 'Social Security',
-                              'trabajador_base' = 'At-will worker')) +
-  scale_y_continuous(labels = scales::percent_format()) +
-  labs(y = 'Percent', x = 'Variable') + 
-  scale_fill_manual(values = c('gray77', 'gray53'), 
-                    name = '',
-                    labels = c('Pilot Data', 'Historic Data')) +
-  theme_classic() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  geom_signif(comparisons)
+  mutate(valor = aux_factor(valor))
+
+pvals = cat %>%
+        group_by(var) %>% do(tidy(t.test(valor ~ hd, data = .)))
+
+
+sign.stars <- function(p.value) {
+  ifelse(p.value <= 0.001, '***',
+         ifelse(p.value <= 0.01, ' **',
+                ifelse(p.value <= 0.05, '  *',
+                       ifelse(p.value <= 0.1, '  .', '   '))))
+}
+
+
+pvals = pvals %>%
+  mutate(label = sign.stars(p.value),
+         y = max(estimate1, estimate2)) %>%
+  select(var, label, y) 
+
+
+
+ggplot(cat, aes(y = valor, x = as.factor(var), group = hd)) +
+geom_bar(aes(fill = hd), stat = 'summary', fun.y = mean, position = 'dodge') +
+# geom_signif(stat = 'identity',
+#             data = pvals,
+#             aes(x = x, xend = xend, y = y, yend = y, annotation = annotation),
+#             position = position_dodge(width = 1)) +
+# geom_text(data = pvals, aes(y = y, label = label, x = var), position = position_dodge(width = 1)) +
+
+stat_summary(fun.data = mean_cl_normal,
+           geom = 'errorbar', 
+           position = position_dodge(width = 0.85), 
+           width = 0.2) +
+scale_x_discrete(labels = c('abogado_pub' = 'Public Lawyer',
+                            'codem' = 'Co-defendant',
+                            'gen' = 'Gender', 
+                            'indem' = 'Severance Pay',
+                            'reinst' = 'Reinstatement',
+                            'sarimssinf' = 'Social Security',
+                            'trabajador_base' = 'At-will worker')) +
+scale_y_continuous(labels = scales::percent_format()) +
+labs(y = 'Percent', x = 'Variable') + 
+scale_fill_manual(values = c('gray77', 'gray53'), 
+                  name = '',
+                  labels = c('Pilot Data', 'Historic Data')) +
+theme_classic() +
+theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+
   
-ggsave('../Figuras/covariates_categorical.tiff')
+  ggsave('../Figuras/covariates_categorical.tiff')
