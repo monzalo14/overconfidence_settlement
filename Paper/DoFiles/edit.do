@@ -36,10 +36,16 @@ replace A_5_8=. if perc>=98
 *Measure of update in beliefs:  |P-E_e|/|P-E_b|
 gen update_comp=abs((ES_1_4-comp_esp)/(A_5_5-comp_esp))
 
-gen calcu=2.tratamientoquelestoco
-gen conc=3.tratamientoquelestoco
 
-ivreg c1_se_concilio (update =  calcu conc)
-ivreg c1_se_concilio (update =  calcu )
-ivreg c1_se_concilio conc (update = calc) , robust
+gen calculator=2.tratamientoquelestoco
+gen conciliator=3.tratamientoquelestoco
+
+
+local controls  
+
+ivreg c1_se_concilio `controls' (update =  calculator ) , robust
+ivreg c1_se_concilio `controls' (update =  conciliator ) , robust
+ivreg c1_se_concilio conciliator `controls' (update = calculator) , robust
+ivreg c1_se_concilio `controls' (update =  calculator conciliator) , robust
+
 

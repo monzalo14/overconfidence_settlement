@@ -18,13 +18,13 @@ gen update_comp=abs((ES_1_4-comp_esp)/(A_5_5-comp_esp))
 
 drop if tratamientoquelestoco==0
  
-
+qui xtile perc_theta=update_comp  , nq(99)
 
 
 *CONTROL 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==1
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -47,7 +47,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==1
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==1
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -55,15 +55,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==1
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==1
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==1, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Control", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -75,7 +75,7 @@ twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquele
 *CALCULATOR 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==2
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -98,7 +98,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==2
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==2
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -106,15 +106,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==2
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==2
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==2, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Calculator", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -126,7 +126,7 @@ twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquele
 *CONCILIATOR 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==3
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -149,7 +149,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==3
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==3
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -157,15 +157,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==3
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==3
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==3, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Conciliator", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -191,13 +191,13 @@ gen update_comp=abs((ES_1_4-comp_esp)/(RA_5_5-comp_esp))
 
 drop if tratamientoquelestoco==0
 
-
+qui xtile perc_theta=update_comp  , nq(99)
 
 
 *CONTROL 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==1
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -220,7 +220,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==1
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==1
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -228,15 +228,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==1
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==1
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==1, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Control", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -248,7 +248,7 @@ twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquele
 *CALCULATOR 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==2
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -271,7 +271,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==2
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==2
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -279,15 +279,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==2
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==2
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==2, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Calculator", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -299,7 +299,7 @@ twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquele
 *CONCILIATOR 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==3
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -322,7 +322,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==3
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==3
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -330,15 +330,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==3
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==3
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==3, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Conciliator", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -364,13 +364,13 @@ gen update_comp=abs((ES_1_4-comp_esp)/(RD5_5-comp_esp))
 
 drop if tratamientoquelestoco==0
 
-
+qui xtile perc_theta=update_comp  , nq(99)
 
 
 *CONTROL 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==1
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -393,7 +393,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==1
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==1
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -401,15 +401,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==1
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==1
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==1, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==1, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Control", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -421,7 +421,7 @@ twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquele
 *CALCULATOR 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==2
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -444,7 +444,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==2
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==2
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -452,15 +452,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==2
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==2
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==2, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==2, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Calculator", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -472,7 +472,7 @@ twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquele
 *CONCILIATOR 
 ********************************************************************************
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+ttest update_comp==1 if perc_theta<=90 & tratamientoquelestoco==3
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -495,7 +495,7 @@ else {
 *Mean
 qui su update_comp if tratamientoquelestoco==3
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==3
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -503,15 +503,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & tratamientoquelestoco==3
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3
+qui su update_comp if perc_theta<=90 & tratamientoquelestoco==3
 *Histogram
-twoway (hist update_comp if  update_comp>=0 & update_comp <=1 & tratamientoquelestoco==3, ///
+twoway (hist update_comp if  perc_theta<=90 & tratamientoquelestoco==3, ///
 	percent w(.1)  ///
 	text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) ) subtitle("Conciliator", box bexpand) ) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if tratamientoquelestoco!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -531,8 +531,8 @@ graph combine control calc conciliator, ycommon rows(1) scheme(s2mono) graphregi
 
 
 graph combine emp emp_law fir_law, ///
-	xcommon ycommon rows(3)  graphregion(color(none))	 
-graph export "$sharelatex/Figuras/updatebeleif_amount_1.pdf", replace 
+	xcommon ycommon rows(3)  graphregion(color(none)) 
+graph export "$sharelatex/Figuras/updatebeleif_amount_total_1.pdf", replace 
 
 
 
@@ -565,7 +565,7 @@ capture drop perc_theta
 qui xtile perc_theta=update_comp  , nq(99)
 
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+ttest update_comp==1 if perc_theta<=90 & dia_tratamiento!=0
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -588,7 +588,7 @@ else {
 *Mean
 qui su update_comp if dia_tratamiento!=0
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -596,15 +596,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & dia_tratamiento!=0
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 *Histogram
-twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(0.05) xlabel(0(0.1)1) ///
+twoway (hist update_comp  if perc_theta<=90, percent w(.05)  ///
 	subtitle("Employee") scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) )) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if dia_tratamiento!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -619,7 +619,7 @@ capture drop perc_theta
 qui xtile perc_theta=update_comp  , nq(99)
 
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+ttest update_comp==1 if perc_theta<=90 & dia_tratamiento!=0
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -642,7 +642,7 @@ else {
 *Mean
 qui su update_comp if dia_tratamiento!=0
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -650,15 +650,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & dia_tratamiento!=0
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 *Histogram
-twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(0.05) xlabel(0(0.1)1) ///
+twoway (hist update_comp  if perc_theta<=90, percent w(.05)  ///
 	subtitle("Employee's Lawyer") scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) )) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if dia_tratamiento!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -672,7 +672,7 @@ capture drop perc_theta
 qui xtile perc_theta=update_comp  , nq(99)
 
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+ttest update_comp==1 if perc_theta<=90 & dia_tratamiento!=0
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -695,7 +695,7 @@ else {
 *Mean
 qui su update_comp if dia_tratamiento!=0
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -703,15 +703,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & dia_tratamiento!=0
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 *Histogram
-twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(0.05) xlabel(0(0.1)1) ///
+twoway (hist update_comp  if perc_theta<=90, percent w(.05)  ///
 	subtitle("Firm's Lawyer") scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) )) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if dia_tratamiento!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -726,5 +726,4 @@ twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(0.05) x
 
 graph combine employee_amount employeeslawyer_amount firmlawyer_amount, ///
 	xcommon ycommon rows(1)  graphregion(color(none))	
-graph export "$sharelatex/Figuras/updatebeleif_amount_2.pdf", replace 
-		
+graph export "$sharelatex/Figuras/updatebeleif_amount_total_2.pdf", replace

@@ -329,6 +329,7 @@ Summary stats of outcomes, basic and strategic variables
 \end{table}
 
 
+
 \begin{table}[H]
     \caption{Baseline expectations comparison between parties}
     \label{Table_expectations_plaintiff_defendant}
@@ -342,6 +343,8 @@ Summary stats of outcomes, basic and strategic variables
 \end{table}
 
 \pagebreak
+
+
 
 
 % \begin{table}[H]
@@ -391,6 +394,19 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 \end{table}
 
 \end{landscape}
+
+\begin{table}[H]
+\caption{Determinants of overconfidence}
+\label{Table_determinantsOC}
+\begin{center}
+\scriptsize{\input{./Tables/oc_reg_theta.tex}}
+\end{center}
+ \footnotesize
+\textit{Notes:} 
+\emph{Mistreated} variable refers to the survey question: "How well do you think you were treated by the firm?". The omitted category is "Very Good", while 1, 2 and 3 refer to "Fairly Well", "Not so well" and "Not well at all".
+Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very good, and the scale is increasing, i.e. the worker feels more mistreated . We use the following statistic to measure overconfidence: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says.
+\textit{Do file: } \texttt{oc\_reg\_theta.do}
+\end{table}
 
 
 %#include
@@ -729,12 +745,20 @@ The number of cases assigned to the 3 different groups is very similar, and is c
     \begin{subfigure}{\textwidth}
         \caption{Update in beliefs in amount}
         \centering
-        \includegraphics[width=\textwidth]{updatebeleif_amount.pdf}
+        \includegraphics[width=\textwidth]{updatebeleif_amount_1.pdf}
     \end{subfigure}
+    
+        \begin{subfigure}{\textwidth}
+        \caption{Update in beliefs in amount (Scale Up)}
+        \centering
+        \includegraphics[width=\textwidth, height=0.25\textheight]{updatebeleif_amount_2.pdf}
+    \end{subfigure}
+    
     \end{center}
-     \footnotesize \textit{Notes: Graphs on belief updating. They show the following statistic: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says.} 
+     \footnotesize \textit{Notes: Graphs on belief updating. They show the following statistic: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says. This graph only considers observations that falls between 0 and 1; and the \% of the observations that fall in that range are indicated below. The stars above the mean indicates the p-value, testing the mean equal 1.} 
       \footnotesize{ \textit{Do file: }  \texttt{Update\_beleifs.do}}
 \end{figure}
+
 
 
       
@@ -801,6 +825,27 @@ Summary stats of outcomes, basic and strategic variables by end mode.
     Summary statistics of parties' beliefs. We show mean and standard deviation for the whole sample, \& dividing by type of employee's lawyer.
     \textit{Do file: } \texttt{Table\_SS.do  Table\_SS\_bylawyer.do}
 \end{table}
+
+
+    
+\begin{table}[H]
+    \caption{Direct Updating}
+    \begin{subtable}{.5\linewidth}
+      \centering
+        \caption{Pilot}
+        \scriptsize{\input{./Tables/update_beleif_1.tex}}
+    \end{subtable}%
+    \begin{subtable}{.5\linewidth}
+      \centering
+        \caption{Scale Up}
+        \scriptsize{\input{./Tables/update_beleif_2.tex}}
+    \end{subtable} 
+           \footnotesize    
+  \textit{Notes:} 
+    Summary statistics of parties' update in beliefs; measured as $\frac{exit-initial}{initial}$, for both \emph{Pilot} and \emph{Scale Up}.
+    \textit{Do file: } \texttt{update\_beleif\_ss.do}
+\end{table}
+
 
 %\pagebreak
 %\begin{center}
@@ -890,6 +935,36 @@ We show some stats of who goes to the court. This is important since we can only
 \end{table}
 
 
+\begin{table}[H]
+    \caption{Correlation conciliation vs overconfidence}
+    \label{Table_concvsoc_theta}
+    \begin{center}
+        \scriptsize{\input{./Tables/Reg_con_oc_theta.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+   We use the following statistic to measure overconfidence: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won.. Elastictity : Con-OC measures how much does conciliation change when overconfidence changes in 1 standard deviation. Elasticity SD:Con-OC measures how many standard deviations conciliation changes when  overconfidence changes in 1 standard deviation.
+    \textit{Do file: } \texttt{con\_vs\_oc\_theta.do}
+\end{table}
+
+
+\pagebreak
+
+\begin{landscape}
+\begin{table}[H]
+    \caption{Conciliation and updating}
+    \label{Con_update}
+    \begin{center}
+        \scriptsize{\input{./Tables/con_vs_update.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+   The following table displays a regression of conciliation against the statistics of updating $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$
+    \textit{Do file: } \texttt{con\_vs\_update.do}
+\end{table}
+\end{landscape}
+
+
 % \begin{table}[H]
 %     \caption{Correlation conciliation  vs overconfidence (log)}
 %     \label{tab:reg_con_oc_log}
@@ -916,6 +991,7 @@ We show some stats of who goes to the court. This is important since we can only
 %    Calc=Conc and Calc=Conc=0 shows the p-value for the %respective tests.
 %    \textit{Do file: } \texttt{mini\_cortes\_2.do}
 %\end{table}
+
 
 
 \begin{table}[H]
@@ -956,6 +1032,26 @@ The regression includes dummies of which party answered the survey (employee, em
     Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
     \textit{Do file: } \texttt{minicortes\_monthstreatment.do}
 \end{table}
+
+\pagebreak
+
+
+\begin{landscape}
+\begin{table}[H]
+    \caption{ITT and ATT}
+    \label{ITT_ATT}
+    \begin{center}
+    \scriptsize{\input{./Tables/ITT_ATT.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+    
+    \textit{Do file: } \texttt{ITT\_ATT.do}
+\end{table}
+\end{landscape}
+
+
+
 
 
 %#appendix
@@ -1041,6 +1137,29 @@ The regression includes dummies of which party answered the survey (employee, em
         {\footnotesize \textit{Notes: Histograms of relative overconfidence in amount an d probability. Relative overconfidence is measured as $\frac{survey-calc}{calc}$. The histograms only display up to the 98 percentile.}}
         \texttt{hist\_rel\_oc.do}
 \end{figure}
+
+
+\begin{figure}[H]
+    \caption{Belief updating after treatment}
+    \label{Figure_updating}
+    \begin{center}
+    \begin{subfigure}{\textwidth}
+        \caption{Update in beliefs in amount (Pilot) }
+        \centering
+        \includegraphics[width=\textwidth]{updatebeleif_amount_total_1.pdf}
+    \end{subfigure}
+    
+        \begin{subfigure}{\textwidth}
+        \caption{Update in beliefs in amount (Scale Up) }
+        \centering
+        \includegraphics[width=\textwidth, height=0.25\textheight]{updatebeleif_amount_total_2.pdf}
+    \end{subfigure}
+    \end{center}
+     \footnotesize \textit{Notes: Graphs on belief updating. They show the following statistic: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says. This graph considers all observations but some outliers; the \% of the observations considered are indicated below. The stars above the mean indicates the p-value, testing the mean equal 1.} 
+      \footnotesize{ \textit{Do file: }  \texttt{Update\_beleifs\_total.do}}
+\end{figure}
+
+
 
       
 \begin{figure}[H]

@@ -496,3 +496,134 @@ foreach var of varlist masprob dineromasprob tiempomasprob ///
 	
 restore
 
+
+********************************************************************************
+	*DB: ScaleUp
+use "$scaleup\DB\Seguimiento_Juntas.dta", clear
+*Merge with iniciales DB
+keep if num_actores==1 
+rename expediente exp
+rename ao anio
+duplicates drop  exp anio junta, force
+
+merge 1:1 exp anio junta  using "$scaleup\DB\Iniciales_wod.dta", keep(3)
+
+
+destring salario_diario, replace force
+	
+*Homologación de variables
+rename convenio con
+
+
+*Generate missing variables
+foreach var in ///
+	win liq_total c_total con con_1m con_6m  ///
+	abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem   ///
+	reinst indem sal_caidos prima_antig prima_vac hextra ///
+	rec20 prima_dom desc_sem desc_ob sarimssinf utilidades nulidad  ///
+	vac ag codem ///
+	{
+		capture confirm variable  `var'
+		if !_rc {
+               qui di ""
+               }
+        else {
+               gen `var'=.
+               }
+	}	
+
+
+
+*PANEL A (Outcomes)
+local n=5
+local m=6
+foreach var of varlist win liq_total c_total con con_1m con_6m  ///
+	{
+	qui su `var'
+	*Variable 
+	qui putexcel A`n'=("`var'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelA") modify
+	*Obs
+	qui putexcel K`n'=(r(N))  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelA") modify		
+	*Mean
+	local mu=round(r(mean),0.01)
+	qui putexcel L`n'=("`mu'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelA") modify			
+	*Std Dev
+	local std=round(r(sd),0.01)
+	local sd="(`std')"
+	qui putexcel L`m'=("`sd'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelA") modify			
+	*Range
+	local range="[`r(min)', `r(max)']"
+	qui putexcel M`n'=("`range'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelA") modify			
+		
+	local n=`n'+2
+	local m=`m'+2
+	}
+
+	
+*PANEL B (Básicas)
+local n=5
+local m=6
+foreach var of varlist abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem   ///
+	{
+	qui su `var'
+	
+	*Obs
+	qui putexcel K`n'=(r(N))  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelB") modify		
+	*Mean
+	local mu=round(r(mean),0.01)
+	qui putexcel L`n'=("`mu'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelB") modify			
+	*Std Dev
+	local std=round(r(sd),0.01)
+	local sd="(`std')"
+	qui putexcel L`m'=("`sd'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelB") modify			
+	*Range
+	local range="[`r(min)', `r(max)']"
+	qui putexcel M`n'=("`range'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelB") modify		
+		
+	local n=`n'+2
+	local m=`m'+2
+	}
+	
+
+*PANEL C (Estratégicas)
+local n=5
+local m=6
+foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
+	rec20 prima_dom desc_sem desc_ob sarimssinf utilidades nulidad  ///
+	vac ag codem  ///
+	{
+	qui su `var'
+	
+	*Obs
+	qui putexcel K`n'=(r(N))  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelC") modify		
+	*Mean
+	local mu=round(r(mean),0.01)
+	qui putexcel L`n'=("`mu'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelC") modify			
+	*Std Dev
+	local std=round(r(sd),0.01)
+	local sd="(`std')"
+	qui putexcel L`m'=("`sd'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelC") modify			
+	*Range
+	local range="[`r(min)', `r(max)']"
+	qui putexcel M`n'=("`range'")  using "$sharelatex/Tables/SS.xlsx", ///
+		sheet("PanelC") modify		
+		
+	local n=`n'+2
+	local m=`m'+2
+	}
+
+	
+
+		

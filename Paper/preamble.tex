@@ -107,6 +107,12 @@ citestyle=authoryear]{biblatex}[2016/01/01] %the latest version of biblatex?
 \usetikzlibrary{calc}
 \usepackage{multirow,array}
 \usepackage{longtable}
+\usepackage{pgfplotstable}
+\pgfplotstableset{my style/.style={precision=5,
+            columns/0/.style={precision=3},
+            dec sep align, header=false,
+            every head row/.style={output empty row}}
+        }
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lem}[theorem]{Lemma}

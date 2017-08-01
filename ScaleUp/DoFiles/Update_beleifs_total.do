@@ -21,7 +21,7 @@ capture drop perc_theta
 qui xtile perc_theta=update_comp  , nq(99)
 
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+ttest update_comp==1 if perc_theta<=90 & dia_tratamiento!=0
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -44,7 +44,7 @@ else {
 *Mean
 qui su update_comp if dia_tratamiento!=0
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -52,15 +52,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & dia_tratamiento!=0
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 *Histogram
-twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(0.05) xlabel(0(0.1)1) ///
+twoway (hist update_comp  if perc_theta<=90, percent w(.05)  ///
 	subtitle("Employee") scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) )) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if dia_tratamiento!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -75,7 +75,7 @@ capture drop perc_theta
 qui xtile perc_theta=update_comp  , nq(99)
 
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+ttest update_comp==1 if perc_theta<=90 & dia_tratamiento!=0
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -98,7 +98,7 @@ else {
 *Mean
 qui su update_comp if dia_tratamiento!=0
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -106,15 +106,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & dia_tratamiento!=0
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 *Histogram
-twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(0.05) xlabel(0(0.1)1) ///
+twoway (hist update_comp  if perc_theta<=90, percent w(.05)  ///
 	subtitle("Employee's Lawyer") scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) )) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if dia_tratamiento!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -128,7 +128,7 @@ capture drop perc_theta
 qui xtile perc_theta=update_comp  , nq(99)
 
 *T-test 
-ttest update_comp==1 if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+ttest update_comp==1 if perc_theta<=90 & dia_tratamiento!=0
 
 if `r(p)'<=0.01 {
 	local stars="***"
@@ -151,7 +151,7 @@ else {
 *Mean
 qui su update_comp if dia_tratamiento!=0
 local tot_obs=`r(N)'
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 local perc_obs=`r(N)'/`tot_obs'*100
 local perc_obs : di %3.1f `perc_obs' 
 
@@ -159,15 +159,15 @@ local perc_obs : di %3.1f `perc_obs'
 *Height of bars 
 local ht=0
 forvalues i=0(0.2)`r(max)' {
-	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+	qui su update_comp if inrange(update_comp,`i',`i'+0.2) & perc_theta<=90 & dia_tratamiento!=0
 	local height=`r(N)'/(`perc_obs'*`tot_obs')*10000
 	local ht=max(`ht',`height')
 	}
 local ht=round(`ht'+5,10)
 
-qui su update_comp if update_comp>=0 & update_comp <=1 & dia_tratamiento!=0
+qui su update_comp if perc_theta<=90 & dia_tratamiento!=0
 *Histogram
-twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(0.05) xlabel(0(0.1)1) ///
+twoway (hist update_comp  if perc_theta<=90, percent w(.05)  ///
 	subtitle("Firm's Lawyer") scheme(s2mono) graphregion(color(none)) ///
 	xtitle("")  text(`ht' `r(mean)' " `stars' ",  color(black) size(huge) )) ///
 	(scatteri 0 `r(mean)' `ht' `r(mean)' if dia_tratamiento!=0, c(l) m(i) color(ltbluishgray) lwidth(vthick) )  ///
@@ -182,5 +182,5 @@ twoway (hist update_comp  if update_comp>=0 & update_comp <=1, percent w(0.05) x
 
 graph combine employee_amount employeeslawyer_amount firmlawyer_amount, ///
 	xcommon ycommon rows(3)  graphregion(color(none))	
-graph export "$directorio/Figures/updatebeleif_amount.pdf", replace 
+graph export "$directorio/Figures/updatebeleif_amount_total.pdf", replace 
 	

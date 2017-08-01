@@ -1,5 +1,8 @@
 /*Summary statistics table for update in beliefs measure as a relative difference*/
 
+
+********************************************************************************
+	*PILOT 1
 *Employee
 use "$sharelatex\DB\Calculadora_wod.dta", clear	
 merge m:1 folio using "$sharelatex/Raw/Merge_Actor_OC.dta", keep(2 3) nogen
@@ -84,7 +87,7 @@ gen diff=(ES_1_4-RD5_5)
 qui xtile perc_diff=diff, n(99)
 replace diff=. if perc_diff>=95
 
-gen update_emp_fir_law=diff/RD5_5
+gen update_fir_law=diff/RD5_5
 qui xtile perc_update=update, n(99)
 replace update=. if perc_update>=95
 
@@ -97,8 +100,39 @@ append using `emp_law'
 
 ********************************************************************************
 
+label variable update_emp "Amount employee"
+label variable update_emp_law "Amount employee's lawyer"
+label variable update_fir_law "Amount firm's lawyer"
 
 *Update in beleifs
-sutex update_*, nobs minmax  ///
-	file("$sharelatex\Tables\update_beleif.tex") replace ///
-	title("Update in beleifs") 
+sutex update_emp update_emp_law update_fir_law, digits(2) labels nobs   ///
+	file("$sharelatex\Tables\update_beleif_1.tex") replace ///
+	title("Pilot") 
+
+	
+	
+********************************************************************************
+********************************************************************************
+********************************************************************************
+
+	
+	
+********************************************************************************
+	*PILOT 2	
+use "$scaleup\DB\Seguimiento_Juntas.dta", clear
+
+********************************************************************************
+
+label variable update_pago_a "Amount employee"
+label variable update_pago_ra "Amount employee's lawyer"
+label variable update_pago_rd "Amount firm's lawyer"
+
+label variable update_prob_a "Prob employee"
+label variable update_prob_ra "Prob employee's lawyer"
+label variable update_prob_rd "Prob firm's lawyer"
+
+*Update in beleifs
+sutex update_*, digits(2) labels  nobs   ///
+	file("$sharelatex\Tables\update_beleif_2.tex") replace ///
+	title("Scale Up") 
+	

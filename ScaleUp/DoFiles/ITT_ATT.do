@@ -45,7 +45,7 @@ eststo: ivreg convenio junta_*  notificado ///
 estadd scalar Erre=e(r2)
 
 eststo: ivreg convenio junta_*   ///
-	(calcu_p_actora = dia_tratamiento  ) ///
+	(calcu_p_actora = dia_tratamiento  ) if notificado==1 ///
 	if notificado==1, robust cluster(fecha_lista) 
 estadd scalar Erre=e(r2)
 estadd local Notified="SI"
@@ -64,7 +64,7 @@ eststo: ivreg convenio junta_*  notificado ///
 estadd scalar Erre=e(r2)
 
 eststo: ivreg convenio junta_*   ///
-	(calcu_p_dem = dia_tratamiento  ) ///
+	(calcu_p_dem = dia_tratamiento  ) if notificado==1 ///
 	,  robust cluster(fecha_lista) 
 estadd scalar Erre=e(r2)
 estadd local Notified="SI"
