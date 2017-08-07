@@ -8,7 +8,7 @@ In order to be able to re-create the figures and tables within each correspondin
 Our repository is organized in five main sections, each one with a particular directory. Three of them contain all work related to a particular experiment, and the remaining two mix work from different experiments. The main sections are:
 
 - Paper
-
+w
 - ScaleUp
 
 - Pilot_3

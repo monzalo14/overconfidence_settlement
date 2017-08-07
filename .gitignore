@@ -6,12 +6,13 @@
 .RData
 
 # Data files
-**/*.RDS
-**/*.dta
-**/*.csv
-**/*.xlsx
-**/*.xlsm
-**/*.xls
+*.RDS
+*.dta
+*.csv
+*.xlsx
+*.xlsm
+*.xls
+
 
 # Auxiliary files in local tex compilation
 **/*.aux
