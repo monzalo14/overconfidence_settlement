@@ -1,4 +1,4 @@
-use "$sharelatex\DB\Programa_Aleatorizacion.dta", clear
+use "$sharelatex\DB\pilot_operation.dta", clear
 
 
 *Who showed up

@@ -1,6 +1,6 @@
 * BALANCE TESTS
 
-use "$sharelatex\DB\Programa_Aleatorizacion.dta", clear
+use "$sharelatex\DB\pilot_operation.dta", clear
 
 *Conditioning on Compliance
 keep if sellevotratamiento==1
@@ -10,7 +10,7 @@ keep if sellevotratamiento==1
 *Balance test of treatment assignment 
 
 merge m:1 folio  using ///
-	"$sharelatex\DB\Calculadora_wod.dta", keep(1 3)
+	"$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3)
 drop _merge
 
 destring     gnero	puesto	salariodiariointegrado	jornadasemanal	giro ///

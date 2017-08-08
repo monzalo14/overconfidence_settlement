@@ -4,11 +4,11 @@
 ********************************************************************************
 	*PILOT 1
 *Employee
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:1 folio using "$sharelatex/Raw/Merge_Actor_OC.dta", keep(2 3) nogen
 rename ES_fecha fecha
 
-merge 1:1 folio fecha using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
+merge 1:1 folio fecha using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
 
 *Cleaning
 foreach var of varlist ES_1_4 A_5_5 {
@@ -35,11 +35,11 @@ tempfile emp
 save `emp'
 
 *Employee's Lawyer
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:m folio using "$sharelatex/Raw/Merge_Representante_Actor_OC.dta", keep(2 3) nogen
 rename ES_fecha fecha
 
-merge m:1 folio fecha using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
+merge m:1 folio fecha using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
 duplicates drop folio fecha tratamientoquelestoco, force
 
 *Cleaning
@@ -67,11 +67,11 @@ tempfile emp_law
 save `emp_law'
 
 *Firm's Lawyer
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:m folio using "$sharelatex/Raw/Merge_Representante_Demandado_OC.dta", keep(2 3) nogen
 rename ES_fecha fecha
 
-merge m:1 folio fecha using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
+merge m:1 folio fecha using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio)
 duplicates drop folio fecha tratamientoquelestoco, force
 
 *Cleaning

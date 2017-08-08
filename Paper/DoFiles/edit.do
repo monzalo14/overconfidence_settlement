@@ -13,7 +13,7 @@ capture replace s_expediente="000"+s_expediente if slength==1
 capture gen folio=s_expediente+"-"+s_anio
 
 
-merge m:1 folio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3)
+merge m:1 folio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3)
 drop _merge
 merge m:1 folio using "$sharelatex/Raw/Merge_Actor_OC.dta", keep(2 3) nogen
 

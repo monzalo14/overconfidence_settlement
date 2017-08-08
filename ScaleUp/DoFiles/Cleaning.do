@@ -4,7 +4,6 @@ This do file generates all previous variables and does some cleaning of the data
 
 clear
 set more off
-global directorio C:\Users\xps-seira\Dropbox\Apps\ShareLaTeX\overconfidence_settlement\ScaleUp
 
 ********************************************************************************
 import delimited "$directorio\DB\bases_iniciales.csv", clear

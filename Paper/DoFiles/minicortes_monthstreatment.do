@@ -1,5 +1,5 @@
 use "$sharelatex\DB\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3)
+merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3)
 drop _merge
 
 
@@ -44,7 +44,7 @@ replace convenio_4m=1 if inrange(months_treat,0,4)
 gen convenio_5m=conciliation
 
 
-*Homologación de variables
+*Variable Homologation
 rename  trabbase  trabajador_base
 rename  antigedad   c_antiguedad 
 rename  salariodiariointegrado   salario_diario

@@ -46,8 +46,8 @@ save `temp5005'
 ********************************************************************************
 	*DB: March Pilot
 use "$sharelatex\DB\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) nogen keepusing(tratamientoquelestoco)
+merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) nogen keepusing(tratamientoquelestoco)
 
 
 *Persistent conciliation variable

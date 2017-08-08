@@ -1,8 +1,8 @@
 /*Overconfidence plots*/
 
 ************************************Employee************************************
-use  "$sharelatex\DB\Calculadora.dta", clear
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+use  "$sharelatex\DB\pilot_casefiles.dta", clear
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
 merge m:1 folio using "$sharelatex/Raw/Append Encuesta Inicial Actor.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
@@ -12,10 +12,10 @@ duplicates drop folio tratamientoqueles secon, force
 xtile perc=A_5_5, nq(100)
 drop if perc>=99
 
-*Nos quedamos con los que tuvieron tratamiento de la calculadora
+*We keep calculator treatment arm 
 keep if tratamientoquelestoco==2
 
-	*Dinero
+	*Money
 replace A_5_3=1 if A_5_3==0
 gen  Dinero_min = log(A_5_3)
 
@@ -41,7 +41,7 @@ twoway  (hist Dinero_mas_prob if Dinero_mas_prob<60, percent w(0.5) fcolor(ltblu
 		title("Compensation in log pesos")  graphregion(color(white)) scheme(s2mono)
 graph export "$sharelatex/Figuras/Compensation_comparison_employee.pdf", replace 
 
-	*Probabilidad
+	*Probabity
 rename A_5_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100
@@ -61,8 +61,8 @@ graph export "$sharelatex/Figuras/Probability_comparison_employee.pdf", replace
 
 
 ************************************Employe's Lawyer****************************
-use  "$sharelatex\DB\Calculadora.dta", clear
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+use  "$sharelatex\DB\pilot_casefiles.dta", clear
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
 merge m:m folio using "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
@@ -72,10 +72,10 @@ duplicates drop folio tratamientoqueles secon, force
 xtile perc=RA_5_5, nq(100)
 drop if perc>=99
 
-*Nos quedamos con los que tuvieron tratamiento de la calculadora
+*We keep calculator treatment arm 
 keep if tratamientoquelestoco==2
 
-	*Dinero
+	*Money
 replace RA_5_3=1 if RA_5_3==0
 gen  Dinero_min = log(RA_5_3)
 
@@ -102,7 +102,7 @@ twoway  (hist Dinero_mas_prob if Dinero_mas_prob<60, percent w(0.5) fcolor(ltblu
 		title("Compensation in log pesos")  graphregion(color(white)) scheme(s2mono)
 graph export "$sharelatex/Figuras/Compensation_comparison_EmployeeLawyer.pdf", replace 
 
-	*Probabilidad
+	*Probability
 rename RA_5_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100
@@ -124,8 +124,8 @@ graph export "$sharelatex/Figuras/Probability_comparison_EmployeeLawyer.pdf", re
 
 
 ************************************Firm's Lawyer*******************************
-use  "$sharelatex\DB\Calculadora.dta", clear
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+use  "$sharelatex\DB\pilot_casefiles.dta", clear
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
 merge m:m folio using "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
@@ -135,10 +135,10 @@ duplicates drop folio tratamientoqueles secon, force
 xtile perc=RD5_5, nq(100)
 drop if perc>=99
 
-*Nos quedamos con los que tuvieron tratamiento de la calculadora
+*We keep calculator treatment arm 
 keep if tratamientoquelestoco==2
 
-	*Dinero
+	*Money
 replace RD5_3=1 if RD5_3==0
 gen  Dinero_min = log(RD5_3)
 
@@ -164,7 +164,7 @@ twoway  (hist Dinero_mas_prob if Dinero_mas_prob<60, percent w(0.5) fcolor(ltblu
 		title("Compensation in log pesos")  graphregion(color(white)) scheme(s2mono)
 graph export "$sharelatex/Figuras/Compensation_comparison_FirmLawyer.pdf", replace 
 
-	*Probabilidad
+	*Probability
 rename RD5_1_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100

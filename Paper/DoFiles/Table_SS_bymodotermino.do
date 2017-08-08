@@ -1,5 +1,4 @@
-/* Tabla de summary statistics de variables dependientes e independientes de las 
-diversas regresiones POR MODO DE TERMINO */
+/* Summary statistics table grouped by end mode of Outcomes Basic and Srategic Variables */
 
 
 ********************************************************************************

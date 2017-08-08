@@ -20,7 +20,7 @@ gen fechadem=date(fecha_demanda,"YMD")
 gen fechater=date(fecha_termino,"YMD")
 gen months_after=(fechater-fechadem)/30
 
-*Salario diario
+*Daily wage
 destring salario_diario, force replace
 
 /***********************

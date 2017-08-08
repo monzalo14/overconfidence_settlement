@@ -345,20 +345,6 @@ Summary stats of outcomes, basic and strategic variables
 \pagebreak
 
 
-
-
-% \begin{table}[H]
-%     \caption{Amount asked, amount won, and probability of winning }
-%     \label{Table_Reg_winnings}
-%     \begin{center}
-%         \scriptsize{\input{./Tables/TableReg1.tex}}
-%     \end{center}
-%     \footnotesize
-%     \textit{Notes: Regression of amounts asked/won asked/won ratio and prob. of winning, by outcome (only basic variables included).} 
-%     \textit{Do file: } \texttt{peiperreg1.do}
-% \end{table}
-
-
 %#include
 \begin{table}[H]
     \caption{Amount asked (log), amount won (log), and probability of winning }
@@ -368,7 +354,7 @@ Summary stats of outcomes, basic and strategic variables
     \end{center}
     \footnotesize
     \textit{Notes: Regression of amounts (in log pesos) asked (in log pesos) asked/won ratio and prob. of winning, by outcome (only basic variables included).} 
-    \textit{Do file: } \texttt{peiperreg1\_log.do}
+    \textit{Do file: } \texttt{reg\_amount.do}
 \end{table}
 
 
@@ -459,78 +445,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
     \textit{Scripts: } \texttt{balance.do, balance\_compliance.R}
 \end{table}
 
-%\begin{landscape}
 
-% \begin{table}[H]
-% \caption{Belief updating}
-% \label{Belief_updating}
-% \begin{center}
-% \scriptsize{\input{./Tables/exit_vs_initial_exp.tex}}
-% \end{center}
-%  \footnotesize
-% \textit{Notes:} 
-% Dependent variable are expectations measured in the exit survey (for amount and delay respectively). Specification (2) includes basic controls.
-% \textit{Do file: } \texttt{exit\_vs\_initial\_exp.do}
-% \end{table}
-
-
-% \begin{table}[H]
-% \caption{Belief updating (amounts in log)}
-% \label{Belief_updating_log}
-% \begin{center}
-% \scriptsize{\input{./Tables/exit_vs_initial_exp_log.tex}}
-% \end{center}
-%  \footnotesize
-% \textit{Notes:} 
-% Dependent variable are expectations measured in the exit survey (for amount (in log pesos) and delay respectively). Specification (2) includes basic controls.
-% \textit{Do file: } \texttt{exit\_vs\_initial\_exp\_log.do}
-% \end{table}
-
-%include
-%\begin{table}[H]
-%\caption{Belief updating: percentage deviation from prediction}
-%#include: hacer d2/d1
-%\label{Belief_updating_perc}
-%\begin{center}
-%\scriptsize{\input{./Tables/exit_vs_initial_exp_perc.tex}}
-%\end{center}
-% \footnotesize
-%\textit{Notes:} 
-%This regression shows update in beliefs measured as the absolute ratio between the exit response and the initial response, specifically the dependent variable is $\frac{|exit-prediction|}{|initial-prediction |}$ where exit (initial) is the response in the exit (initial) survey and prediction is the prediction from the calculator. What this dependent variable measures is the percentage deviation from the prediction between the two surveys, in this way an outcome of 0 represents a \emph{perfect updating} with respect to the calculator. An outcome of 1 means no updating (or `mirroring' updating; however this is rare). This measure is monotone, in the sense that higher numbers represents higher deviations from the prediction and the initial overconfidence. Therefore the calculator is effective as long as this outcome is between 0 and 1. We drop the outliers, which are the ones above the 90 percentile. We see that in average the calculator is effective in amount. 
-%\textit{Do file: } \texttt{exit\_vs\_initial\_exp\_perc.do}
-%\end{table}
-%\end{landscape}
-
-
-
-
-%\begin{landscape}
-
-%\begin{table}[H]
-%\caption{Treatment regression}
-%\label{tab:treatmentregA}
-%\begin{center}
-%\scriptsize{\input{./Tables/treatment_reg.tex}}
-%\end{center}
-% \footnotesize
-%\textit{Notes:} 
-%Regressions (5) and (6) include basic and strategic variables %respectively.
-%\textit{Do file: } \texttt{peiperreg4A.do peiperreg4B.do}
-%\end{table}
-
-%\begin{table}[H]
-%\caption{Treatment regression (6 months later)}
-%\label{tab:treatmentregA}
-%\begin{center}
-%\scriptsize{\input{./Tables/treatment_reg_persistent.tex}}
-%\end{center}
-% \footnotesize
-%\textit{Notes:} 
-%Regressions (5) and (6) include basic and strategic variables %respectively.
-%\textit{Do file: } \texttt{peiperreg4A\_persistent.do %peiperreg4B\_persistent.do}
-%\end{table}
-
-%\end{landscape}
 
 \pagebreak
 
@@ -547,32 +462,6 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
     \textit{Do file: } \texttt{minicortes\_monthstreatment.do}
 \end{table}
 
-
-% \begin{table}[H]
-%     \caption{Treatment Efects by Month}
-%     \label{Table_effects_F}
-%     \begin{center}
-%     \scriptsize{\input{./Tables/Minicortes_2_PA.tex}}
-%     \end{center}
-%     \footnotesize
-%     \textit{Notes:} 
-%     Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
-%     \textit{Do file: } \texttt{mini\_cortes\_2.do}
-% \end{table}
-
-
-% INTERACTION WITH PRIVATE LAWYER
-%\begin{table}[H]
-%    \caption{Treatment Efects by Month}
-%    \label{Table_effects}
-%    \begin{center}
-%    \scriptsize{\input{./Tables/Minicortes_2_int.tex}}
-%    \end{center}
-%    \footnotesize
-%    \textit{Notes:} 
-%    Calc=Conc and Calc=Conc=0 shows the p-value for the respective tests.
-%    \textit{Do file: } \texttt{mini\_cortes\_2\_int.do}
-%\end{table}
 
 
 
@@ -621,7 +510,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
         \end{subfigure}
         \end{center}
     {\footnotesize \textit{Notes: } This is based on the subject's answer to two questions: 7.01: "In case of an unjustified firing, the law grants you to get a severance pay stipulated in the Constitution. Do you know how many days of your salary does this account for?" and "7:02: How many days of your salary does this pay account for?". First panel correspond to the first question while second panel to the second one.}
-    {\footnotesize \textit{Do file: } \texttt{peiper.do}}
+    {\footnotesize \textit{Do file: } \texttt{knowledge\_emp.do}}
 \end{figure}
 
 
@@ -664,7 +553,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
         \end{subfigure}
     \end{center} 
         \footnotesize \textit{Notes: Percentage of subjects who correctly answered to the question regarding elements of their claim, by type of benefit asked.}
-        {\footnotesize \textit{Do file: }  \texttt{peiper2.do}}
+        {\footnotesize \textit{Do file: }  \texttt{knowledge\_lawsuit.do}}
 \end{figure}
 
  
@@ -688,7 +577,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
         \includegraphics[width=0.7\textwidth]{Duracion.pdf}
         \end{center}
     {\footnotesize \textit{Notes: Length of the case (in years) , by conclusion. Naturally, laudos (adjudication cases) have much higher duration than settlement cases (convenios).}}
-    {\footnotesize \textit{Do file: } \texttt{peiper5.do}}
+    {\footnotesize \textit{Do file: } \texttt{length\_case.do}}
 \end{figure}
 
 
@@ -854,17 +743,6 @@ Summary stats of outcomes, basic and strategic variables by end mode.
 \end{table}
 
 
-%\pagebreak
-%\begin{center}
-%    \tiny{\input{./Tables/SS_survey.tex}}
-%\end{center}
-%\vspace{5mm}
-%    \footnotesize
- %   \textit{Notes:} 
-%Summary stats of survey variables for employee, employee's lawyer and firm's lawyer
-%    \textit{Do file: } \texttt{}
-% \pagebreak
-
 
 \begin{table}[H]
     \caption{Who showed up }
@@ -875,7 +753,7 @@ Summary stats of outcomes, basic and strategic variables by end mode.
     \footnotesize
     \textit{Notes:} 
 We show some stats of who goes to the court. This is important since we can only give the treatment to the parties who go.  We decompose this in all the possible combination of show up: we use E,L,F,D subscripts to denote the different parties E: Employee; L: Employee’s Lawyer;  F: Firm; D: Firm’s Lawyer.
-    \textit{Do file: } \texttt{.do}
+    \textit{Do file: } \texttt{showed\_up.do}
 \end{table}
 
 
@@ -900,29 +778,6 @@ We show some stats of who goes to the court. This is important since we can only
 \begin{landscape}
 
 
-% \begin{table}[H]
-%     \caption{Expectations: Public vs Private Lawyers}
-%     \label{Table_expectation_reg}
-%     \begin{center}
-%         \scriptsize{\input{./Tables/Reg1_Exp.tex}}
-%     \end{center}
-%     \footnotesize
-%     \textit{Notes: Regression on expectation on amount and probability of winning} 
-%     \textit{Do file: } \texttt{peiperreg1A.do}
-% \end{table}
-
-
-%#appendix
-%\begin{table}[H]
-%    \caption{Expectations: Public vs Private Lawyers}
-%    \label{Table_expectation_reg_log}
-%    \begin{center}
-%        \scriptsize{\input{./Tables/Reg1_Exp_log.tex}}
-%    \end{center}
-%    \footnotesize
-%    \textit{Notes: Regression on expectation on amount (in %log pesos) and probability of winning} 
-%    \textit{Do file: } \texttt{peiperreg1A\_log.do}
-%\end{table}
 
 
 \end{landscape}
@@ -938,7 +793,7 @@ We show some stats of who goes to the court. This is important since we can only
     \footnotesize
     \textit{Notes:} 
     All measures of OC are relative. Elastictity : Con-OC measures how much does conciliation change when overconfidence changes in 1 standard deviation. Elasticity SD:Con-OC measures how many standard deviations conciliation changes when  overconfidence changes in 1 standard deviation.
-    \textit{Do file: } \texttt{peiperreg3.do peiperreg3\_B.do}
+    \textit{Do file: } \texttt{corr\_con\_oc.do corr\_con\_oc\_B.do}
 \end{table}
 
 
@@ -970,34 +825,6 @@ We show some stats of who goes to the court. This is important since we can only
     \textit{Do file: } \texttt{con\_vs\_update.do}
 \end{table}
 \end{landscape}
-
-
-% \begin{table}[H]
-%     \caption{Correlation conciliation  vs overconfidence (log)}
-%     \label{tab:reg_con_oc_log}
-%     \begin{center}
-%         \scriptsize{\input{./Tables/Reg_con_oc_log.tex}}
-%     \end{center}
-%     \footnotesize
-%     \textit{Notes:} 
-%     All measures of OC are relative and in logs. Elastictity : Con-OC measures how much does conciliation change when overconfidence changes in 1 standard deviation. Elasticity SD:Con-OC measures how many standard deviations conciliation changes when  overconfidence changes in 1 standard deviation.
-%     \textit{Do file: } \texttt{peiperreg3\_log.do peiperreg3\_B.do}
-% \end{table}
-
-
-
-%#appendix
-%\begin{table}[H]
-%    \caption{Treatment Efects interacted with OC}
-%    \label{Table_effects}
-%    \begin{center}
-%    \scriptsize{\input{./Tables/Minicortes_2_PB.tex}}
-%    \end{center}
-%    \footnotesize
-%    \textit{Notes:} 
-%    Calc=Conc and Calc=Conc=0 shows the p-value for the %respective tests.
-%    \textit{Do file: } \texttt{mini\_cortes\_2.do}
-%\end{table}
 
 
 
@@ -1045,7 +872,7 @@ The regression includes dummies of which party answered the survey (employee, em
 
 \begin{landscape}
 \begin{table}[H]
-    \caption{ITT and ATT}
+    \caption{ITT and ATT (Scale Up)}
     \label{ITT_ATT}
     \begin{center}
     \scriptsize{\input{./Tables/ITT_ATT.tex}}
@@ -1056,37 +883,6 @@ The regression includes dummies of which party answered the survey (employee, em
     \textit{Do file: } \texttt{ITT\_ATT.do}
 \end{table}
 \end{landscape}
-
-
-
-
-
-%#appendix
-%\begin{table}[H]
-%    \caption{Treatment Effects interacted with OC (including %basic variables controls)}
-%    \label{Table_effects}
-%    \begin{center}
-%    \scriptsize{\input{./Tables/Minicortes_2_B_PB.tex}}
-%    \end{center}
-%    \footnotesize
-%    \textit{Notes:} 
-%    Calc=Conc and Calc=Conc=0 shows the p-value for the %respective tests.
-%    \textit{Do file: } \texttt{mini\_cortes\_2\_B.do}
-%\end{table}
-
-
-
-%\begin{table}[H]
-%    \caption{Cuts on conciliation}
-%    \label{tab:treatmentregB}
-%    \begin{center}
-%    \scriptsize{\input{./Tables/Minicortes.tex}}
-%    \end{center}
-%    \footnotesize
-%    \textit{Notes:} 
-%    Notes
-%    \textit{Do file: } \texttt{mini\_cortes.do}
-%\end{table}
 
 
 
@@ -1182,7 +978,7 @@ The regression includes dummies of which party answered the survey (employee, em
     \end{center}
      {\footnotesize \textit{Notes: } Notes 
     The court we are working on is managing about 60 suits per day. Different suits are in different stages of the process (i.e. not all are new suits). Among the eligible ones we are selecting for treatment about 25 approximately. Among these we randomly select some for treatment and controls each day in equal proportions (except for indivisibilities of course). We have one control group that stays with the status quo, a calculator treatment that receives statistical information about the historical outcomes of cases similar to theirs, and a conciliator group that instead of getting statistical information talks with a court conciliator that explains (more on emotive grounds and some personal experience) why settling out of court may sometimes be better.}
-      {\footnotesize \textit{Do file: }  \texttt{peiper6.do}}
+      {\footnotesize \textit{Do file: }  \texttt{experimental\_cases.do}}
 \end{figure}
 
 
@@ -1273,42 +1069,6 @@ The regression includes dummies of which party answered the survey (employee, em
         {\footnotesize \textit{Notes: } Scatter plot of compensation predictions and outcomes.}
         {\footnotesize \textit{RScript: }  \texttt{covariate\_plots.R}}
 \end{figure}
-
-%\subsection{Model}
-%\input{Model.tex}
-%\pagebreak
-
-
-
-% \subsection{Surveys}
-
-% \subsection*{Employee}
-
-% \begin{center}
-% \includepdf[scale=0.8, pages={1-}]{./Surveys/EncuestaACTOR.pdf}
-% \end{center}
-
-
-% \subsection*{Employee's Lawyer}
-
-% \begin{center}
-% \includepdf[scale=0.8, pages={1-}]{./Surveys/EncuestaREPRESENTANTE_ACTOR.pdf}
-% \end{center}
-
-% \subsection*{Firm}
-
-% \begin{center}
-% \includepdf[scale=0.8, pages={1-}]{./Surveys/EncuestaDEMANDADO.pdf}
-% \end{center}
-
-% \subsection*{Firm's Lawyer}
-
-% \begin{center}
-% \includepdf[scale=0.8, pages={1-}]{./Surveys/EncuestaREPRESENTANTE_DEMANDADO.pdf}
-% \end{center}
-
-% \pagebreak
-
 
 
 

@@ -1,12 +1,12 @@
 
 
 *EMPLOYEE LAWYER
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 
 	*Expectations variables	
-*Dinero
+*Money
 gen diff_amount=RA_5_5-exp_comp
 rename RA_5_5 amount
 *Prob
@@ -14,11 +14,11 @@ rename RA_5_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100
 gen diff_prob=Prob_win-Prob_win_calc
-*Tiempo
+*Time
 rename RA_5_8 time
 
 
-*Homologación de variables
+*Variable Homologation
 rename  trabbase  trabajador_base
 rename  antigedad   c_antiguedad 
 rename  salariodiariointegrado   salario_diario
@@ -54,12 +54,12 @@ tempfile tempemplaw
 save `tempemplaw'
 
 *FIRM LAWYER
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 
 	*Expectations variables	
-*Dinero
+*Money
 gen diff_amount=RD5_5-exp_comp
 rename RD5_5 amount
 *Prob
@@ -67,11 +67,11 @@ rename RD5_1_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100
 gen diff_prob=Prob_win-Prob_win_calc
-*Tiempo
+*Time
 rename RD5_8 time
 
 
-*Homologación de variables
+*Variable Homologation
 rename  trabbase  trabajador_base
 rename  antigedad   c_antiguedad 
 rename  salariodiariointegrado   salario_diario
@@ -107,16 +107,16 @@ tempfile tempfirlaw
 save `tempfirlaw'
 
 *EMPLOYEE
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 
 *Outliers
 xtile perc=A_5_5, nq(100)
 drop if perc>=97
 
 	*Expectations variables	
-*Dinero
+*Money
 gen diff_amount=A_5_5-exp_comp
 rename A_5_5 amount
 *Prob
@@ -124,11 +124,11 @@ rename A_5_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100
 gen diff_prob=Prob_win-Prob_win_calc
-*Tiempo
+*Time
 rename A_5_8 time
 
 
-*Homologación de variables
+*Variable Homologation
 rename  trabbase  trabajador_base
 rename  antigedad   c_antiguedad 
 rename  salariodiariointegrado   salario_diario

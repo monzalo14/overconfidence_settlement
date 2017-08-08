@@ -1,8 +1,8 @@
 /*Overconfidence plots*/
 
 ************************************Employee************************************
-use  "$sharelatex\DB\Calculadora.dta", clear
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+use  "$sharelatex\DB\pilot_casefiles.dta", clear
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
 merge m:1 folio using "$sharelatex/Raw/Append Encuesta Inicial Actor.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
@@ -12,10 +12,10 @@ duplicates drop folio tratamientoqueles secon, force
 xtile perc=A_5_5, nq(100)
 drop if perc>=99
 
-*Nos quedamos con los que tuvieron tratamiento de la calculadora
+*We keep calculator treatment arm 
 keep if tratamientoquelestoco==2
 
-	*Dinero
+	*Money
 gen diff_amount=(A_5_5-exp_comp)/1000
 
 qui su diff_amount
@@ -28,7 +28,7 @@ twoway (hist diff_amount if diff_amount<160 & diff_amount>=-50 , w(10) percent) 
 graph export "$sharelatex/Figuras/difference_amount_employee.pdf", replace 
 
 
-	*Probabilidad
+	*Probability
 rename A_5_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100
@@ -47,8 +47,8 @@ graph export "$sharelatex/Figuras/difference_prob_employee.pdf", replace
 
 
 ************************************Employe's Lawyer****************************
-use  "$sharelatex\DB\Calculadora.dta", clear
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+use  "$sharelatex\DB\pilot_casefiles.dta", clear
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
 merge m:m folio using "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
@@ -58,7 +58,7 @@ duplicates drop folio tratamientoqueles secon, force
 xtile perc=RA_5_5, nq(100)
 drop if perc>=99
 
-*Nos quedamos con los que tuvieron tratamiento de la calculadora
+*We keep calculator treatment arm 
 keep if tratamientoquelestoco==2
 
 gen diff_amount=(RA_5_5-exp_comp)/1000
@@ -72,7 +72,7 @@ twoway (hist diff_amount if diff_amount<160 & diff_amount>=-50 , w(10) percent) 
 	legend(off)
 graph export "$sharelatex/Figuras/difference_amount_employeelawyer.pdf", replace 
 
-	*Probabilidad
+	*Probability
 rename RA_5_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100
@@ -90,8 +90,8 @@ graph export "$sharelatex/Figuras/difference_prob_employeelawyer.pdf", replace
 
 
 ************************************Firm's Lawyer*******************************
-use  "$sharelatex\DB\Calculadora.dta", clear
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
+use  "$sharelatex\DB\pilot_casefiles.dta", clear
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor) nogen
 merge m:m folio using "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta", keep(2 3) nogen
 
 replace seconcilio=0 if seconcilio==.
@@ -101,7 +101,7 @@ duplicates drop folio tratamientoqueles secon, force
 xtile perc=RD5_5, nq(100)
 drop if perc>=99
 
-*Nos quedamos con los que tuvieron tratamiento de la calculadora
+*We keep calculator treatment arm 
 keep if tratamientoquelestoco==2
 
 gen diff_amount=(RD5_5-exp_comp)/1000
@@ -115,7 +115,7 @@ twoway (hist diff_amount if diff_amount<160 & diff_amount>=-50 , w(10) percent) 
 	legend(off)
 graph export "$sharelatex/Figuras/difference_amount_firmlawyer.pdf", replace 
 
-	*Probabilidad
+	*Probability
 rename RD5_1_1 Prob_win
 gen Prob_win_calc=prob_laudopos/(prob_laudopos+prob_laudocero)
 replace Prob_win_calc=Prob_win_calc*100

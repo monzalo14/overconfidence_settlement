@@ -10,10 +10,10 @@
 *************************************EMPLOYEE***********************************
 ********************************************************************************
 
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:1 folio using  "$sharelatex/Raw/Append Encuesta Inicial Actor.dta" , keep(2 3) nogen
 merge m:1 folio using "$sharelatex/Raw/Merge_Actor_OC.dta", keep(2 3) nogen
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 drop _merge
 
 replace seconcilio=0 if seconcilio==.
@@ -37,7 +37,7 @@ drop if perc_up>=90
 
 rename tratamientoquelestoco treatment
 
-*Homologación de variables
+*Variable Homologation
 rename  trabbase  trabajador_base
 rename  antigedad   c_antiguedad 
 rename  salariodiariointegrado   salario_diario
@@ -84,10 +84,10 @@ estadd scalar std_dev_X=r(sd)
 ********************************EMPLOYEE'S LAWYER*******************************
 ********************************************************************************
 
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Actor.dta" , keep(2 3) nogen
 merge m:m folio using "$sharelatex/Raw/Merge_Representante_Actor_OC.dta", keep(2 3) nogen
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 drop _merge
 
 replace seconcilio=0 if seconcilio==.
@@ -109,7 +109,7 @@ drop if perc_up>=90
 
 rename tratamientoquelestoco treatment
 
-*Homologación de variables
+*Variable Homologation
 rename  trabbase  trabajador_base
 rename  antigedad   c_antiguedad 
 rename  salariodiariointegrado   salario_diario
@@ -154,10 +154,10 @@ estadd scalar std_dev_X=r(sd)
 ********************************FIRM'S LAWYER*******************************
 ********************************************************************************
 
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 merge m:m folio using  "$sharelatex/Raw/Append Encuesta Inicial Representante Demandado.dta" , keep(2 3) nogen
 merge m:m folio using "$sharelatex/Raw/Merge_Representante_Demandado_OC.dta", keep(2 3) nogen
-merge m:m folio using "$sharelatex/DB/Programa_Aleatorizacion.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
+merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) keepusing(tratamientoquelestoco seconcilio p_actor)
 drop _merge
 
 replace seconcilio=0 if seconcilio==.
@@ -180,7 +180,7 @@ drop if perc_up>=90
 
 rename tratamientoquelestoco treatment
 
-*Homologación de variables
+*Variable Homologation
 rename  trabbase  trabajador_base
 rename  antigedad   c_antiguedad 
 rename  salariodiariointegrado   salario_diario

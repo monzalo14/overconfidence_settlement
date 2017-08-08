@@ -1,5 +1,4 @@
-/* Tabla de summary statistics de variables dependeintes e independientes de las 
-diversas regresiones */
+/* Summary statistics table for Outcomes, Basic and Strategic variables by type of lawyer */
 
 
 
@@ -222,7 +221,7 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 ********************************************************************************
 	*DB: March Pilot
 use "$sharelatex\DB\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
+merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
 
 
 *Persistent conciliation variable
@@ -365,7 +364,7 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 	
 ********************************************************************************
 	*DB: March Pilot merged with surveys (Table 1A)
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 
 preserve
 *Employee
@@ -699,7 +698,7 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 ********************************************************************************
 	*DB: March Pilot
 use "$sharelatex\DB\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
+merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
 
 
 *Persistent conciliation variable
@@ -843,7 +842,7 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 	
 ********************************************************************************
 	*DB: March Pilot merged with surveys (Table 1A)
-use "$sharelatex\DB\Calculadora_wod.dta", clear	
+use "$sharelatex\DB\pilot_casefiles_wod.dta", clear	
 
 preserve
 *Employee
@@ -970,7 +969,7 @@ restore
 
 use "$sharelatex/Raw/Merge_Encuestas.dta", clear
 duplicates drop folio ES_fecha, force
-merge m:1 folio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3) nogen
+merge m:1 folio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
 
 
 *Employee

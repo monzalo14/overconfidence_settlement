@@ -1,5 +1,5 @@
 use "$sharelatex\DB\Base_Seguimiento.dta", clear
-merge m:1 expediente anio using "$sharelatex\DB\Calculadora_wod.dta", keep(1 3)
+merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3)
 drop _merge
 
 

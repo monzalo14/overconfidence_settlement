@@ -1,6 +1,6 @@
 /*Compliance table*/
 
-use "$sharelatex\DB\Programa_Aleatorizacion.dta", clear
+use "$sharelatex\DB\pilot_operation.dta", clear
 
 *Compliance rate
 levelsof tratamientoquelestoco, local(levels)
@@ -34,7 +34,7 @@ merge 1:1 folio fecha using "$sharelatex/DB/Append Encuesta Inicial Representant
 gen ans_RD=(_merge==3)
 drop _merge
 
-merge 1:1 folio fecha using "$sharelatex/DB/SalidaCompliance.dta", keep(1 3)
+merge 1:1 folio fecha using "$sharelatex/DB/exit_compliance.dta", keep(1 3)
 
 *Identificador ES no vacía (anyone answered)
 gen ID_ES=(_merge==3)
