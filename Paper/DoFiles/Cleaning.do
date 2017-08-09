@@ -1,9 +1,6 @@
 /*******************************************************************************
 This do file generates all previous variables and does some cleaning of the data
 *******************************************************************************/
-global fechacortem="02/03/2016"
-global fechacorte="27/05/2016"
-
 
 ********************************************************************************
 
@@ -11,13 +8,9 @@ import delimited  "$sharelatex\Raw\pilot_operation.csv", clear
 
 
 *Generate variables
-gen fecha=date(fechalista,"DMY")
+gen fecha=date(fechalista,"YMD")
 order fecha
-qui su fecha if fechalista=="$fechacorte"
-keep if fecha<=`r(mean)'
-
-qui su fecha if fechalista=="$fechacortem"
-drop if fecha<`r(mean)'
+keep if inrange(fecha,date("2016/03/02","YMD"),date("2016/05/27","YMD")) 
 
 
 gen fechaNext=date(fechasiguienteaudiencia,"DMY")
@@ -280,6 +273,7 @@ capture rename exp expediente
 capture destring salariodiario, replace force
 capture destring jornadasemana, replace force
 capture destring antigedad, replace force
+capture destring horas, replace force
 
 capture replace expediente=floor(expediente)
 capture tostring expediente, gen(s_expediente)
@@ -292,6 +286,27 @@ capture replace s_expediente="000"+s_expediente if slength==1
 
 capture gen folio=s_expediente+"-"+s_anio
 
+*Variable Homologation
+rename  trabbase  trabajador_base
+rename  antigedad   c_antiguedad 
+rename  salariodiariointegrado   salario_diario
+rename  horas   horas_sem 
+rename  tipodeabogado_1  abogado_pub 
+rename  reinstalacin reinst
+rename  indemnizacinconstitucional indem 
+rename  salcaidostdummy sal_caidos 
+rename  primaantigtdummy  prima_antig
+rename  primavactdummy  prima_vac 
+rename  horasextras  hextra 
+rename  rec20diastdummy rec20
+rename  primadominical prima_dom 
+rename  descansosemanal  desc_sem 
+rename  descansooblig desc_ob
+rename  sarimssinfo  sarimssinf 
+rename  utilidadest  utilidades
+rename  nulidad  nulidad  
+rename  codemandaimssinfo  codem 
+rename  cuantificaciontrabajador c_total
 
 save "$sharelatex\DB\pilot_casefiles.dta", replace
 

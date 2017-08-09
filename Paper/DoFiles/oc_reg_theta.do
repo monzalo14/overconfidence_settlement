@@ -28,31 +28,10 @@ gen update_comp=abs((ES_1_4-comp_esp)/(A_5_5-comp_esp))
 xtile perc_up=update_comp, nq(100)
 drop if perc_up>=90
 
-
+*Rename
 rename A_7_3 repeat_worker
 
-*Variable Homologation
-rename  trabbase  trabajador_base
-rename  antigedad   c_antiguedad 
-rename  salariodiariointegrado   salario_diario
-rename  horas   horas_sem 
-rename  tipodeabogadocalc  abogado_pub 
-rename  reinstalacin reinst
-rename  indemnizacinconstitucional indem 
-rename  salcaidost sal_caidos 
-rename  primaantigtdummy  prima_antig
-rename  primavactdummy  prima_vac 
-rename  horasextras  hextra 
-drop rec20
-rename  rec20diast rec20
-rename  primadominical prima_dom 
-rename  descansosemanal  desc_sem 
-rename  descansoobligdummy desc_ob
-rename  sarimssinfo  sarimssinf 
-rename  utilidadest  utilidades
-rename  nulidad  nulidad  
-rename  codemandaimssinfo  codem 
-rename  cuantificaciontrabajador c_total
+
 
 /***********************
        REGRESSIONS
@@ -123,28 +102,7 @@ drop if perc_up>=90
 
 
 
-*Variable Homologation
-rename  trabbase  trabajador_base
-rename  antigedad   c_antiguedad 
-rename  salariodiariointegrado   salario_diario
-rename  horas   horas_sem 
-rename  tipodeabogadocalc  abogado_pub 
-rename  reinstalacin reinst
-rename  indemnizacinconstitucional indem 
-rename  salcaidost sal_caidos 
-rename  primaantigtdummy  prima_antig
-rename  primavactdummy  prima_vac 
-rename  horasextras  hextra 
-drop rec20
-rename  rec20diast rec20
-rename  primadominical prima_dom 
-rename  descansosemanal  desc_sem 
-rename  descansoobligdummy desc_ob
-rename  sarimssinfo  sarimssinf 
-rename  utilidadest  utilidades
-rename  nulidad  nulidad  
-rename  codemandaimssinfo  codem 
-rename  cuantificaciontrabajador c_total
+
 
 /***********************
        REGRESSIONS
@@ -187,28 +145,7 @@ drop if perc_up>=90
 
 
 
-*Variable Homologation
-rename  trabbase  trabajador_base
-rename  antigedad   c_antiguedad 
-rename  salariodiariointegrado   salario_diario
-rename  horas   horas_sem 
-rename  tipodeabogadocalc  abogado_pub 
-rename  reinstalacin reinst
-rename  indemnizacinconstitucional indem 
-rename  salcaidost sal_caidos 
-rename  primaantigtdummy  prima_antig
-rename  primavactdummy  prima_vac 
-rename  horasextras  hextra 
-drop rec20
-rename  rec20diast rec20
-rename  primadominical prima_dom 
-rename  descansosemanal  desc_sem 
-rename  descansoobligdummy desc_ob
-rename  sarimssinfo  sarimssinf 
-rename  utilidadest  utilidades
-rename  nulidad  nulidad  
-rename  codemandaimssinfo  codem 
-rename  cuantificaciontrabajador c_total
+
 
 /***********************
        REGRESSIONS

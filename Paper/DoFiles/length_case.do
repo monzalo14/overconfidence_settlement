@@ -1,7 +1,7 @@
 clear
 set more off
 
-import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
+import delimited "$sharelatex\DB\scaleup_hd.csv", clear 
 
 
 *Percentage of cases not ended: 29%

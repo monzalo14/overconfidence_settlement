@@ -1,7 +1,7 @@
 
 ********************************************************************************
 	*DB: Calculator:5005
-import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
+import delimited "$sharelatex\DB\scaleup_hd.csv", clear 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
 	capture replace X=0 if X<0 & X~=.

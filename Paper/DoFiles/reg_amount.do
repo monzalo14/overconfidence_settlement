@@ -1,5 +1,5 @@
 
-import delimited "$sharelatex\Raw\observaciones_tope.csv", clear 
+import delimited "$sharelatex\DB\scaleup_hd.csv", clear 
 
 
 for var c_antiguedad c_indem-c_desc_ob c_recsueldo liq_total: ///
