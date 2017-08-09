@@ -200,7 +200,7 @@ foreach var in `varlist' {
 		else {	
 			qui use "$sharelatex/DB/Append Encuesta Inicial Representante Demandado.dta", clear
 			qui capture confirm variable `var'
-				*Variable must be in dataset (If statemnet works only as a filter)
+				*Variable must be in dataset (If statement works only as a filter)
 			if !_rc!=0 {
 				global vartitulo: var label `var'
 				qui use "$sharelatex/DB/Append Encuesta Inicial Representante Actor.dta", clear
