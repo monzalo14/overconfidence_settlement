@@ -220,63 +220,8 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 
 ********************************************************************************
 	*DB: March Pilot
-use "$sharelatex\DB\Base_Seguimiento.dta", clear
+use "$sharelatex\DB\pilot_operation.dta", clear
 merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
-
-
-*Persistent conciliation variable
-destring c1_se_concilio, replace force
-replace c1_se_concilio=. if c1_se_concilio==2
-bysort expediente anio : egen conciliation=max(c1_se_concilio)
-
-gen fecha_convenio=date(c1_fecha_convenio,"DMY")
-format fecha_convenio %td
-
-
-*Conciliation
-gen con=c1_se_concilio
-
-*Months after initial sue
-gen fechadem=date(fecha_demanda,"DMY")
-gen fechater=fecha_convenio
-gen months_after=(fechater-fechadem)/30
-replace months_after=. if months_after<0
-xtile perc=months_after, nq(99)
-replace months_after=. if perc>=99
-
-*Conciliation after...
-	*1 month
-gen con_1m=(con==1 & fechater<=fechadem+31)
-	*6 month
-gen con_6m=(con==1 & fechater<=fechadem+186)
-	
-gen vac=.
-gen ag=.
-gen win=.
-gen liq_total=.
-
-*Homologación de variables
-rename  trabbase  trabajador_base
-rename  antigedad   c_antiguedad 
-rename  salariodiariointegrado   salario_diario
-rename  horas   horas_sem 
-rename  tipodeabogadocalc  abogado_pub 
-rename  reinstalacin reinst
-rename  indemnizacinconstitucional indem 
-rename  salcaidost sal_caidos 
-rename  primaantigtdummy  prima_antig
-rename  primavactdummy  prima_vac 
-rename  horasextras  hextra 
-drop rec20
-rename  rec20diast rec20
-rename  primadominical prima_dom 
-rename  descansosemanal  desc_sem 
-rename  descansoobligdummy desc_ob
-rename  sarimssinfo  sarimssinf 
-rename  utilidadest  utilidades
-rename  nulidad  nulidad  
-rename  codemandaimssinfo  codem 
-rename  cuantificaciontrabajador c_total
   
 
 keep if abogado_pub==1
@@ -374,7 +319,7 @@ replace masprob=masprob/100
 rename A_5_5 dineromasprob_employee
 rename A_5_8 tiempomasprob_employee
 
-keep if tipodeabogadocalc==1
+keep if abogado_pub==1
 
 local n=5
 local m=6
@@ -412,7 +357,7 @@ replace masprob=masprob/100
 rename RA_5_5 dineromasprob
 rename RA_5_8 tiempomasprob
 
-keep if tipodeabogadocalc==1
+keep if abogado_pub==1
 	
 local n=13
 local m=14
@@ -448,7 +393,7 @@ replace masprob=masprob/100
 rename RD5_5 dineromasprob
 rename RD5_8 tiempomasprob
 
-keep if tipodeabogadocalc==1
+keep if abogado_pub==1
 	
 local n=21
 local m=22
@@ -697,64 +642,8 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 	
 ********************************************************************************
 	*DB: March Pilot
-use "$sharelatex\DB\Base_Seguimiento.dta", clear
+use "$sharelatex\DB\pilot_operation.dta", clear
 merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
-
-
-*Persistent conciliation variable
-destring c1_se_concilio, replace force
-replace c1_se_concilio=. if c1_se_concilio==2
-bysort expediente anio : egen conciliation=max(c1_se_concilio)
-
-gen fecha_convenio=date(c1_fecha_convenio,"DMY")
-format fecha_convenio %td
-
-
-*Conciliation
-gen con=c1_se_concilio
-
-*Months after initial sue
-gen fechadem=date(fecha_demanda,"DMY")
-gen fechater=fecha_convenio
-gen months_after=(fechater-fechadem)/30
-replace months_after=. if months_after<0
-xtile perc=months_after, nq(99)
-replace months_after=. if perc>=99
-
-*Conciliation after...
-	*1 month
-gen con_1m=(con==1 & fechater<=fechadem+31)
-	*6 month
-gen con_6m=(con==1 & fechater<=fechadem+186)
-
-
-gen vac=.
-gen ag=.
-gen win=.
-gen liq_total=.
-
-*Homologación de variables
-rename  trabbase  trabajador_base
-rename  antigedad   c_antiguedad 
-rename  salariodiariointegrado   salario_diario
-rename  horas   horas_sem 
-rename  tipodeabogadocalc  abogado_pub 
-rename  reinstalacin reinst
-rename  indemnizacinconstitucional indem 
-rename  salcaidost sal_caidos 
-rename  primaantigtdummy  prima_antig
-rename  primavactdummy  prima_vac 
-rename  horasextras  hextra 
-drop rec20
-rename  rec20diast rec20
-rename  primadominical prima_dom 
-rename  descansosemanal  desc_sem 
-rename  descansoobligdummy desc_ob
-rename  sarimssinfo  sarimssinf 
-rename  utilidadest  utilidades
-rename  nulidad  nulidad  
-rename  codemandaimssinfo  codem 
-rename  cuantificaciontrabajador c_total
   
 
 keep if abogado_pub==0
@@ -856,7 +745,7 @@ rename A_5_8 tiempomasprob_employee
 xtile perc=tiempomasprob_employee, nq(99)
 replace tiempomasprob_employee=. if perc>=98
 
-keep if tipodeabogadocalc==0
+keep if abogado_pub==0
 
 local n=5
 local m=6
@@ -893,7 +782,7 @@ replace masprob=masprob/100
 rename RA_5_5 dineromasprob
 rename RA_5_8 tiempomasprob
 
-keep if tipodeabogadocalc==0
+keep if abogado_pub==0
 	
 local n=13
 local m=14
@@ -929,7 +818,7 @@ replace masprob=masprob/100
 rename RD5_5 dineromasprob
 rename RD5_8 tiempomasprob
 
-keep if tipodeabogadocalc==0
+keep if abogado_pub==0
 	
 local n=21
 local m=22
@@ -1025,7 +914,7 @@ local m=6
 foreach var of varlist masprob_plaintiff dinero_plaintiff tiempo_plaintiff ///
 	{
 	*Total
-	qui su `var' if tipodeabogadocalc!=.
+	qui su `var' if abogado_pub!=.
 		
 	*Mean
 	local mu=round(r(mean),0.01)
@@ -1038,7 +927,7 @@ foreach var of varlist masprob_plaintiff dinero_plaintiff tiempo_plaintiff ///
 		sheet("SS_B") modify					
 		
 	*Public Lawyer	
-		qui su `var' if tipodeabogadocalc==1
+		qui su `var' if abogado_pub==1
 		
 	*Mean
 	local mu=round(r(mean),0.01)
@@ -1051,7 +940,7 @@ foreach var of varlist masprob_plaintiff dinero_plaintiff tiempo_plaintiff ///
 		sheet("SS_B") modify	
 	
 	*Private Lawyer	
-		qui su `var' if tipodeabogadocalc==0
+		qui su `var' if abogado_pub==0
 		
 	*Mean
 	local mu=round(r(mean),0.01)
@@ -1069,17 +958,17 @@ foreach var of varlist masprob_plaintiff dinero_plaintiff tiempo_plaintiff ///
 
 	*Obs
 	*Total
-	qui su masprob_plaintiff if tipodeabogadocalc!=.
+	qui su masprob_plaintiff if abogado_pub!=.
 	qui putexcel B`n'=("`r(N)'")  using "$sharelatex/Tables/SS_bylawyer.xlsx", ///
 	sheet("SS_B") modify	
 	
 	*Public
-	qui su masprob_plaintiff if tipodeabogadocalc==1
+	qui su masprob_plaintiff if abogado_pub==1
 	qui putexcel C`n'=("`r(N)'")  using "$sharelatex/Tables/SS_bylawyer.xlsx", ///
 	sheet("SS_B") modify	
 	
 	*Private
-	qui su masprob_plaintiff if tipodeabogadocalc==0
+	qui su masprob_plaintiff if abogado_pub==0
 	qui putexcel D`n'=("`r(N)'")  using "$sharelatex/Tables/SS_bylawyer.xlsx", ///
 	sheet("SS_B") modify	
 	
@@ -1094,7 +983,7 @@ local m=14
 foreach var of varlist masprob_defendant dinero_defendant tiempo_defendant ///
 	{
 	*Total
-	qui su `var' if tipodeabogadocalc!=.
+	qui su `var' if abogado_pub!=.
 		
 	*Mean
 	local mu=round(r(mean),0.01)
@@ -1107,7 +996,7 @@ foreach var of varlist masprob_defendant dinero_defendant tiempo_defendant ///
 		sheet("SS_B") modify					
 		
 	*Public Lawyer	
-		qui su `var' if tipodeabogadocalc==1
+		qui su `var' if abogado_pub==1
 		
 	*Mean
 	local mu=round(r(mean),0.01)
@@ -1120,7 +1009,7 @@ foreach var of varlist masprob_defendant dinero_defendant tiempo_defendant ///
 		sheet("SS_B") modify	
 	
 	*Private Lawyer	
-		qui su `var' if tipodeabogadocalc==0
+		qui su `var' if abogado_pub==0
 		
 	*Mean
 	local mu=round(r(mean),0.01)
@@ -1138,17 +1027,17 @@ foreach var of varlist masprob_defendant dinero_defendant tiempo_defendant ///
 
 	*Obs
 	*Total
-	qui su masprob_defendant if tipodeabogadocalc!=.
+	qui su masprob_defendant if abogado_pub!=.
 	qui putexcel B`n'=("`r(N)'")  using "$sharelatex/Tables/SS_bylawyer.xlsx", ///
 	sheet("SS_B") modify	
 	
 	*Public
-	qui su masprob_defendant if tipodeabogadocalc==1
+	qui su masprob_defendant if abogado_pub==1
 	qui putexcel C`n'=("`r(N)'")  using "$sharelatex/Tables/SS_bylawyer.xlsx", ///
 	sheet("SS_B") modify	
 	
 	*Private
-	qui su masprob_defendant if tipodeabogadocalc==0
+	qui su masprob_defendant if abogado_pub==0
 	qui putexcel D`n'=("`r(N)'")  using "$sharelatex/Tables/SS_bylawyer.xlsx", ///
 	sheet("SS_B") modify		
 	

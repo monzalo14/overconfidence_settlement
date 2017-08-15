@@ -6,4 +6,4 @@ clear
 set more off
  
  
-rcd "$sharelatex/DoFiles"  : find *.do , match(Base_seguimiento) show
+rcd "$sharelatex/DoFiles"  : find *.do , match(Base_Seg) show

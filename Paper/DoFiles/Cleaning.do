@@ -4,14 +4,74 @@ This do file generates all previous variables and does some cleaning of the data
 
 ********************************************************************************
 
+********************************************************************************
+
+import delimited "$sharelatex\Raw\pilot_casefiles.csv", clear
+
+capture rename ao anio
+capture rename exp expediente
+
+capture destring salariodiario, replace force
+capture destring jornadasemana, replace force
+capture destring antigedad, replace force
+capture destring horas, replace force
+
+capture replace expediente=floor(expediente)
+capture tostring expediente, gen(s_expediente)
+capture tostring anio, gen(s_anio)
+capture gen slength=length(s_expediente)
+
+capture replace s_expediente="0"+s_expediente if slength==3
+capture replace s_expediente="00"+s_expediente if slength==2
+capture replace s_expediente="000"+s_expediente if slength==1
+
+capture gen folio=s_expediente+"-"+s_anio
+
+*Variable Homologation
+rename  trabbase  trabajador_base
+rename  antigedad   c_antiguedad 
+rename  salariodiariointegrado   salario_diario
+rename  horas   horas_sem 
+rename  tipodeabogado_1  abogado_pub 
+rename  reinstalacin reinst
+rename  indemnizacinconstitucional indem 
+rename  salcaidostdummy sal_caidos 
+rename  primaantigtdummy  prima_antig
+rename  primavactdummy  prima_vac 
+rename  horasextras  hextra 
+rename  rec20diastdummy rec20
+rename  primadominical prima_dom 
+rename  descansosemanal  desc_sem 
+rename  descansooblig desc_ob
+rename  sarimssinfo  sarimssinf 
+rename  utilidadest  utilidades
+rename  nulidad  nulidad  
+rename  codemandaimssinfo  codem 
+rename  cuantificaciontrabajador c_total
+
+gen vac=.
+gen ag=.
+gen win=.
+gen liq_total=.
+
+
+save "$sharelatex\DB\pilot_casefiles.dta", replace
+
+*DB Calculadora without duplicates (WOD)
+use "$sharelatex\DB\pilot_casefiles.dta", clear
+duplicates tag folio, gen(tag)
+
+keep if tag==0
+save "$sharelatex\DB\pilot_casefiles_wod.dta", replace
+********************************************************************************
+
 import delimited  "$sharelatex\Raw\pilot_operation.csv", clear
 
 
-*Generate variables
+*********************Generate variables
 gen fecha=date(fechalista,"YMD")
 order fecha
 keep if inrange(fecha,date("2016/03/02","YMD"),date("2016/05/27","YMD")) 
-
 
 gen fechaNext=date(fechasiguienteaudiencia,"DMY")
 format fecha fechaNext %d
@@ -50,6 +110,68 @@ drop if missing(expediente)
 drop if missing(anio)
 duplicates drop folio fecha, force
 
+*Import sue date and generate conciliation variables
+merge m:1 folio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
+
+*Persistent conciliation variable
+gen fecha_con=date(c1_fecha_convenio,"DMY")
+format fecha_con %td
+replace seconcilio=1 if fecha_con==fecha
+destring c1_se_concilio, replace force
+replace c1_se_concilio=seconcilio if missing(c1_se_concilio)
+replace c1_se_concilio=. if c1_se_concilio==2
+bysort expediente anio : egen conciliation=max(c1_se_concilio)
+
+*Conciliation date
+replace fecha_con=fecha if seconcilio==1 & c1_se_concilio==1
+bysort expediente anio : egen fecha_convenio=max(fecha_con)
+format fecha_convenio %td
+
+*Treatment date
+bysort expediente anio : egen fecha_treatment=min(fecha)
+format fecha_treatment %td
+
+*Months after initial sue
+gen fechadem=date(fecha_demanda,"YMD")
+gen months_after=(fecha_convenio-fechadem)/30
+replace months_after=. if months_after<0
+xtile perc=months_after, nq(99)
+replace months_after=. if perc>=99
+
+*Months after treatment
+gen months_after_treat=(fecha_convenio-fecha_treatment)/30
+replace months_after_treat=. if months_after_treat<0
+xtile perc_at=months_after_treat, nq(99)
+replace months_after_treat=. if perc_at>=99
+
+*Conciliation
+gen con=c1_se_concilio
+
+*Conciliation after...
+	*1 month
+gen con_1m=(con==1 & fecha_convenio<=fechadem+31)
+	*6 month
+gen con_6m=(con==1 & fecha_convenio<=fechadem+186)
+
+
+*1 month after
+gen convenio_1m=0
+replace convenio_1m=1 if inrange(months_after_treat,0,1)
+
+*2 month after
+gen convenio_2m=0
+replace convenio_2m=1 if inrange(months_after_treat,0,2)
+
+*3 month after
+gen convenio_3m=0
+replace convenio_3m=1 if inrange(months_after_treat,0,3)
+
+*4 month after
+gen convenio_4m=0
+replace convenio_4m=1 if inrange(months_after_treat,0,4)
+
+*+5 month after
+gen convenio_5m=conciliation
 
 save "$sharelatex\DB\pilot_operation.dta", replace
 
@@ -263,58 +385,5 @@ foreach var in `varlist' {
 		}	
 	}
 
-********************************************************************************
-
-import delimited "$sharelatex\Raw\pilot_casefiles.csv", clear
-
-capture rename ao anio
-capture rename exp expediente
-
-capture destring salariodiario, replace force
-capture destring jornadasemana, replace force
-capture destring antigedad, replace force
-capture destring horas, replace force
-
-capture replace expediente=floor(expediente)
-capture tostring expediente, gen(s_expediente)
-capture tostring anio, gen(s_anio)
-capture gen slength=length(s_expediente)
-
-capture replace s_expediente="0"+s_expediente if slength==3
-capture replace s_expediente="00"+s_expediente if slength==2
-capture replace s_expediente="000"+s_expediente if slength==1
-
-capture gen folio=s_expediente+"-"+s_anio
-
-*Variable Homologation
-rename  trabbase  trabajador_base
-rename  antigedad   c_antiguedad 
-rename  salariodiariointegrado   salario_diario
-rename  horas   horas_sem 
-rename  tipodeabogado_1  abogado_pub 
-rename  reinstalacin reinst
-rename  indemnizacinconstitucional indem 
-rename  salcaidostdummy sal_caidos 
-rename  primaantigtdummy  prima_antig
-rename  primavactdummy  prima_vac 
-rename  horasextras  hextra 
-rename  rec20diastdummy rec20
-rename  primadominical prima_dom 
-rename  descansosemanal  desc_sem 
-rename  descansooblig desc_ob
-rename  sarimssinfo  sarimssinf 
-rename  utilidadest  utilidades
-rename  nulidad  nulidad  
-rename  codemandaimssinfo  codem 
-rename  cuantificaciontrabajador c_total
-
-save "$sharelatex\DB\pilot_casefiles.dta", replace
-
-*DB Calculadora without duplicates (WOD)
-use "$sharelatex\DB\pilot_casefiles.dta", clear
-duplicates tag folio, gen(tag)
-
-keep if tag==0
-save "$sharelatex\DB\pilot_casefiles_wod.dta", replace
 ********************************************************************************
 

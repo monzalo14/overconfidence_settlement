@@ -222,68 +222,8 @@ foreach var of varlist reinst indem sal_caidos prima_antig prima_vac hextra ///
 
 ********************************************************************************
 	*DB: March Pilot
-use "$sharelatex\DB\Base_Seguimiento.dta", clear
+use "$sharelatex\DB\pilot_operation.dta", clear
 merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
-
-
-*Persistent conciliation variable
-destring c1_se_concilio, replace force
-replace c1_se_concilio=. if c1_se_concilio==2
-bysort expediente anio : egen conciliation=max(c1_se_concilio)
-
-gen fecha_convenio=date(c1_fecha_convenio,"DMY")
-format fecha_convenio %td
-
-
-*Conciliation
-gen con=c1_se_concilio
-
-*Months after initial sue
-gen fechadem=date(fecha_demanda,"DMY")
-gen fechater=fecha_convenio
-gen months_after=(fechater-fechadem)/30
-replace months_after=. if months_after<0
-xtile perc=months_after, nq(99)
-replace months_after=. if perc>=99
-
-*Conciliation after...
-	*1 month
-gen con_1m=(con==1 & fechater<=fechadem+31)
-	*6 month
-gen con_6m=(con==1 & fechater<=fechadem+186)
-	
-	
-gen vac=.
-gen ag=.
-gen win=.
-gen liq_total=.
-
-
-*Homologación de variables
-rename  trabbase  trabajador_base
-rename  antigedad   c_antiguedad 
-rename  salariodiariointegrado   salario_diario
-rename  horas   horas_sem 
-rename  tipodeabogadocalc  abogado_pub 
-rename  reinstalacin reinst
-rename  indemnizacinconstitucional indem 
-rename  salcaidost sal_caidos 
-rename  primaantigtdummy  prima_antig
-rename  primavactdummy  prima_vac 
-rename  horasextras  hextra 
-drop rec20
-rename  rec20diast rec20
-rename  primadominical prima_dom 
-rename  descansosemanal  desc_sem 
-rename  descansoobligdummy desc_ob
-rename  sarimssinfo  sarimssinf 
-rename  utilidadest  utilidades
-rename  nulidad  nulidad  
-rename  codemandaimssinfo  codem 
-rename  cuantificaciontrabajador c_total
-  
-
-
 
 
 *PANEL A (Outcomes)
@@ -510,7 +450,7 @@ merge 1:1 exp anio junta  using "$scaleup\DB\Iniciales_wod.dta", keep(3)
 
 destring salario_diario, replace force
 	
-*Homologación de variables
+*Variable homologation
 rename convenio con
 
 

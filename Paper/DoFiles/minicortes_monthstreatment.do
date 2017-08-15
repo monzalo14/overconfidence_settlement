@@ -1,49 +1,6 @@
-use "$sharelatex\DB\Base_Seguimiento.dta", clear
+use "$sharelatex\DB\pilot_operation.dta", clear
 merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3)
 drop _merge
-
-
-*Persistent conciliation variable
-replace seconcilio=1 if c1_fecha_con==fechalista
-destring c1_se_concilio, replace force
-replace c1_se_concilio=seconcilio if missing(c1_se_concilio)
-replace c1_se_concilio=. if c1_se_concilio==2
-bysort expediente anio : egen conciliation=max(c1_se_concilio)
-
-*Conciliation date
-replace c1_fecha_convenio=fechalista if seconcilio==1 & c1_se_concilio==1
-gen fecha_con=date(c1_fecha_convenio,"DMY")
-bysort expediente anio : egen fecha_convenio=max(fecha_con)
-format fecha_convenio %td
-
-*Treatment date
-gen fecha_treat=date(fechalista,"DMY")
-bysort expediente anio : egen fecha_treatment=min(fecha_treat)
-format fecha_treatment %td
-
-*Months after treatment 
-gen months_treat=(fecha_convenio-fecha_treatment)/30
-
-*1 month after
-gen convenio_1m=0
-replace convenio_1m=1 if inrange(months_treat,0,1)
-
-*2 month after
-gen convenio_2m=0
-replace convenio_2m=1 if inrange(months_treat,0,2)
-
-*3 month after
-gen convenio_3m=0
-replace convenio_3m=1 if inrange(months_treat,0,3)
-
-*4 month after
-gen convenio_4m=0
-replace convenio_4m=1 if inrange(months_treat,0,4)
-
-*+5 month after
-gen convenio_5m=conciliation
-
-
 
  
 *File Order
@@ -119,12 +76,14 @@ foreach m in 1 2 3 4 5 {
 	
 	
 ********************************************************************************
-
+*Adding Basic Variables Controls
 
 	eststo clear
 
 	*Same day conciliation
-	eststo: reg seconcilio i.treatment if treatment!=0, robust
+	eststo: reg seconcilio i.treatment ///
+	abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
+	if treatment!=0, robust
 	estadd scalar Erre=e(r2)
 	qui su seconcilio
 	estadd scalar DepVarMean=r(mean)
@@ -134,7 +93,9 @@ foreach m in 1 2 3 4 5 {
 	estadd scalar Pvalue_=r(p)
 	
 	*Interaction employee was present
-	eststo: reg seconcilio i.treatment##i.p_actor if treatment!=0, robust
+	eststo: reg seconcilio i.treatment##i.p_actor ///
+	abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
+	if treatment!=0, robust
 	estadd scalar Erre=e(r2)
 	qui su seconcilio
 	estadd scalar DepVarMean=r(mean)

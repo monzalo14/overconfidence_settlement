@@ -45,51 +45,17 @@ save `temp5005'
 
 ********************************************************************************
 	*DB: March Pilot
-use "$sharelatex\DB\Base_Seguimiento.dta", clear
+use "$sharelatex\DB\pilot_operation.dta", clear
 merge m:1 expediente anio using "$sharelatex\DB\pilot_casefiles_wod.dta", keep(1 3) nogen
-merge m:m folio using "$sharelatex/DB/pilot_operation.dta", keep(1 3) nogen keepusing(tratamientoquelestoco)
 
 
-*Persistent conciliation variable
-replace seconcilio=1 if c1_fecha_con==fechalista
-destring c1_se_concilio, replace force
-replace c1_se_concilio=seconcilio if missing(c1_se_concilio)
-replace c1_se_concilio=. if c1_se_concilio==2
-bysort expediente anio : egen conciliation=max(c1_se_concilio)
-
-*Conciliation date
-replace c1_fecha_convenio=fechalista if seconcilio==1 & c1_se_concilio==1
-gen fecha_con=date(c1_fecha_convenio,"DMY")
-bysort expediente anio : egen fecha_convenio=max(fecha_con)
-format fecha_convenio %td
-
-*Conciliation
-gen con=c1_se_concilio
-
-*Months after initial sue
-gen fechadem=date(fecha_demanda,"DMY")
-gen fechater=fecha_convenio
-gen months_after=(fechater-fechadem)/30
-replace months_after=. if months_after<0
-xtile perc=months_after, nq(99)
-replace months_after=. if perc>=99
-
+*Auxiliary variables
 gen perc_con_pilot=.
 gen perc_con_t1=.
 gen perc_con_t2=.
 gen perc_con_t3=.
 gen time=.
 
-*Treatment date
-gen fecha_treat=date(fechalista,"DMY")
-bysort expediente anio : egen fecha_treatment=min(fecha_treat)
-format fecha_treatment %td
-
-*Months after treatment
-gen months_after_treat=(fechater-fecha_treatment)/30
-replace months_after_treat=. if months_after_treat<0
-xtile perc_at=months_after_treat, nq(99)
-replace months_after_treat=. if perc_at>=99
 
 gen perc_con_pilot_at=.
 gen perc_con_t1_at=.

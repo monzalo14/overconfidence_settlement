@@ -34,9 +34,10 @@
 %\addbibresource{References.bib}
 
 
+%Tables path
+\newcommand{\folder}{../Paper/Tables}
+\graphicspath{{../Paper/Figuras/}}
 
-
-\graphicspath{{./Figuras/}}
 \usepackage{color}
 %\usepackage{morefloats}
 %\usepackage{showkeys}
@@ -503,7 +504,7 @@
     \end{itemize}
   \hskip-6.0cm\begin{table}
     \label{Table_effects_F}
-    \tiny{\input{./Tables/Minicortes_2_PA.tex}}
+    \tiny{\input{\folder/minicortes_monthstreatment.tex}}
 \end{table}
     \footnotesize
     \textit{Notes:} 
@@ -580,7 +581,7 @@
   \begin{table}[H]
     \label{Sum_Stats_outcomes}
     \begin{center}
-       \tiny{\input{./Tables/SS_bylawyer_outcomes.tex}}
+       \tiny{\input{\folder/SS_outcomes.tex}}
     \end{center}
 \end{table}
 \end{frame}
@@ -588,8 +589,8 @@
 \begin{frame}{Summary Statistics}{Basic Variables}
   \begin{table}[H]
     \label{Sum_Stats_basic_variables}
-    \begin{center}https://www.sharelatex.com/project/590a73bd3ba686682a37fa2a
-       \tiny{\input{./Tables/SS_bylawyer_basic_variables.tex}}
+    \begin{center}
+       \tiny{\input{\folder/SS_basic.tex}}
     \end{center}
 \end{table}
 \end{frame}
@@ -598,7 +599,7 @@
   \begin{table}[H]
     \label{Sum_Stats_strategic_variables}
     \begin{center}
-       \tiny{\input{./Tables/SS_bylawyer_strategic_variables.tex}}
+       \tiny{\input{\folder/SS_strategic.tex}}
     \end{center}
 \end{table}
 \end{frame}
@@ -607,7 +608,7 @@
 \begin{table}[H]
     \label{Table_expectations}
     \begin{center}
-       \scriptsize{\input{./Tables/SS_A.tex}}
+       \scriptsize{\input{\folder/SS_A.tex}}
     \end{center}
 \end{table}
     \footnotesize    
@@ -622,7 +623,7 @@
   \resizebox{0.9\textwidth}{!}{\begin{minipage}{\textwidth}
 \label{Table_compliance}
 \begin{center}
-\scriptsize{\input{./Tables/Compliance.tex}}
+\scriptsize{\input{\folder/Compliance.tex}}
 \end{center}
 \end{minipage}}
 \end{table}
