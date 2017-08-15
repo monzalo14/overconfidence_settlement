@@ -4,7 +4,7 @@ source('toolbox.R')
 # Cargamos ambas bases: dfp para el piloto, dfs para el scale-up
 # Seleccionamos variables que nos interesan
 # Imputamos ceros a NAs en variables de terminación 
-dfp <- read_excel('../Raw/seguimiento_pilot.xlsx',
+dfp <- read_excel('../Raw/pilot_operation.xlsx',
                   skip = 2, sheet = 'BASE SEGUIMIENTO') %>%
         setNames(., limpia_nombres(names(.))) %>% 
         select(fecha_lista:itt, 
@@ -15,7 +15,7 @@ dfp <- read_excel('../Raw/seguimiento_pilot.xlsx',
         filter(itt == 'SI', tratamiento_que_les_toco %in% c(1,2)) %>%
         mutate_at(vars(p_actor:cantidad_de_desistimiento), na_fix)
 
-dfs <- readRDS('../DB/seguimiento_audiencias.RDS') 
+dfs <- readRDS('../DB/scaleup_operation.RDS') 
 
 # Resolver casos de múltiples actores, al unirlos con las iniciales
 

@@ -4,13 +4,13 @@ library(tidyr)
 library(cobalt)
 library(stringr)
 
-df_seg <- readRDS('../DB/seguimiento_audiencias.RDS') %>%
+df_seg <- readRDS('../DB/scaleup_operation.RDS') %>%
       dplyr::rename(exp = expediente,
              anio = a.o) %>%
       mutate(id_exp = paste(junta, exp, anio, sep = '_')) %>%
       dplyr::select(-junta, -exp, -anio, -observaciones)
 
-df <- readRDS('../DB/bases_iniciales.RDS') %>%
+df <- readRDS('../DB/scaleup_casefiles.RDS') %>%
       mutate(id_exp =  paste(junta, exp, anio, sep = '_')) %>%
       dplyr::select(-junta, -exp, -anio, -observaciones, -num_actores)
 

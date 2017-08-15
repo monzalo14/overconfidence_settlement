@@ -2,12 +2,20 @@ contador_a_dummy <- function(x){
   as.numeric(x>0)
 }
 
-limpia_nombres <- function(name){
+limpia_nombres_feo <- function(name){
   name %>%
+    tolower() %>%
+    gsub('ó', '', .) %>%
+    gsub('\\W', '', ., perl = T)
+}
+
+limpia_nombres_bonitos = function(name){
+  name %>%
+    str
     tolower() %>%
     gsub('ó', 'o', .) %>%
     gsub(' ', '_', .) %>%
-    gsub('[^A-Za-z0-9_]', '', .)
+    gsub('\\W', '', ., perl = T)
 }
 
 na_fix <- function(x){

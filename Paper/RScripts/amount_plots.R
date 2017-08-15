@@ -1,4 +1,4 @@
-source('00_setup.R')
+source('setup.R')
 
 trunca99 <- function(x){
   cuantil99 <- quantile(x, .99, na.rm=T, type=1)
@@ -16,7 +16,7 @@ trunca99 <- function(x){
 vars_truncadas <- c('c_total', 'liq_total')
 vars <- c(vars_truncadas, 'min_ley', 'minley_salcaidos')
 
-df <- readRDS('../DB/observaciones.RDS') %>%
+df <- readRDS('../DB/scaleup_hd_original.RDS') %>%
   group_by(modo_termino) %>%
   mutate_at(vars(one_of(vars_truncadas)), trunca99) %>%
   mutate(minley_salcaidos = min_ley + sueldo*duracion*365)  %>%
@@ -49,7 +49,7 @@ rownames(df_plot) <- c('Amount asked', 'Min. comp. by law', 'Min. comp. + lost w
 colnames(df_plot) <- c('Conciliation', 'Drop', 'Court ruling', 'Expiry')
 ylim <- range(df_plot)*c(1,1.25)
 
-# Generamos los porcentajes que necesitamos de cada modo de término:
+# Generamos los porcentajes que necesitamos de cada modo de t?rmino:
 prop_mt <- df %>% 
   ungroup() %>% 
   count(modo_termino) %>% 
@@ -73,7 +73,7 @@ prop_mt_leg <- paste0(c(colnames(df_plot),
                       ' - ',
                       substr(as.character(prop_mt$n), 1, 4), '%')
 
-# Defino las gráficas y les pongo legends
+# Defino las gr?ficas y les pongo legends
 
 par(mar = c(4.1, 5.1, 2.1, 3.1))
 

@@ -18,7 +18,7 @@ get_r2 <- function(df, pred_var){
   format(m$r.squared, digits = 3)
 }
 
-df = read.csv('../DB/observaciones_tope.csv') %>%
+df = read.csv('../DB/scaleup_hd.csv') %>%
           group_by(modo_termino) %>%
           mutate_at(vars(starts_with('liq_total'), starts_with('c_')), trunca99) %>%
           ungroup() %>%

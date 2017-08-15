@@ -18,7 +18,7 @@ factores <- c('gen',
 factores_fun <- function(x){as.factor(as.character(x))}
 log_fun <- function(x){log(1 + (as.numeric(x)))}
 
-pilot <- read.csv('../DB/calculadora.csv') %>%
+pilot <- read.csv('../DB/pilot_casefiles.csv') %>%
         dplyr::select(sueldo = salariodiariointegrado, 
                gen = gen,
                c_antiguedad = antigedad,
@@ -36,7 +36,7 @@ pilot <- read.csv('../DB/calculadora.csv') %>%
 
 continuas <- names(pilot)[!(names(pilot) %in% factores)]
 
-hd <- readRDS('../DB/observaciones.RDS') %>%
+hd <- readRDS('../DB/scaleup_hd_original.RDS') %>%
       filter(junta == '7') %>%
       dplyr::select(sueldo,
              gen,

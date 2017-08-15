@@ -3,6 +3,7 @@ library(lubridate)
 library(tidyr)
 library(readxl)
 
+source('toolbox.R')
 source('utils.R')
 load('utils.RData')
 
@@ -11,7 +12,7 @@ load('utils.RData')
 # Read data
 ######################################################################################################################################
 
-df = read_excel('../Raw/BASE INICIALES AUDIENCIAS MC.xlsm', skip = 3) %>%
+df = read_excel('../Raw/scaleup_casefiles.xlsm', skip = 3) %>%
       rename(fecha_captura = fceha_captura) %>%
       select(clave:dummy_nulidad) %>%
 #     mutate(dummy_vac = genera_dummy(fecha_inic_vac, fecha_fin_vac, c_vac),
@@ -39,7 +40,6 @@ df = left_join(df, dems_imss)
 # Top sue
 ######################################################################################################################################
 
-
 df$top_despacho_ac = df$despacho_ac %in% top_despachos
 
 ######################################################################################################################################
@@ -60,9 +60,10 @@ df = mutate_at(df, vars(contains('dummy')), limpia_dummy) %>%
       mutate(anio_nac = as.numeric(anio_nac),
              edad = anio - anio_nac,
              tipo_jornada = limpia_categorica(tipo_jornada, 1:4),
-             antig = antig/365) 
+             antig = antig/365,
+             abogado_pub = ifelse(tipo_abogado_ac == '3', 1, 0)) 
 
 
 ## Write data
-write.csv(df, '../DB/iniciales_clean.csv', na = '', row.names = F)
-saveRDS(df, '../DB/iniciales_clean.RDS')
+write.csv(df, '../DB/scaleup_casefiles.csv', na = '', row.names = F)
+saveRDS(df, '../DB/scaleup_casefiles.RDS')

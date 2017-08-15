@@ -4,6 +4,14 @@
 
 use "$scaleup\DB\Seguimiento_Juntas.dta", clear
 
+
+* Define disjoint treatment variables
+
+gen calcu_only_plaintiff = (calcu_p_actora == 1 & calcu_p_dem == 0)
+gen calcu_only_defendant = (calcu_p_dem == 1 & calcu_p_actora == 0)
+gen calcu_both=(calculadoras_partes==2)
+
+
 ********************************************************************************
 
 
@@ -39,7 +47,7 @@ estadd local Notified="YES"
 
 	*PLAINTIFF
 eststo: ivreg convenio junta_*   ///
-	(calcu_p_actora = dia_tratamiento  ) if notificado==1 ///
+	(calcu_only_plaintiff = dia_tratamiento  ) if notificado==1 ///
 	, robust cluster(fecha_lista) 
 estadd scalar Erre=e(r2)
 qui su convenio if e(sample)
@@ -51,7 +59,7 @@ estadd local Notified="YES"
 
 	*DEFENDANT
 eststo: ivreg convenio junta_*   ///
-	(calcu_p_dem = dia_tratamiento  ) if notificado==1 ///
+	(calcu_only_defendant = dia_tratamiento  ) if notificado==1 ///
 	, robust cluster(fecha_lista) 
 estadd scalar Erre=e(r2)
 qui su convenio if e(sample)
@@ -61,8 +69,7 @@ estadd scalar perc_treat=r(mean)
 estadd local Notified="YES"
 
 
-	*BOTH
-gen calcu_both=(calculadoras_partes==2)	
+	*BOTH	
 eststo: ivreg convenio junta_*   ///
 	(calcu_both = dia_tratamiento  ) if notificado==1 ///
 	, robust cluster(fecha_lista) 
@@ -75,15 +82,15 @@ estadd local Notified="YES"
 
 
 *ATT##EP
-gen calcu_a_x_ep=calcu_p_actora*p_actor
-gen calcu_d_x_ep=calcu_p_dem*p_actor
+gen calcu_a_x_ep=calcu_only_plaintiff*p_actor
+gen calcu_d_x_ep=calcu_only_defendant*p_actor
 
 gen dt_x_ep=dia_tratamiento*p_actor
 
 
 	*PLAINTIFF
 eststo: ivreg convenio junta_*  ///
-	(calcu_p_actora calcu_a_x_ep =  dia_tratamiento dt_x_ep) if notificado==1 ///
+	(calcu_only_plaintiff calcu_a_x_ep =  dia_tratamiento dt_x_ep) if notificado==1 ///
 	, robust cluster(fecha_lista) 
 estadd scalar Erre=e(r2)
 qui su convenio if e(sample)
@@ -93,7 +100,7 @@ estadd local Notified="YES"
 
 	*DEFENDANT
 eststo: ivreg convenio junta_*  ///
-	(calcu_p_dem calcu_d_x_ep =  dia_tratamiento dt_x_ep) if notificado==1 ///
+	(calcu_only_defendant calcu_d_x_ep =  dia_tratamiento dt_x_ep) if notificado==1 ///
 	,  robust cluster(fecha_lista)
 estadd scalar Erre=e(r2)
 qui su convenio if e(sample)
@@ -112,7 +119,7 @@ esttab using "$sharelatex\Tables\reg_results\ITT_ATT.csv", se star(* 0.1 ** 0.05
 eststo clear
 
 	*PLAINTIFF
-eststo: reg calcu_p_actora dia_tratamiento junta_*   ///
+eststo: reg calcu_only_plaintiff dia_tratamiento junta_*   ///
 	if convenio!=. & notificado==1 ///
 	, robust cluster(fecha_lista) 
 estadd scalar Erre=e(r2)
@@ -120,7 +127,7 @@ qui su calcu_p_actora if e(sample)
 estadd scalar DepVarMean=r(mean)
 
 	*DEFENDANT
-eststo: reg calcu_p_dem dia_tratamiento junta_*   ///
+eststo: reg calcu_only_defendant dia_tratamiento junta_*   ///
 	if convenio!=.  & notificado==1 ///
 	, robust cluster(fecha_lista) 
 estadd scalar Erre=e(r2)
