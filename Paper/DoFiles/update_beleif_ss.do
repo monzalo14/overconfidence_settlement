@@ -104,11 +104,54 @@ label variable update_emp "Amount employee"
 label variable update_emp_law "Amount employee's lawyer"
 label variable update_fir_law "Amount firm's lawyer"
 
-*Update in beleifs
-sutex update_emp update_emp_law update_fir_law, digits(2) labels nobs   ///
-	file("$sharelatex\Tables\update_beleif_1.tex") replace ///
-	title("Pilot") 
 
+local n=3
+local m=4
+local l=5
+foreach var of varlist update_emp update_emp_law update_fir_law ///
+	{
+	
+	
+	forvalues i=1/3 {
+	
+		local Col=substr(c(ALPHA),2*(7+`i')-1,1)
+		
+		qui su `var' if tratamientoquelestoco==`i'
+		
+		*Mean
+		local mu=round(r(mean),0.01)
+		qui putexcel `Col'`n'=("`mu'")  using "$sharelatex/Tables/direct_updating.xlsx", ///
+			sheet("direct_updating") modify			
+		*Std Dev
+		local std=round(r(sd),0.01)
+		local sd="(`std')"
+		qui putexcel `Col'`m'=("`sd'")  using "$sharelatex/Tables/direct_updating.xlsx", ///
+			sheet("direct_updating") modify			
+		*Obs
+		qui putexcel `Col'`l'=(r(N))  using "$sharelatex/Tables/direct_updating.xlsx", ///
+			sheet("direct_updating") modify		
+		}
+	
+	qui su `var'
+	
+	*Mean
+	local mu=round(r(mean),0.01)
+	qui putexcel K`n'=("`mu'")  using "$sharelatex/Tables/direct_updating.xlsx", ///
+		sheet("direct_updating") modify			
+	*Std Dev
+	local std=round(r(sd),0.01)
+	local sd="(`std')"
+	qui putexcel K`m'=("`sd'")  using "$sharelatex/Tables/direct_updating.xlsx", ///
+		sheet("direct_updating") modify			
+	*Obs
+	qui putexcel K`l'=(r(N))  using "$sharelatex/Tables/direct_updating.xlsx", ///
+		sheet("direct_updating") modify	
+		
+		
+	local n=`n'+3
+	local m=`m'+3
+	local l=`l'+3
+	}
 	
 	
 ********************************************************************************
@@ -131,8 +174,31 @@ label variable update_prob_a "Prob employee"
 label variable update_prob_ra "Prob employee's lawyer"
 label variable update_prob_rd "Prob firm's lawyer"
 
-*Update in beleifs
-sutex update_*, digits(2) labels  nobs   ///
-	file("$sharelatex\Tables\update_beleif_2.tex") replace ///
-	title("Scale Up") 
+
+local n=3
+local m=4
+local l=5
+foreach var of varlist update_pago_a update_pago_ra update_pago_rd ///
+						update_prob_a update_prob_ra update_prob_rd ///
+	{
 	
+	qui su `var'
+	
+	*Mean
+	local mu=round(r(mean),0.01)
+	qui putexcel L`n'=("`mu'")  using "$sharelatex/Tables/direct_updating.xlsx", ///
+		sheet("direct_updating") modify			
+	*Std Dev
+	local std=round(r(sd),0.01)
+	local sd="(`std')"
+	qui putexcel L`m'=("`sd'")  using "$sharelatex/Tables/direct_updating.xlsx", ///
+		sheet("direct_updating") modify			
+	*Obs
+	qui putexcel L`l'=(r(N))  using "$sharelatex/Tables/direct_updating.xlsx", ///
+		sheet("direct_updating") modify	
+		
+		
+	local n=`n'+3
+	local m=`m'+3
+	local l=`l'+3
+	}

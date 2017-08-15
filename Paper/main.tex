@@ -379,10 +379,10 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 \textit{Do file: } \texttt{oc\_reg.do oc\_reg\_B.do}
 \end{table}
 
-\end{landscape}
+\pagebreak
 
 \begin{table}[H]
-\caption{Determinants of updating}
+\caption{Determinants of updating (Theta)}
 \label{Table_determinants_updating}
 \begin{center}
 \scriptsize{\input{./Tables/oc_reg_theta.tex}}
@@ -390,9 +390,24 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
  \footnotesize
 \textit{Notes:} 
 \emph{Mistreated} variable refers to the survey question: "How well do you think you were treated by the firm?". The omitted category is "Very Good", while 1, 2 and 3 refer to "Fairly Well", "Not so well" and "Not well at all".
-Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very good, and the scale is increasing, i.e. the worker feels more mistreated . We use the following statistic to measure updating: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says.
+Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very good, and the scale is increasing, i.e. the worker feels more mistreated . Theta updating refers to the following statistic: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says. 
 \textit{Do file: } \texttt{oc\_reg\_theta.do}
 \end{table}
+
+
+\begin{table}[H]
+\caption{Determinants of updating (Relative)}
+\label{Table_determinants_updating}
+\begin{center}
+\scriptsize{\input{./Tables/oc_reg_rel.tex}}
+\end{center}
+ \footnotesize
+\textit{Notes:} 
+\emph{Mistreated} variable refers to the survey question: "How well do you think you were treated by the firm?". The omitted category is "Very Good", while 1, 2 and 3 refer to "Fairly Well", "Not so well" and "Not well at all".
+Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very good, and the scale is increasing, i.e. the worker feels more mistreated. Relative updating is computed as $\frac{exitsurvey-initialsurvey}{initialsurvey}$.
+\textit{Do file: } \texttt{oc\_reg\_theta.do}
+\end{table}
+\end{landscape}
 
 
 \begin{table}[H]
@@ -726,19 +741,12 @@ Summary stats of outcomes, basic and strategic variables by end mode.
     
 \begin{table}[H]
     \caption{Direct Updating}
-    \begin{subtable}{.5\linewidth}
-      \centering
-        \caption{Pilot}
-        \scriptsize{\input{./Tables/update_beleif_1.tex}}
-    \end{subtable}%
-    \begin{subtable}{.5\linewidth}
-      \centering
-        \caption{Scale Up}
-        \scriptsize{\input{./Tables/update_beleif_2.tex}}
-    \end{subtable} 
+     \begin{center}
+       \scriptsize{\input{./Tables/direct_updating.tex}}
+    \end{center}
            \footnotesize    
   \textit{Notes:} 
-    Summary statistics of parties' update in beliefs; measured as $\frac{exit-initial}{initial}$, for both \emph{Pilot} and \emph{Scale Up}.
+    Summary statistics of parties' update in beliefs; measured as $\frac{exit-initial}{initial}$, for both \emph{Pilot} and \emph{Scale Up}. Note that Scale Up is not divided by treatment. 
     \textit{Do file: } \texttt{update\_beleif\_ss.do}
 \end{table}
 
@@ -785,7 +793,7 @@ We show some stats of who goes to the court. This is important since we can only
 
 %#appendix 
 \begin{table}[H]
-    \caption{Correlation conciliation vs overconfidence}
+    \caption{Correlation conciliation vs overconfidence - Pilot data}
     \label{Table_concvsoc}
     \begin{center}
         \scriptsize{\input{./Tables/Reg_con_oc.tex}}
@@ -798,14 +806,14 @@ We show some stats of who goes to the court. This is important since we can only
 
 
 \begin{table}[H]
-    \caption{Correlation conciliation vs overconfidence}
+    \caption{Correlation conciliation vs update - Pilot data}
     \label{Table_concvsoc_theta}
     \begin{center}
         \scriptsize{\input{./Tables/Reg_con_oc_theta.tex}}
     \end{center}
     \footnotesize
     \textit{Notes:} 
-   We use the following statistic to measure overconfidence: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won.. Elastictity : Con-OC measures how much does conciliation change when overconfidence changes in 1 standard deviation. Elasticity SD:Con-OC measures how many standard deviations conciliation changes when  overconfidence changes in 1 standard deviation.
+   We use the following statistic to measure updating: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won.. Elastictity : Con-OC measures how much does conciliation change when overconfidence changes in 1 standard deviation. Elasticity SD:Con-OC measures how many standard deviations conciliation changes when  overconfidence changes in 1 standard deviation.
     \textit{Do file: } \texttt{con\_vs\_oc\_theta.do}
 \end{table}
 
