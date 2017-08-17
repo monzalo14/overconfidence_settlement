@@ -331,7 +331,7 @@ Summary stats of outcomes, basic and strategic variables
 
 
 \begin{table}[H]
-    \caption{Baseline expectations comparison between parties}
+    \caption{Baseline expectations comparison between parties - Pilot}
     \label{Table_expectations_plaintiff_defendant}
     \begin{center}
        \scriptsize{\input{./Tables/SS_B.tex}}
@@ -347,7 +347,7 @@ Summary stats of outcomes, basic and strategic variables
 
 %#include
 \begin{table}[H]
-    \caption{Amount asked (log), amount won (log), and probability of winning }
+    \caption{Amount asked (log), amount won (log), and probability of winning - Historic Data}
     \label{Table_Reg_winnings_log}
     \begin{center}
         \scriptsize{\input{./Tables/TableReg1_log.tex}}
@@ -367,7 +367,7 @@ Summary stats of outcomes, basic and strategic variables
 \begin{landscape}
 %#include
 \begin{table}[H]
-\caption{Determinants of overconfidence}
+\caption{Determinants of overconfidence - Pilot}
 \label{Table_determinantsOC}
 \begin{center}
 \scriptsize{\input{./Tables/OC_reg.tex}}
@@ -382,30 +382,30 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 \pagebreak
 
 \begin{table}[H]
-\caption{Determinants of updating (Theta)}
+\caption{Determinants of updating (Theta) - Pilot}
 \label{Table_determinants_updating}
 \begin{center}
-\scriptsize{\input{./Tables/oc_reg_theta.tex}}
+\scriptsize{\input{./Tables/update_reg_theta.tex}}
 \end{center}
  \footnotesize
-\textit{Notes:} 
+\textit{Notes:} All regressions include basic variables as controls, which are: Female, At will worker, Tenure, Daily wage, Weekly hours.
 \emph{Mistreated} variable refers to the survey question: "How well do you think you were treated by the firm?". The omitted category is "Very Good", while 1, 2 and 3 refer to "Fairly Well", "Not so well" and "Not well at all".
 Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very good, and the scale is increasing, i.e. the worker feels more mistreated . Theta updating refers to the following statistic: $\theta=\left|\frac{P-exitsurvey}{P-initialsurvey}\right|$. Where $P$ is the prediction made by the calculator and $exit$ and $initial$ survey variables denote what each part answered on the survey for amount won. Note that when $\theta=1$ we have no update with respect to the prediction. And when $\theta<1$ they update in the direction of what calculator says. The extreme case $\theta=0$ implies perfect updating with respect to what the calculator says. 
-\textit{Do file: } \texttt{oc\_reg\_theta.do}
+\textit{Do file: } \texttt{update\_reg\_theta\_rel.do}
 \end{table}
 
 
 \begin{table}[H]
-\caption{Determinants of updating (Relative)}
+\caption{Determinants of updating (Relative) - Pilot}
 \label{Table_determinants_updating}
 \begin{center}
-\scriptsize{\input{./Tables/oc_reg_rel.tex}}
+\scriptsize{\input{./Tables/update_reg_rel.tex}}
 \end{center}
  \footnotesize
 \textit{Notes:} 
 \emph{Mistreated} variable refers to the survey question: "How well do you think you were treated by the firm?". The omitted category is "Very Good", while 1, 2 and 3 refer to "Fairly Well", "Not so well" and "Not well at all".
 Omited variable for \emph{education} is elementary education, while for \emph{Mistreated} is very good, and the scale is increasing, i.e. the worker feels more mistreated. Relative updating is computed as $\frac{exitsurvey-initialsurvey}{initialsurvey}$.
-\textit{Do file: } \texttt{oc\_reg\_theta.do}
+\textit{Do file: } \texttt{update\_reg\_theta\_rel.do}
 \end{table}
 \end{landscape}
 
@@ -466,7 +466,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 
 %#include
 \begin{table}[H]
-    \caption{Treatment Effects by months after treatment}
+    \caption{Treatment Effects by months after treatment - Pilot}
     \label{Table_effects_F}
     \begin{center}
     \scriptsize{\input{./Tables/minicortes_monthstreatment.tex}}
@@ -483,6 +483,22 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 
 \pagebreak
 
+
+
+
+\begin{landscape}
+\begin{table}[H]
+    \caption{ITT and ATT - Scale Up}
+    \label{ITT_ATT}
+    \begin{center}
+    \scriptsize{\input{./Tables/ITT_ATT.tex}}
+    \end{center}
+    \footnotesize
+    \textit{Notes:} 
+    
+    \textit{Do file: } \texttt{ITT\_ATT.do}
+\end{table}
+\end{landscape}
 
 
 
@@ -510,7 +526,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 \end{figure}
 
 \begin{figure}[H]
-    \caption{Percent that know main legal constitutional entitlement}
+    \caption{Percent that know main legal constitutional entitlement - Pilot}
     \label{Knowindemfig}
     \begin{center}
         \begin{subfigure}{0.49\textwidth}
@@ -531,7 +547,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 
 
 \begin{figure}[H]
-    \caption{Knowledge about their own claims in lawsuit}
+    \caption{Knowledge about their own claims in lawsuit - Pilot}
     \label{Knowtheirclaimsfig}
     \begin{center}
         \begin{subfigure}{0.49\textwidth}
@@ -574,7 +590,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
  
     
 \begin{figure}[H]
-    \caption{Differences in claims and compensation by case file outcome}
+    \caption{Differences in claims and compensation by case file outcome - Historical Data}
     \label{claimsvsoutcomes}
     \begin{center}
         \includegraphics[width=0.7\textwidth]{Amountasked.tiff}
@@ -586,7 +602,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 
   
 \begin{figure}[H]
-    \caption{Delay of case by type of conclusion}
+    \caption{Delay of case by type of conclusion - Historic Data}
     \label{DurationFig}
     \begin{center}
         \includegraphics[width=0.7\textwidth]{Duracion.pdf}
@@ -598,7 +614,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 
 
 \begin{figure}[H]
-    \caption{Difference in what actor says and calculator predicts in amount and probability.}
+    \caption{Difference in what actor says and calculator predicts in amount and probability. - Pilot}
     \label{Figure_overconfidence_exp}
     \begin{center}
     \begin{subfigure}{0.49\textwidth}
@@ -636,7 +652,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 
 
 \begin{figure}[H]
-   \caption{Experiment flowchart}
+   \caption{Experiment flowchart - Pilot}
    \label{treatment_flowchart}
     \begin{center}
     \includegraphics[width=0.42\textwidth]{./Figuras/Experiment_flowchart.png}
@@ -649,7 +665,7 @@ Omited variable for \emph{education} is elementary education, while for \emph{Mi
 
 
 \begin{figure}[H]
-    \caption{Calculator treatment format (example)}
+    \caption{Calculator treatment format (example) - Pilot}
     \label{calc_template}
     \begin{center}
         \includegraphics[width=0.9\textwidth]{calctreat.png}
@@ -714,7 +730,7 @@ Detailed description of variables used throughout the paper. The variables marke
 \end{table}
 
 \begin{table}[H]
-    \caption{Summary statistics table by end mode }
+    \caption{Summary statistics table by end mode - Historical Data}
     \label{tab:SS}
     \begin{center}
         \tiny{\input{./Tables/SS_bymodotermino.tex}}
@@ -726,7 +742,7 @@ Summary stats of outcomes, basic and strategic variables by end mode.
 \end{table}
 
 \begin{table}[H]
-    \caption{Baseline Expectations}
+    \caption{Baseline Expectations - Pilot}
     \label{Table_expectations}
     \begin{center}
        \scriptsize{\input{./Tables/SS_A.tex}}
@@ -736,6 +752,7 @@ Summary stats of outcomes, basic and strategic variables by end mode.
     Summary statistics of parties' beliefs. We show mean and standard deviation for the whole sample, \& dividing by type of employee's lawyer.
     \textit{Do file: } \texttt{Table\_SS.do  Table\_SS\_bylawyer.do}
 \end{table}
+
 
 
     
@@ -753,7 +770,7 @@ Summary stats of outcomes, basic and strategic variables by end mode.
 
 
 \begin{table}[H]
-    \caption{Who showed up }
+    \caption{Who showed up - Pilot}
     \label{whoshowedup}
     \begin{center}
         \scriptsize{\input{./Tables/Showed_up.tex}}
@@ -772,7 +789,7 @@ We show some stats of who goes to the court. This is important since we can only
 
 %#appendix
 \begin{table}[H]
-    \caption{Conciliation by type of lawyer}
+    \caption{Conciliation by type of lawyer- Pilot}
     \label{tab:reg_con_oc}
     \begin{center}
         \scriptsize{\input{./Tables/concilio_vs_lawyer.tex}}
@@ -793,7 +810,7 @@ We show some stats of who goes to the court. This is important since we can only
 
 %#appendix 
 \begin{table}[H]
-    \caption{Correlation conciliation vs overconfidence - Pilot data}
+    \caption{Correlation conciliation vs overconfidence - Pilot}
     \label{Table_concvsoc}
     \begin{center}
         \scriptsize{\input{./Tables/Reg_con_oc.tex}}
@@ -806,7 +823,7 @@ We show some stats of who goes to the court. This is important since we can only
 
 
 \begin{table}[H]
-    \caption{Correlation conciliation vs update - Pilot data}
+    \caption{Correlation conciliation vs theta update - Pilot}
     \label{Table_concvsoc_theta}
     \begin{center}
         \scriptsize{\input{./Tables/Reg_con_oc_theta.tex}}
@@ -837,7 +854,7 @@ We show some stats of who goes to the court. This is important since we can only
 
 
 \begin{table}[H]
-   \caption{Treatment description}
+   \caption{Treatment description - Pilot}
     \label{treatment_description}
     \begin{center}
     \scriptsize{\input{./Tables/Experiment_description2.tex}}
@@ -849,7 +866,7 @@ We show some stats of who goes to the court. This is important since we can only
 \begin{landscape}
 
 \begin{table}[H]
-\caption{Expectation plaintiff against defendant part}
+\caption{Expectation plaintiff against defendant part - Pilot}
 \label{Table_exp_plaintiff_def}
 \begin{center}
 \scriptsize{\input{./Tables/exp_plaintiff_def.tex}}
@@ -864,7 +881,7 @@ The regression includes dummies of which party answered the survey (employee, em
 
 %#appendix
 \begin{table}[H]
-    \caption{Treatment Effects by months after treatment (including basic variables controls)}
+    \caption{Treatment Effects by months after treatment (including basic variables controls) - Pilot}
     \label{Table_effects}
     \begin{center}
     \scriptsize{\input{./Tables/minicortes_monthstreatment_B.tex}}
@@ -878,29 +895,13 @@ The regression includes dummies of which party answered the survey (employee, em
 \pagebreak
 
 
-\begin{landscape}
-\begin{table}[H]
-    \caption{ITT and ATT (Scale Up)}
-    \label{ITT_ATT}
-    \begin{center}
-    \scriptsize{\input{./Tables/ITT_ATT.tex}}
-    \end{center}
-    \footnotesize
-    \textit{Notes:} 
-    
-    \textit{Do file: } \texttt{ITT\_ATT.do}
-\end{table}
-\end{landscape}
-
-
-
 \subsection{Figures}
 
 
 
 
 \begin{figure}[H]
-    \caption{Actor's expectations and calculator predictions.}
+    \caption{Parties' expectations and calculator predictions. - Pilot}
     \label{figlabel}
     \begin{center}
     \begin{subfigure}{0.49\textwidth}
@@ -940,7 +941,7 @@ The regression includes dummies of which party answered the survey (employee, em
 
 
 \begin{figure}[H]
-    \caption{Histograms of relative OC}
+    \caption{Histograms of relative OC - Pilot}
     \label{hist_rel_oc}
     \begin{center}
         \includegraphics[width=0.9\textwidth]{hist_rel_oc.pdf}
@@ -964,7 +965,7 @@ The regression includes dummies of which party answered the survey (employee, em
 
       
 \begin{figure}[H]
-\caption{Number of experimental cases: overall, selected and actually treated.}
+\caption{Number of experimental cases: overall, selected and actually treated. - Pilot}
 \label{treatmentunits}
 \begin{center}
     \begin{subfigure}{0.49\textwidth}
@@ -1030,7 +1031,7 @@ The regression includes dummies of which party answered the survey (employee, em
 
 
 \begin{figure}[H]
-    \caption{Out of sample fit for duration predictions}
+    \caption{Out of sample fit for duration predictions - Pilot calculator}
     \label{duration_predictions}
     \begin{center}
     \begin{subfigure}{0.49\textwidth}
@@ -1062,7 +1063,7 @@ The regression includes dummies of which party answered the survey (employee, em
 
 
 \begin{figure}[H]
-    \caption{Out of sample fit for compensation predictions}
+    \caption{Out of sample fit for compensation predictions - Pilot calculator}
     \label{}
     \begin{center}
     \begin{subfigure}{0.49\textwidth}

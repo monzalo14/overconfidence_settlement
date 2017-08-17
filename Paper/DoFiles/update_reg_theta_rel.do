@@ -53,7 +53,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
-
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -63,6 +64,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -72,6 +75,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles##i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -81,6 +86,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 ********************************EMPLOYEE'S LAWYER*******************************
 ********************************************************************************
@@ -125,6 +132,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -133,6 +142,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles##i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -141,6 +152,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 ********************************FIRM'S LAWYER*******************************
 ********************************************************************************
@@ -185,6 +198,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -193,6 +208,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles##i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -201,6 +218,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 *************************
 
@@ -259,7 +278,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
-
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -269,6 +289,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -278,6 +300,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles##i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -287,6 +311,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 ********************************EMPLOYEE'S LAWYER*******************************
 ********************************************************************************
@@ -331,6 +357,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -339,6 +367,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles##i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -347,6 +377,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 ********************************FIRM'S LAWYER*******************************
 ********************************************************************************
@@ -391,6 +423,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -399,6 +433,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 eststo: reg  c.update_comp ///
 	i.tratamientoqueles##i.abogado_pub gen trabajador_base c_antiguedad salario_diario horas_sem ///
@@ -407,6 +443,8 @@ estadd scalar Erre=e(r2)
 qui su update_comp if e(sample)
 estadd scalar OCMean=r(mean)
 estadd scalar OCSD=r(sd)
+qui count if abogado_pub==1 & e(sample)
+estadd scalar obs_pl=r(N)
 
 
 *************************
@@ -415,5 +453,5 @@ estadd scalar OCSD=r(sd)
 *************************
 
 
-esttab using "$sharelatex\Tables\reg_results\oc_reg_theta.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
-	scalars("Erre R-squared" "OCMean OC_Mean" "OCSD OCSD") replace 
+esttab using "$sharelatex\Tables\reg_results\update_reg_theta_rel.csv", se star(* 0.1 ** 0.05 *** 0.01)  ///
+	scalars("Erre R-squared" "OCMean OC_Mean" "OCSD OCSD" "obs_pl Obs w/ public lawyer") replace 
