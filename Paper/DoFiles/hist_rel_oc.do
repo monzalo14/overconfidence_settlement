@@ -25,7 +25,7 @@ gen rel_oc=oc_/comp_esp
 
 *Outliers
 xtile perc_rel=rel_oc, nq(100)
-drop if perc_rel>=98
+drop if perc_rel>=95
 
 qui su rel_oc
 twoway (hist rel_oc, percent w(3) ) ///
@@ -49,7 +49,7 @@ gen rel_oc=oc_/comp_esp
 
 *Outliers
 xtile perc_rel=rel_oc, nq(100)
-drop if perc_rel>=98
+drop if perc_rel>=95
 
 qui su rel_oc
 twoway (hist rel_oc, percent w(3) ) ///
@@ -74,7 +74,7 @@ gen rel_oc=oc_/comp_esp
 
 *Outliers
 xtile perc_rel=rel_oc, nq(100)
-drop if perc_rel>=98
+drop if perc_rel>=95
 
 qui su rel_oc
 twoway (hist rel_oc, percent w(3) ) ///
@@ -111,6 +111,10 @@ rename A_5_1 Prob_win
 gen oc_=Prob_win-Prob_win_calc
 gen rel_oc=oc_/Prob_win_calc
 
+*Outliers
+xtile perc_rel=rel_oc, nq(100)
+drop if perc_rel>=95
+
 qui su rel_oc
 twoway (hist rel_oc, percent w(1.5) ) ///
 		(scatteri 0 `r(mean)' 40 `r(mean)' , c(l) m(i) color(ltbluishgray) lwidth(vthick) ) , ///
@@ -131,6 +135,10 @@ rename RA_5_1 Prob_win
 
 gen oc_=Prob_win-Prob_win_calc
 gen rel_oc=oc_/Prob_win_calc
+
+*Outliers
+xtile perc_rel=rel_oc, nq(100)
+drop if perc_rel>=95
 
 qui su rel_oc
 twoway (hist rel_oc, percent w(1.5) ) ///
@@ -153,6 +161,10 @@ rename RD5_1_1 Prob_win
 
 gen oc_=Prob_win-Prob_win_calc
 gen rel_oc=oc_/Prob_win_calc
+
+*Outliers
+xtile perc_rel=rel_oc, nq(100)
+drop if perc_rel>=95
 
 qui su rel_oc
 twoway (hist rel_oc, percent w(1.5) ) ///
