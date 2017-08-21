@@ -14,13 +14,17 @@ foreach var of varlist reclutamiento dummy_confianza dummy_desc_sem ///
 	 }
 
 *Covariates
-replace prob_ganar=prob_ganar/100 if prob_ganar>1 & !missing(prob_ganar)
-
 gen na_prob=0
 replace na_prob=1 if missing(prob_ganar)
 
 gen na_cant=0
 replace na_cant=1 if missing(cantidad_ganar)
+
+gen na_prob_mayor=0
+replace na_prob_mayor=1 if missing(prob_mayor)
+
+gen na_cant_mayor=0
+replace na_cant_mayor=1 if missing(cant_mayor)
 
 gen retail=(giro==46) if !missing(giro)
 
